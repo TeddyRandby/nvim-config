@@ -36,27 +36,27 @@ return packer.startup(function(use)
   use({ "wbthomason/packer.nvim" })
 
   -- UI
-  use({ "rmehri01/onenord.nvim" })
+  use({ "Mofiqul/dracula.nvim", config = require("plugins.configs.draculaconf") })
 
-  use({ "goolord/alpha-nvim", config = require("plugins.configs.alpha") })
+  use({ "goolord/alpha-nvim", config = require("plugins.configs.alphaconf") })
 
-  use({ "kyazdani42/nvim-web-devicons", config = require("plugins.configs.icons") })
+  use({ "kyazdani42/nvim-web-devicons", config = require("plugins.configs.deviconsconf") })
 
   use({
     "nvim-lualine/lualine.nvim",
-    config = require("plugins.configs.lualine"),
+    config = require("plugins.configs.lualineconf"),
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
   use({
     "akinsho/bufferline.nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
-    config = require("plugins.configs.bufferline"),
+    config = require("plugins.configs.bufferlineconf"),
   })
 
-  use({ "folke/which-key.nvim", config = require("plugins.configs.whichkey") })
+  use({ "folke/which-key.nvim", config = require("plugins.configs.whichkeyconf") })
 
-  use({ "karb94/neoscroll.nvim", config = require("plugins.configs.neoscroll") })
+  use({ "karb94/neoscroll.nvim", config = require("plugins.configs.neoscrollconf") })
 
   -- Syntax
   use({
@@ -66,7 +66,7 @@ return packer.startup(function(use)
       "p00f/nvim-ts-rainbow",
     },
     run = ":TSUpdate",
-    config = require("plugins.configs.treesitter"),
+    config = require("plugins.configs.treesitterconf"),
   })
 
   use({
@@ -74,16 +74,16 @@ return packer.startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
     },
-    config = require("plugins.configs.telescope"),
+    config = require("plugins.configs.telescopeconf"),
   })
 
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-  use({ "lukas-reineke/indent-blankline.nvim", config = require("plugins.configs.indent") })
+  use({ "lukas-reineke/indent-blankline.nvim", config = require("plugins.configs.indentconf") })
 
-  use({ "windwp/nvim-autopairs", config = require("plugins.configs.autopairs") })
+  use({ "windwp/nvim-autopairs", config = require("plugins.configs.autopairsconf") })
 
-  use({ "norcalli/nvim-colorizer.lua", config = require("plugins.configs.colorizer") })
+  use({ "norcalli/nvim-colorizer.lua", config = require("plugins.configs.colorizerconf") })
 
   use({
     "RRethy/vim-illuminate",
@@ -100,11 +100,11 @@ return packer.startup(function(use)
 
   use({
     "glepnir/lspsaga.nvim",
-    config = require("plugins.configs.lspsaga")
+    config = require("plugins.configs.lspsagaconf")
   })
 
   -- Comment
-  use({ "numToStr/Comment.nvim", config = require("plugins.configs.comment") })
+  use({ "numToStr/Comment.nvim", config = require("plugins.configs.commentconf") })
 
   -- Completion
   use({
@@ -120,7 +120,7 @@ return packer.startup(function(use)
       "hrsh7th/vim-vsnip",
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
-    config = require("plugins.configs.cmp"),
+    config = require("plugins.configs.cmpconf"),
   })
 
   -- Git
@@ -129,7 +129,7 @@ return packer.startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
     },
-    config = require("plugins.configs.gitsigns"),
+    config = require("plugins.configs.gitsignsconf"),
   })
 
   -- Markdown

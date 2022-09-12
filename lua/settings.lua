@@ -1,5 +1,4 @@
 local utils = require("utils")
-local theme = require("theme")
 
 vim.g.mapleader = " "
 
@@ -60,5 +59,3 @@ for key, value in pairs(options) do
 end
 
 utils.setSpacesSize({ go = 4, python = 4, rust = 4, cpp = 4, c = 4 })
-
-theme.init()
