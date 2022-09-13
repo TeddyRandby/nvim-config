@@ -35,6 +35,14 @@ wk.register({
     "<cmd>Telescope live_grep<cr>", "[FIND] Grep"
   },
 
+  ["O"] = {
+    "<cmd>Telescope oldfiles<cr>", "[FIND] Recents"
+  },
+
+  ["M"] = {
+    "<cmd>Telescope marks<cr>", "[FIND] Marks"
+  },
+
   -- [[ Gitsigns ]]
   ["g"] = {
     name = "[GITSIGNS]",
