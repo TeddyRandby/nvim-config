@@ -1,4 +1,4 @@
-local ok, dracula = pcall(require,"dracula")
+local ok, dracula = pcall(require, "dracula")
 
 if not ok then
   return
@@ -41,6 +41,7 @@ dracula.setup({
     TelescopeResultBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
     TelescopePreviewBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
     TelescopePromptBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
+    WhichKeyFloat = { bg = dracula.colors().menu, fg = dracula.colors().fg },
   },
 })
 

@@ -29,12 +29,11 @@ bufferline.setup {
         max_name_length = 18,
         max_prefix_length = 15,
         tab_size = 25,
-        diagnostics = false,
+        diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
-            return " "
+            return "("..count..")"
         end,
-        offsets = { { filetype = "NvimTree", text = "" } },
         color_icons = true,
         show_buffer_icons = true,
         show_buffer_close_icons = false,
@@ -42,7 +41,7 @@ bufferline.setup {
         show_close_icon = false,
         show_tab_indicators = true,
         persist_buffer_sort = true,
-        separator_style = { "", "" },
+        separator_style = "slant",
         enforce_regular_tabs = false,
         always_show_bufferline = true,
         sort_by = "insert_at_end",

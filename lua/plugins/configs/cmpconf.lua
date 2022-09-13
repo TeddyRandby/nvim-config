@@ -29,13 +29,13 @@ local icons = {
     Struct = "פּ",
     Event = "",
     Operator = "",
-    TypeParameter = "",
+    TypeParameter = " ",
 }
 
 cmp.setup {
     experimental = {
         native_menu = false,
-        ghost_text = false,
+        ghost_text = true,
     },
     confirmation = {
         get_commit_characters = function()
@@ -52,7 +52,6 @@ cmp.setup {
         format = function(_, vim_item)
             vim_item.menu = vim_item.kind
             vim_item.kind = icons[vim_item.kind]
-
             return vim_item
         end,
     },
@@ -62,25 +61,25 @@ cmp.setup {
         end,
     },
     mapping = {
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<Up>"] = cmp.mapping.scroll_docs(-4),
+        ["<Down>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-q>"] = cmp.mapping.close(),
         ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             else
                 fallback()
             end
         end, { "i", "s" }),
         ["<C-k>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_prev_item()
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
             else
                 fallback()
             end
         end, { "i", "s" }),
-        ["<Tab>"] = cmp.mapping.confirm {
+        ["<CR>"] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
         },

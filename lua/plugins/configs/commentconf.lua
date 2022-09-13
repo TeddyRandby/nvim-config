@@ -12,13 +12,9 @@ comment.setup {
         line = "gcc",
         block = "gbc",
     },
-    opleader = {
-        line = "gc",
-        block = "gb",
-    },
     mappings = {
         basic = true,
-        extra = true,
+        extra = false,
         extended = false,
     },
     pre_hook = nil,

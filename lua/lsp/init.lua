@@ -18,6 +18,7 @@ local servers = {
 	"sumneko_lua",
 	"tsserver",
 	"clangd",
+  "eslint",
 }
 
 -- Floating border
