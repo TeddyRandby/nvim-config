@@ -16,6 +16,7 @@ local opts = {
 
 wk.register({
   ["c"] = { "<cmd>bd<cr>", "[BUFFER] Close" },
+  ["h"] = { "<cmd>noh<cr>", "[HIGHLIGHT] Clear"},
 
   -- [[Illuminate]]
   ["i"] = {

@@ -66,33 +66,21 @@ cmp.setup {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-q>"] = cmp.mapping.close(),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-                vim.api.nvim_feedkeys(
-                    vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true),
-                    "",
-                    true
-                )
             else
                 fallback()
             end
         end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<C-k>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                vim.api.nvim_feedkeys(
-                    vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true, true),
-                    "",
-                    true
-                )
             else
                 fallback()
             end
         end, { "i", "s" }),
-        ["<CR>"] = cmp.mapping.confirm {
+        ["<Tab>"] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
         },
