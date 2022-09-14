@@ -19,6 +19,7 @@ local servers = {
 	"tsserver",
 	"clangd",
   "eslint",
+  "prismals",
 }
 
 -- Floating border

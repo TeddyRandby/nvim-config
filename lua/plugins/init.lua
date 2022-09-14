@@ -22,7 +22,8 @@ end
 packer.init({
   display = {
     open_fn = function()
-      return require("packer.util").float({ border = "single" }) end,
+      return require("packer.util").float({ border = "single" })
+    end,
     prompt_border = "single",
   },
   git = {
@@ -57,6 +58,8 @@ return packer.startup(function(use)
   use({ "folke/which-key.nvim", config = require("plugins.configs.whichkeyconf") })
 
   use({ "karb94/neoscroll.nvim", config = require("plugins.configs.neoscrollconf") })
+
+  use({ "luukvbaal/nnn.nvim", config = require("plugins.configs.nnnconf") })
 
   -- Syntax
   use({
@@ -116,9 +119,10 @@ return packer.startup(function(use)
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
-      "hrsh7th/cmp-vsnip",
-      "hrsh7th/vim-vsnip",
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets"
     },
     config = require("plugins.configs.cmpconf"),
   })

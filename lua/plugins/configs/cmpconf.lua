@@ -1,8 +1,17 @@
-local ok, cmp = pcall(require, "cmp")
+local cmp_ok, cmp = pcall(require, "cmp")
 
-if not ok then
+if not cmp_ok then
     return
 end
+
+local ls_ok, luasnip = pcall(require, "luasnip")
+
+if not ls_ok then
+  return
+end
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
 
 local icons = {
     Text = "",
@@ -57,7 +66,7 @@ cmp.setup {
     },
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+          luasnip.lsp_expand(args.body)
         end,
     },
     mapping = {
@@ -68,6 +77,8 @@ cmp.setup {
         ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
             else
                 fallback()
             end
@@ -75,6 +86,8 @@ cmp.setup {
         ["<C-k>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
             else
                 fallback()
             end
@@ -87,7 +100,7 @@ cmp.setup {
     sources = {
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
-        { name = "vsnip" },
+        { name = "luasnip" },
         { name = "path" },
         { name = "buffer" },
         { name = "nvim_lsp_signature_help" },

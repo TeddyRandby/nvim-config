@@ -49,6 +49,10 @@ wk.register({
 
   [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
+  ["e"] = { "<cmd>NnnExplorer<cr>", "[EXPLORER] Open" },
+
+  ["q"] = { "<cmd>wq!<cr>", "[QUIT]"},
+
   -- [[Illuminate]]
   ["i"] = {
     name = "[ILLUMINATE]",

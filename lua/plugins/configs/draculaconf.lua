@@ -42,6 +42,11 @@ dracula.setup({
     TelescopePreviewBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
     TelescopePromptBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
     WhichKeyFloat = { bg = dracula.colors().menu, fg = dracula.colors().fg },
+    GitSignsAdd = { bg = dracula.colors().bg, fg = dracula.colors().bright_green },
+    GitSignsChange = { bg = dracula.colors().bg, fg = dracula.colors().bright_yellow },
+    GitSignsDelete = { bg = dracula.colors().bg, fg = dracula.colors().bright_red },
+    GitSignsCurrentLineBlame = { fg = dracula.colors().fg },
+    NnnNormal = { bg = dracula.colors().menu, fg = dracula.colors().fg },
   },
 })
 
