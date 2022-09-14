@@ -59,8 +59,6 @@ return packer.startup(function(use)
 
   use({ "karb94/neoscroll.nvim", config = require("plugins.configs.neoscrollconf") })
 
-  use({ "luukvbaal/nnn.nvim", config = require("plugins.configs.nnnconf") })
-
   -- Syntax
   use({
     "nvim-treesitter/nvim-treesitter",
