@@ -2,6 +2,15 @@ local utils = require("utils")
 
 vim.g.mapleader = " "
 
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
+vim.filetype.add {
+  extension = {
+    gab = "gab",
+  },
+}
+
 local opts = { noremap = true, silent = true, nowait = true }
 
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", opts)
@@ -14,7 +23,6 @@ vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
 
 vim.cmd([[set fcs=eob:\ ]])
-vim.cmd([[filetype plugin indent on]])
 
 local options = {
 	termguicolors = true,
