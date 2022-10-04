@@ -51,7 +51,7 @@ wk.register({
 
   ["e"] = { "<cmd>NnnExplorer<cr>", "[EXPLORER] Open" },
 
-  ["q"] = { "<cmd>wq!<cr>", "[QUIT]"},
+  ["q"] = { "<cmd>wq!<cr>", "[QUIT]" },
 
   -- [[Illuminate]]
   ["i"] = {
@@ -99,7 +99,7 @@ wk.register({
     k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
     -- LSP specifics
     a = { "<cmd>Lspsaga code_action<cr>", "Code action" },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    f = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
     r = { "<cmd>Lspsaga rename<cr>", "Rename" },
     h = { "<cmd>Lspsaga hover_doc<cr>", "Hover" },
     -- LSP Pickers

@@ -15,7 +15,7 @@ noice.setup {
     },
   },
   popupmenu = {
-    enabled = true, -- disable if you use something like cmp-cmdline
+    enabled = false, -- disable if you use something like cmp-cmdline
     ---@type 'nui'|'cmp'
     backend = "nui", -- backend to use to show regular cmdline completions
     -- You can specify options for nui under `config.views.popupmenu`

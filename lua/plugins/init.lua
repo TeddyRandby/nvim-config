@@ -127,7 +127,8 @@ return packer.startup(function(use)
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets"
+      "rafamadriz/friendly-snippets",
+      { "onsails/lspkind.nvim", config = require("plugins.configs.lspkindconf") },
     },
     config = require("plugins.configs.cmpconf"),
   })
