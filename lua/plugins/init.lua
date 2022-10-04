@@ -59,6 +59,17 @@ return packer.startup(function(use)
 
   use({ "karb94/neoscroll.nvim", config = require("plugins.configs.neoscrollconf") })
 
+  use({
+    "folke/noice.nvim",
+    config = require("plugins.configs.noiceconf"),
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "hrsh7th/nvim-cmp",
+    }
+  })
+
   -- Syntax
   use({
     "nvim-treesitter/nvim-treesitter",
