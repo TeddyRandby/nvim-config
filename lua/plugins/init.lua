@@ -86,10 +86,6 @@ return packer.startup(function(use)
 
   use({ "norcalli/nvim-colorizer.lua", config = require("plugins.configs.colorizerconf") })
 
-  use({
-    "RRethy/vim-illuminate",
-  })
-
   -- LSP
   use({
     "williamboman/nvim-lsp-installer",
@@ -132,15 +128,6 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     config = require("plugins.configs.gitsignsconf"),
-  })
-
-  -- Markdown
-  use({
-    "davidgranstrom/nvim-markdown-preview",
-    config = function()
-      vim.g.nvim_markdown_preview_format = "gfm"
-      vim.g.nvim_markdown_preview_theme = "github"
-    end,
   })
 
   if PACKER_BOOTSTRAP then
