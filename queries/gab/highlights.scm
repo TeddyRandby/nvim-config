@@ -4,6 +4,8 @@
 
 (number) @constant.numeric
 
+(identifier) @variable
+
 [
  (bool)
  (null)
@@ -15,25 +17,27 @@
   (interpstring)
 ] @string
 
-
 [
  "for"
- "in"
- "while"
+ "loop"
+ "until"
+] @keyword.repeat
+
+[
  "if"
- "match"
  "else"
+ "match"
  "return"
- "=>"
-] @keyword.control
+] @conditional
 
 [
   "or"
   "and"
   "not"
   "is"
+  "in"
+  "=>"
 ] @keyword.operator
-
 
 [
   "let"
@@ -41,8 +45,14 @@
 ] @keyword.storage.type
 
 [
- ","
+  ","
+  "."
 ] @punctuation.delimiter
+
+[
+  "do"
+  "end"
+] @keyword
 
 [
   "{"
@@ -52,8 +62,6 @@
   "("
   ")"
   "|"
-  "do"
-  "end"
 ] @punctuation.bracket
 
 [
@@ -71,48 +79,20 @@
   "!"
   "?"
   ".."
-  "."
   ":"
 ] @operator
-(identifier) @variable
 
-
-(object key: (identifier) @variable.other.member)
-(property property: (identifier) @variable.other.member)
+(property
+  receiver: (identifier) @type)
 
 (call
   receiver: (identifier) @function)
 
 (call
-  receiver: (property
-    property: (identifier) @function))
+  receiver: (property 
+      property: (identifier) @function))
 
-(method
-  method: (call
-    receiver: (property
-      receiver: (identifier) @type)))
-
-(method
-  method: (call
-    receiver: (property
-      receiver: (property
-        receiver: (identifier) @type
-        property: (identifier) @type))))
-
-(method
-  method: (post
-    (call
-      receiver: (property
-        receiver: (identifier) @type))))
-
-(method
-  method: (post
-    (call
-      receiver: (property
-        receiver: (property
-          receiver: (identifier) @type
-          property: (identifier) @type)))))
-
+(parameters (identifier) @parameter)
 (method method: (identifier) @function)
 (function_definition name: (identifier) @function)
 (object_definition name: (identifier) @type)
@@ -120,3 +100,4 @@
 
 (global bang: ("!") @variable.builtin)
 (global name: (identifier) @variable.builtin)
+

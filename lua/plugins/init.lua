@@ -66,7 +66,6 @@ return packer.startup(function(use)
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
-      "hrsh7th/nvim-cmp",
     }
   })
 
@@ -104,11 +103,6 @@ return packer.startup(function(use)
       "neovim/nvim-lspconfig",
       "jose-elias-alvarez/typescript.nvim",
     },
-  })
-
-  use({
-    "glepnir/lspsaga.nvim",
-    config = require("plugins.configs.lspsagaconf")
   })
 
   -- Comment
