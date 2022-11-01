@@ -100,8 +100,8 @@ wk.register({
     -- LSP specifics
     a = { "<cmd>Lspsaga code_action<cr>", "Code action" },
     f = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
-    r = { "<cmd>Lspsaga rename<cr>", "Rename" },
-    h = { "<cmd>Lspsaga hover_doc<cr>", "Hover" },
+    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
     -- LSP Pickers
     R = { "<cmd>Telescope lsp_references<cr>", "References" },
     I = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
