@@ -2,14 +2,16 @@
 
 (comment) @comment
 
-(number) @constant.numeric
+(number) @number
 
 (identifier) @variable
+
+((identifier) @variable.builtin (#eq? @variable.builtin "self"))
 
 [
  (bool)
  (null)
-] @constant.builtin
+] @boolean
 
 [
   (string)
@@ -21,14 +23,17 @@
  "for"
  "loop"
  "until"
-] @keyword.repeat
+] @repeat
 
 [
  "if"
  "else"
  "match"
- "return"
 ] @conditional
+
+[
+ "return"
+] @keyword.return
 
 [
   "or"
@@ -36,7 +41,6 @@
   "not"
   "is"
   "in"
-  "=>"
 ] @keyword.operator
 
 [
@@ -61,7 +65,6 @@
   "]"
   "("
   ")"
-  "|"
 ] @punctuation.bracket
 
 [
@@ -80,24 +83,25 @@
   "?"
   ".."
   ":"
+  "=>"
 ] @operator
 
-(property
-  receiver: (identifier) @type)
+[
+ "$"
+] @string.special
 
-(call
-  receiver: (identifier) @function)
-
-(call
-  receiver: (property 
-      property: (identifier) @function))
+(symbol (identifier) @string.special)
 
 (parameters (identifier) @parameter)
-(method method: (identifier) @function)
-(function_definition name: (identifier) @function)
+
+(property property: (identifier) @field)
+
+(chain chain: (identifier) @type)
+(chain final: (identifier) @method.call)
+
+(function_definition type: (identifier) @type)
+
+(function_definition name: (identifier) @method)
 (object_definition name: (identifier) @type)
-(list_definition name: (identifier) @type)
 
-(global bang: ("!") @variable.builtin)
-(global name: (identifier) @variable.builtin)
-
+(record key: (identifier) @field)

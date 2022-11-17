@@ -63,7 +63,6 @@ return packer.startup(function(use)
     "folke/noice.nvim",
     config = require("plugins.configs.noiceconf"),
     requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     }
