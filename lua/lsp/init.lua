@@ -7,6 +7,7 @@ end
 local utils = require("utils")
 
 local servers = {
+  "rust_analyzer",
 	"bashls",
 	"sumneko_lua",
 	"cssls",
@@ -20,7 +21,6 @@ local servers = {
 	"clangd",
   "eslint",
   "prismals",
-  "rust_analyzer",
 }
 
 -- Floating border
@@ -30,6 +30,8 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	opts.border = opts.border or { { " ", "FloatBorder" } }
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+local on_attach = function() end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
