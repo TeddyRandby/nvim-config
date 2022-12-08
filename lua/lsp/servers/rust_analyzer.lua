@@ -1,15 +1,33 @@
 local M = {}
 
 M.setup = function(on_attach, capabilities)
-    local lspconfig = require "lspconfig"
+  local lspconfig = require "lspconfig"
 
-    lspconfig.rust_analyzer.setup {
-        on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 150,
+  lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+    settings = {
+      ["rust-analyzer"] = {
+        imports = {
+          granularity = {
+            group = "module",
+          },
+          prefix = "self",
         },
-        capabilities = capabilities,
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+        },
+        procMacro = {
+          enable = true
+        },
+      }
     }
+  }
 end
 
 return M

@@ -62,10 +62,7 @@ return packer.startup(function(use)
   use({
     "folke/noice.nvim",
     config = require("plugins.configs.noiceconf"),
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
+    requires = { "MunifTanjim/nui.nvim" }
   })
 
   -- Syntax
@@ -117,7 +114,6 @@ return packer.startup(function(use)
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
