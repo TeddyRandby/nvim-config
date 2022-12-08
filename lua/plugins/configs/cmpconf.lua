@@ -30,8 +30,6 @@ cmp.setup {
   window = {
     completion = {
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
     },
   },
   completion = {
