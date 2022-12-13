@@ -1,47 +1,24 @@
-local M = {}
-
-local settings = {
+local M = {
+  settings = {
     Lua = {
-        runtime = {
-            version = "LuaJIT",
-        },
-        diagnostics = {
-            globals = {
-                "vim",
-                "use",
-                "describe",
-                "it",
-                "assert",
-                "before_each",
-                "after_each",
-            },
-        },
-        disable = {
-            "lowercase-global",
-            "undefined-global",
-            "unused-local",
-            "unused-function",
-            "unused-vararg",
-            "trailing-space",
-        },
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
+  },
 }
-
-M.setup = function(on_attach, capabilities)
-    local lspconfig = require "lspconfig"
-
-    lspconfig.sumneko_lua.setup {
-        on_attach = function(client, bufnr)
-            client.server_capabilities.document_formatting = false
-            client.server_capabilities.document_range_formatting = false
-            on_attach(client, bufnr)
-        end,
-        settings = settings,
-        flags = {
-            debounce_text_changes = 150,
-        },
-        capabilities = capabilities,
-    }
-end
 
 return M

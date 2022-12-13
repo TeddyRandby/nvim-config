@@ -1,55 +1,35 @@
-local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local lsp_config_ok, lsp_config = pcall(require, "lspconfig")
 
-if not ok then
+if not lsp_config_ok then
+	return
+end
+
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
+if not cmp_nvim_lsp_ok then
 	return
 end
 
 local utils = require("utils")
 
 local servers = {
-  "rust_analyzer",
-	"bashls",
-	"sumneko_lua",
-	"cssls",
-	"html",
-	"emmet_ls",
-	"jsonls",
-	"yamlls",
-	"dockerls",
-	"sumneko_lua",
-	"tsserver",
-	"clangd",
-  "eslint",
-  "prismals",
+  "bashls",
+  "tsserver",
+  "clangd",
+  "sumneko_lua",
 }
 
--- Floating border
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.border = opts.border or { { " ", "FloatBorder" } }
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
-local on_attach = function() end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
-lsp_installer.setup({
-	ensure_installed = servers,
-	automatic_installation = true,
-	ui = {
-		icons = {
-			server_installed = "",
-			server_pending = "",
-			server_uninstalled = "",
-		},
-	},
-})
-
 for _, server in ipairs(servers) do
-	require("lsp.servers." .. server).setup(on_attach, capabilities)
+  local conf_ok, try_conf = pcall(require, "lsp.servers." .. server)
+
+  local conf = vim.tbl_extend("keep", conf_ok and try_conf or {}, {
+    on_attach = function() end,
+    flags = {},
+    settings = {},
+    capabilities = cmp_nvim_lsp.default_capabilities()
+  })
+
+  lsp_config[server].setup(conf)
 end
 
 -- Gutter sign icons
@@ -60,16 +40,15 @@ end
 
 -- Prefix diagnostic virtual text
 vim.diagnostic.config({
-	virtual_text = {
-		source = "always",
-		prefix = " ",
-		spacing = 6,
-	},
 	float = {
 		header = false,
-		source = "always",
+		source = false,
+    prefix = "",
+    border = "rounded",
 	},
 	signs = true,
-	underline = false,
+	underline = true,
+  virtual_text = false,
 	update_in_insert = false,
 })
+

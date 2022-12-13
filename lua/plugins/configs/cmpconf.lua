@@ -18,7 +18,7 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-cmp.setup {
+cmp.setup({
   experimental = {
     ghost_text = true,
   },
@@ -28,9 +28,12 @@ cmp.setup {
     end,
   },
   window = {
-    completion = {
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-    },
+    completion = cmp.config.window.bordered({
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
+    }),
   },
   completion = {
     completeopt = "menu,menuone,noinsert",
@@ -56,10 +59,13 @@ cmp.setup {
   mapping = {
     ["<Up>"] = cmp.mapping.scroll_docs(-4),
     ["<Down>"] = cmp.mapping.scroll_docs(4),
-    ["<CR>"] = cmp.mapping(cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    }, { "i", "s" }),
+    ["<Tab>"] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      }),
+      { "i", "s" }
+    ),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "s", "c" }),
     ["<C-q>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
     ["<C-j>"] = cmp.mapping(function(fallback)
@@ -89,18 +95,23 @@ cmp.setup {
     { name = "buffer" },
   },
   preselect = cmp.PreselectMode.None,
-}
+})
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
   sources = {
     { name = "buffer" },
   },
 })
 
 cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  completion = {
+    completeopt = "menu,menuone,noinsert",
+    keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+    keyword_length = 1,
+  },
   sources = cmp.config.sources({
     { name = "path" },
-  }, {
-    { name = "cmdline" },
   }),
+  { name = "cmdline" },
 })

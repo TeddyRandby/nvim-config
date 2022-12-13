@@ -4,7 +4,7 @@ if not ok then
   return
 end
 
-wk.setup {
+wk.setup({
   window = {
     border = "none", -- none, single, double, shadow
     position = "bottom", -- bottom, top
@@ -18,7 +18,7 @@ wk.setup {
     spacing = 4, -- spacing between columns
     align = "center", -- align columns left, center or right
   },
-}
+})
 
 local opts = {
   mode = "n",
@@ -37,7 +37,7 @@ local v_opts = {
 }
 
 wk.register({
-  ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" }
+  ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" },
 }, v_opts)
 
 wk.register({
@@ -49,33 +49,33 @@ wk.register({
 
   [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
-  ["e"] = { "<cmd>NnnExplorer<cr>", "[EXPLORER] Open" },
+  ["q"] = { "<cmd>q<cr>", "[QUIT]" },
 
-  ["q"] = { "<cmd>wq!<cr>", "[QUIT]" },
-
-  -- [[Illuminate]]
-  ["i"] = {
-    name = "[ILLUMINATE]",
-    j = { "<cmd>lua require'illuminate'.next_reference{wrap=true}<cr>", "Next" },
-    k = {
-      "<cmd>lua require'illuminate'.next_reference{reverse=true,wrap=true}<cr>", "Prev",
-    }
-  },
+  ["m"] = { "<cmd>Meson<cr>", "[MESON]" },
 
   ["F"] = {
-    "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "[FIND] File"
+    "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
+    "[FIND] File",
   },
 
   ["G"] = {
-    "<cmd>Telescope live_grep<cr>", "[FIND] Grep"
+    "<cmd>Telescope live_grep<cr>",
+    "[FIND] Grep",
   },
 
   ["O"] = {
-    "<cmd>Telescope oldfiles<cr>", "[FIND] Recents"
+    "<cmd>Telescope oldfiles<cr>",
+    "[FIND] Recents",
   },
 
   ["M"] = {
-    "<cmd>Telescope marks<cr>", "[FIND] Marks"
+    "<cmd>Telescope marks<cr>",
+    "[FIND] Marks",
+  },
+
+  ["S"] = {
+    "<cmd>Telescope grep_string<cr>",
+    "[FIND] String",
   },
 
   -- [[ Gitsigns ]]
@@ -85,6 +85,7 @@ wk.register({
     s = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },
     h = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
     d = { "<cmd>Gitsigns diffthis<cr>", "Show diff" },
+    b = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
     -- Git Pickers
     B = { "<cmd>Telescope git_branches<cr>", "Branches" },
     S = { "<cmd>Telescope git_status<cr>", "Status" },
@@ -102,12 +103,15 @@ wk.register({
     f = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+    s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" },
     -- LSP Pickers
     R = { "<cmd>Telescope lsp_references<cr>", "References" },
     I = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
     D = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
     T = { "<cmd>Telescope lsp_type_definitions<cr>", "Type Definitions" },
     S = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
+    C = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Incoming calls"},
+    O = { "<cmd>lua vim.lsp.buf.outgoin_calls()<cr>", "Outgoing calls"},
     E = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-  }
+  },
 }, opts)

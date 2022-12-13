@@ -20,6 +20,7 @@ _M.powerline = {
 }
 
 _M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
+
 _M.setSpacesSize = function(filetypes)
     for filetype, size in pairs(filetypes) do
         vim.api.nvim_create_autocmd("FileType", {

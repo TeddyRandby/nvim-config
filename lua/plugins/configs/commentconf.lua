@@ -8,12 +8,8 @@ comment.setup {
     padding = true,
     sticky = true,
     ignore = nil,
-    toggler = {
-        line = "gcc",
-        block = "gbc",
-    },
     mappings = {
-        basic = true,
+        basic = false,
         extra = false,
         extended = false,
     },

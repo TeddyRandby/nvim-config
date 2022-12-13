@@ -10,15 +10,11 @@ telescope.setup {
     },
     defaults = {
         vimgrep_arguments = {
-            "rg",
+            "grep",
             "--color=never",
-            "--no-heading",
             "--with-filename",
             "--line-number",
-            "--column",
-            "--no-ignore",
-            "--smart-case",
-            "--hidden",
+            "--no-ignore-case",
         },
         prompt_prefix = "     ",
         selection_caret = "> ",
