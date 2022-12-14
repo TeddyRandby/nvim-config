@@ -91,12 +91,6 @@ return packer.startup(function(use)
   use({ "norcalli/nvim-colorizer.lua", config = require("plugins.configs.colorizerconf") })
 
   -- Navigation
-  
-  use({
-    'simrat39/symbols-outline.nvim',
-    config = require("plugins.configs.symbolsoutlineconf")
-  })
-
   use({
     "nvim-tree/nvim-tree.lua",
     requires = {
