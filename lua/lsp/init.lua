@@ -17,6 +17,7 @@ local servers = {
   "tsserver",
   "clangd",
   "sumneko_lua",
+  "prismals",
 }
 
 for _, server in ipairs(servers) do

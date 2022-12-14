@@ -55,7 +55,7 @@ wk.register({
 
   ["o"] = { "<cmd>SymbolsOutline<cr>", "[OUTLINE]" },
 
-  ["m"] = { "<cmd>Meson<cr>", "[MESON]" },
+  ["m"] = { "<cmd>Mason<cr>", "[MASON]" },
 
   ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
