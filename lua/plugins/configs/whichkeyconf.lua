@@ -43,15 +43,21 @@ wk.register({
 wk.register({
   ["c"] = { "<cmd>bd<cr>", "[BUFFER] Close" },
 
+  ["q"] = { "<cmd>q<cr>", "[QUIT]" },
+
   ["h"] = { "<cmd>noh<cr>", "[HIGHLIGHT] Clear" },
 
   ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
   [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
-  ["q"] = { "<cmd>q<cr>", "[QUIT]" },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "[EXPLORER]" },
+
+  ["o"] = { "<cmd>SymbolsOutline<cr>", "[OUTLINE]" },
 
   ["m"] = { "<cmd>Meson<cr>", "[MESON]" },
+
+  ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
   ["F"] = {
     "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
@@ -110,8 +116,8 @@ wk.register({
     D = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
     T = { "<cmd>Telescope lsp_type_definitions<cr>", "Type Definitions" },
     S = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
-    C = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Incoming calls"},
-    O = { "<cmd>lua vim.lsp.buf.outgoin_calls()<cr>", "Outgoing calls"},
+    C = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Incoming calls" },
+    O = { "<cmd>lua vim.lsp.buf.outgoin_calls()<cr>", "Outgoing calls" },
     E = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
   },
 }, opts)

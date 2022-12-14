@@ -4,7 +4,10 @@ if not null_ls_ok then
   return
 end
 
-null_ls.setup {
+null_ls.setup({
+  on_init = function(new_client, _)
+    new_client.offset_encoding = "utf-32"
+  end,
   sources = {
     null_ls.builtins.formatting.stylua,
 
@@ -21,5 +24,5 @@ null_ls.setup {
     null_ls.builtins.formatting.clang_format,
 
     null_ls.builtins.diagnostics.fish,
-  }
-}
+  },
+})
