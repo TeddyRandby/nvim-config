@@ -124,7 +124,6 @@ return packer.startup(function(use)
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
-      "mtoohey31/cmp-fish",
       "onsails/lspkind.nvim",
     },
     config = require("plugins.configs.cmpconf"),

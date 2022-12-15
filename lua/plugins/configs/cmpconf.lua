@@ -97,7 +97,6 @@ cmp.setup({
       }),
       { "i", "s" }
     ),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "s", "c" }),
     ["<C-q>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
     ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
