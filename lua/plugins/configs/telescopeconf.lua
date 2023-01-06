@@ -59,8 +59,7 @@ telescope.setup({
       n = {
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
-        ["<C-t>"] = trouble.open_selected_with_trouble,
-        ["T"] = trouble.open_with_trouble,
+        ["<C-t>"] = trouble.open_with_trouble,
       },
     },
   },
