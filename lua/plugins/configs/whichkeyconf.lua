@@ -53,8 +53,6 @@ wk.register({
 
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "[EXPLORER]" },
 
-  ["o"] = { "<cmd>SymbolsOutline<cr>", "[OUTLINE]" },
-
   ["m"] = { "<cmd>Mason<cr>", "[MASON]" },
 
   ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
