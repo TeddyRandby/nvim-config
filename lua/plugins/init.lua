@@ -57,12 +57,6 @@ return packer.startup(function(use)
 
   use({ "folke/which-key.nvim", config = require("plugins.configs.whichkeyconf") })
 
-  use({
-    "folke/noice.nvim",
-    config = require("plugins.configs.noiceconf"),
-    requires = { "MunifTanjim/nui.nvim" },
-  })
-
   -- Syntax
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -144,6 +138,13 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     config = require("plugins.configs.gitsignsconf"),
+  })
+
+  -- UI
+  use({
+    "folke/noice.nvim",
+    config = require("plugins.configs.noiceconf"),
+    requires = { "MunifTanjim/nui.nvim" },
   })
 
   if PACKER_BOOTSTRAP then

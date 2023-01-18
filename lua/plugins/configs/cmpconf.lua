@@ -18,6 +18,7 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
+---@diagnostic disable-next-line: redundant-parameter
 cmp.setup({
   experimental = {
     ghost_text = true,

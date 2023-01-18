@@ -10,6 +10,7 @@ noice.setup {
     view = "mini",
   },
   popupmenu = {
+    enabled = false,
     backend = "cmp",
     kind_icons = false,
   },
