@@ -63,12 +63,12 @@ return {
 					end,
 				},
 				window = {
-					completion = {
+					completion = cmp.config.window.bordered({
 						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-					},
-					documentation = {
+					}),
+					documentation = cmp.config.window.bordered({
 						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-					},
+					}),
 				},
 				completion = {
 					completeopt = "menu,menuone,noinsert",
