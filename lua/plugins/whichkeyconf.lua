@@ -63,15 +63,16 @@ return {
 				["l"] = {
 					name = "[LSP]",
 					-- Diagnostiscs
-					e = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Preview diagnostic" },
-					j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
-					k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
+					["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Preview diagnostic" },
+					["j"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
+					["k"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
 					-- LSP specifics
 					-- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-					a = { "<cmd>CodeActionMenu<cr>", "Code action" },
-					f = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
-					r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-					h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+					["a"] = { "<cmd>CodeActionMenu<cr>", "Code action" },
+					["f"] = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
+					["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+					["h"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+          ["i"] = { "<cmd>LspInfo<cr>", "Info" },
 				},
 
 				["S"] = {

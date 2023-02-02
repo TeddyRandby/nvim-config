@@ -119,14 +119,14 @@ return {
 		highlight_mode = "split_width",
 
 		-- Highlight the closest symbol if the cursor is not exactly on one.
-		highlight_closest = true,
+		highlight_closest = false,
 
 		-- Highlight the symbol in the source buffer when cursor is in the aerial win
 		highlight_on_hover = false,
 
 		-- When jumping to a symbol, highlight the line for this many ms.
 		-- Set to false to disable
-		highlight_on_jump = 300,
+		highlight_on_jump = false,
 
 		-- Define symbol icons. You can also specify "<Symbol>Collapsed" to change the
 		-- icon when the tree is collapsed at that symbol, or "Collapsed" to specify a
