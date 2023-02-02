@@ -6,11 +6,13 @@
 
 (identifier) @variable
 
-((identifier) @variable.builtin (#eq? @variable.builtin "self"))
+(symbol) @string.special
+
+(message) @method.call
 
 [
  (bool)
- (null)
+ (nil)
 ] @boolean
 
 [
@@ -26,18 +28,18 @@
 ] @repeat
 
 [
- "if"
+ "and"
+ "or"
+ "then"
  "else"
- "match"
 ] @conditional
 
 [
+ "yield"
  "return"
 ] @keyword.return
 
 [
-  "or"
-  "and"
   "not"
   "is"
   "in"
@@ -51,6 +53,7 @@
 [
   ","
   "."
+  ";"
 ] @punctuation.delimiter
 
 [
@@ -81,28 +84,30 @@
   ">="
   "!"
   "?"
-  ".."
-  ":"
   "=>"
 ] @operator
 
-[
- "$"
-] @string.special
+(function_definition name: (identifier) @method)
 
-(symbol (identifier) @string.special)
+(call message: (identifier) @method.call)
 
 (parameters (identifier) @parameter)
 
-(property property: (identifier) @field)
-
-(call message: (identifier) @method.call)
-(method message: (identifier) @method.call)
-(empty_method message: (identifier) @method.call)
-
 (function_definition type: (identifier) @type)
 
-(function_definition name: (identifier) @method)
 (object_definition name: (identifier) @type)
 
+(property property: (identifier) @field)
+
 (record key: (identifier) @field)
+
+((identifier) @variable.builtin (#eq? @variable.builtin "self"))
+((identifier) @variable.builtin (#eq? @variable.builtin "panic"))
+((identifier) @variable.builtin (#eq? @variable.builtin "print"))
+((identifier) @type (#eq? @type "Number"))
+((identifier) @type (#eq? @type "String"))
+((identifier) @type (#eq? @type "Block"))
+((identifier) @type (#eq? @type "Message"))
+((identifier) @type (#eq? @type "Boolean"))
+((identifier) @type (#eq? @type "Effect"))
+
