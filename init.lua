@@ -15,4 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 require "settings"
 require "lsp"
 
-require "lazy".setup("plugins")
+require "lazy".setup("plugins", {
+  dev = {
+    path = "~/repos/"
+  }
+})

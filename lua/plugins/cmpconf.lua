@@ -7,6 +7,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+      "rcarriga/cmp-dap",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
@@ -21,36 +22,36 @@ return {
 
 			require("luasnip.loaders.from_vscode").lazy_load()
 
-      local mapping = {
-					["<Up>"] = cmp.mapping.scroll_docs(-4),
-					["<Down>"] = cmp.mapping.scroll_docs(4),
-					["<Tab>"] = cmp.mapping(
-						cmp.mapping.confirm({
-							behavior = cmp.ConfirmBehavior.Replace,
-							select = false,
-						}),
-						{ "i", "s" }
-					),
-					["<C-q>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
-					["<C-j>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end, { "i", "s", "c" }),
-					["<C-k>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s", "c" }),
-				}
+			local mapping = {
+				["<Up>"] = cmp.mapping.scroll_docs(-4),
+				["<Down>"] = cmp.mapping.scroll_docs(4),
+				["<Tab>"] = cmp.mapping(
+					cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = false,
+					}),
+					{ "i", "s" }
+				),
+				["<C-q>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
+				["<C-j>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { "i", "s", "c" }),
+				["<C-k>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s", "c" }),
+			}
 
 			cmp.setup({
 				mapping = mapping,
@@ -97,12 +98,19 @@ return {
 				sources = {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
-          { name = "nvim_lsp_signature_help"},
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "luasnip" },
 					{ name = "path" },
 					{ name = "buffer" },
 				},
 				preselect = cmp.PreselectMode.None,
+			})
+
+			cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+				mapping = mapping,
+				sources = {
+					{ name = "dap" },
+				},
 			})
 
 			cmp.setup.cmdline({ "/", "?" }, {
@@ -121,8 +129,8 @@ return {
 				},
 				sources = cmp.config.sources({
 					{ name = "path" },
+					{ name = "cmdline" },
 				}),
-				{ name = "cmdline" },
 			})
 		end,
 	},
