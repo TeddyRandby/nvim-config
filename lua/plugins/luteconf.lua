@@ -1,5 +1,5 @@
 return {
   "TeddyRandby/lute.nvim",
-  dev = false,
+  dev = true,
   opts = {},
 }
