@@ -13,7 +13,7 @@ return {
 				autotag = {
 					enable = true,
 				},
-				ensure_installed = "all",
+				ensure_installed = "maintained",
 				highlight = {
 					enable = true,
 				},
