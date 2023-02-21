@@ -6,13 +6,11 @@ return {
 
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-			local utils = require("utils")
-
 			local servers = {
 				"bashls",
 				"tsserver",
 				"clangd",
-				"sumneko_lua",
+				"lua_ls",
 				"prismals",
 			}
 
