@@ -58,7 +58,7 @@ return {
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
-        ["a"] = { "<cmd>AerialToggle<cr>", "[AERIAL]" },
+        ["a"] = { "<cmd>Navbuddy<cr>", "[NAV]" },
 
         -- FINDERS
         ["S"] = {
