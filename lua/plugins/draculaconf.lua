@@ -33,6 +33,7 @@ return {
 					CmpItemAbbrMatch = { bg = "NONE", fg = dracula.colors().cyan },
 					CmpItemAbbrMatchFuzzy = { bg = "NONE", fg = dracula.colors().cyan },
 
+					CmpItemKindCopilot = { fg = dracula.colors().bright_green, bg = "NONE"},
 					CmpItemKindField = { fg = dracula.colors().red, bg = "NONE"},
 					CmpItemKindProperty = { fg = dracula.colors().red, bg = "NONE"},
 					CmpItemKindEvent = { fg = dracula.colors().red, bg = "NONE"},

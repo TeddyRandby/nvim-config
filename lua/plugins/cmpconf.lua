@@ -11,10 +11,13 @@ return {
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
+      "zbirenbaum/copilot-cmp",
 			"onsails/lspkind.nvim",
 		},
 		config = function()
 			local cmp = require("cmp")
+
+      require("copilot_cmp").setup()
 
 			local luasnip = require("luasnip")
 
@@ -81,6 +84,7 @@ return {
 					format = lspkind.cmp_format({
 							mode = "symbol",
 							maxwidth = 50,
+              symbol_map = { Copilot = "" },
 						}),
 				},
 				snippet = {
@@ -89,6 +93,7 @@ return {
 					end,
 				},
 				sources = {
+          { name = "copilot" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lsp_signature_help" },
