@@ -35,8 +35,8 @@ return {
 
       dashboard.section.buttons.val = {
         button("הּ F", "  Find File", "<cmd>Telescope find_files<cr>"),
-        button("הּ O", "  Recents", "<cmd>Telescope oldfiles<cr>"),
-        button("הּ G", "  Find Word", "<cmd>Telescope live_grep<cr>"),
+        button("הּ O", "󱋢  Recents", "<cmd>Telescope oldfiles<cr>"),
+        button("הּ G", "  Find Word", "<cmd>Telescope live_grep<cr>"),
         button("הּ M", "  Bookmarks", "<cmd>Telescope marks<cr>"),
       }
 
