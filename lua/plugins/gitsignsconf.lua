@@ -8,7 +8,7 @@ return {
 			local gitsigns = require "gitsigns"
 
 			gitsigns.setup({
-				signcolumn = true,
+				signcolumn = false,
 				numhl = false,
 				linehl = false,
 				word_diff = false,

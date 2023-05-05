@@ -1,74 +1,3 @@
-local dap_configs = {
-  c = {
-    adapter = {
-      "codelldb",
-      {
-        type = "server",
-        port = "${port}",
-        executable = {
-          path = "~/.local/share/nvim/mason/bin/codelldb",
-          command = "codelldb",
-          args = { "--port", "${port}" },
-        },
-      },
-    },
-    configurations = {
-      {
-        name = "Launch file",
-        type = "codelldb",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-        end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
-      },
-    },
-  },
-  typescript = {
-    adapter = {
-      "node2",
-      {
-        type = "executable",
-        command = "node",
-        args = { "~/.local/share/vscode-node-debug2/out/src/nodeDebug.js" },
-      },
-    },
-    configurations = {
-      {
-        name = "Launch",
-        type = "node2",
-        request = "launch",
-        program = "${file}",
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        protocol = "inspector",
-        console = "integratedTerminal",
-      },
-    },
-  },
-  javascript = {
-    adapter = {
-      "node2",
-      {
-        type = "executable",
-        command = "node",
-        args = { "~/.local/share/vscode-node-debug2/out/src/nodeDebug.js" },
-      },
-    },
-    configurations = {
-      name = "Launch",
-      type = "node2",
-      request = "launch",
-      program = "${file}",
-      cwd = vim.fn.getcwd(),
-      sourceMaps = true,
-      protocol = "inspector",
-      console = "integratedTerminal",
-    },
-  },
-}
-
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
@@ -99,11 +28,6 @@ return {
     },
   },
   config = function()
-    local dap = require("dap")
-
-    for lang, settings in pairs(dap_configs) do
-      dap.adapters[settings.adapter[1]] = settings.adapter[2]
-      dap.configurations[lang] = settings.configurations
-    end
+    require('dap.ext.vscode').load_launchjs(nil, {})
   end,
 }
