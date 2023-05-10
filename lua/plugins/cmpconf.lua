@@ -58,9 +58,6 @@ return {
 
       cmp.setup({
         mapping = mapping,
-        experimental = {
-          ghost_text = true,
-        },
         confirmation = {
           get_commit_characters = function()
             return {}
