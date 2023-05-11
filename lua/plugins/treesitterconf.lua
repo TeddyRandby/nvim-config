@@ -5,7 +5,6 @@ return {
 			"windwp/nvim-ts-autotag",
 			"p00f/nvim-ts-rainbow",
 		},
-		build = "make",
 		config = function()
 			local treesitter = require("nvim-treesitter.configs")
 

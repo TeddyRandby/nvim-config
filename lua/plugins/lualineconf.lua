@@ -31,7 +31,7 @@ return {
             symbols = { error = "", warn = "", info = "", hint = "" },
           },
         },
-        lualine_c = { "filename", "aerial" },
+        lualine_c = { "filename" },
         lualine_x = { "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" },

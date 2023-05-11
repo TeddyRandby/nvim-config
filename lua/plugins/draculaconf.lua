@@ -12,11 +12,12 @@ return {
           FloatBorder = { bg = dracula.colors().menu, fg = dracula.colors().menu },
 
           TelescopeNormal = { bg = dracula.colors().menu, fg = dracula.colors().fg },
-          TelescopeTitle = { bg = dracula.colors().menu, fg = dracula.colors().purple },
+          TelescopeTitle = { bg = "NONE", fg = dracula.colors().bg },
           TelescopeResultsBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
           TelescopeResultBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
           TelescopePreviewBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
-          TelescopePromptBorder = { bg = dracula.colors().menu, fg = dracula.colors().fg },
+          TelescopePromptBorder = { bg = "NONE", fg = dracula.colors().fg },
+          TelescopePromptNormal = { bg = "NONE", fg = dracula.colors().fg },
 
           WhichKeyFloat = { bg = dracula.colors().menu, fg = "NONE" },
 

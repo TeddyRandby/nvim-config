@@ -58,8 +58,6 @@ return {
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
-        ["a"] = { "<cmd>Navbuddy<cr>", "[NAV]" },
-
         -- FINDERS
         ["S"] = {
           "<cmd>Telescope lsp_document_symbols<cr>",
