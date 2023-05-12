@@ -1,6 +1,8 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+		},
 		config = function()
 			local lsp_config = require("lspconfig")
 
@@ -12,6 +14,7 @@ return {
 				"clangd",
 				"lua_ls",
 				"prismals",
+				"sqlls",
 			}
 
 			for _, server in ipairs(servers) do

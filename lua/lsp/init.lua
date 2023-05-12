@@ -14,9 +14,9 @@ vim.diagnostic.config({
     prefix = "",
     border = "rounded",
 	},
-	signs = true,
+	signs = false,
 	underline = true,
-  virtual_text = false,
+  virtual_text = true,
 	update_in_insert = false,
 })
 

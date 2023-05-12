@@ -6,7 +6,7 @@ return {
 
       wk.setup({
         window = {
-          border = "none", -- none, single, double, shadow
+          border = "none",     -- none, single, double, shadow
           position = "bottom", -- bottom, top
           margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
           padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -15,8 +15,8 @@ return {
         layout = {
           height = { min = 4, max = 25 }, -- min and max height of the columns
           width = { min = 20, max = 50 }, -- min and max width of the columns
-          spacing = 4, -- spacing between columns
-          align = "center", -- align columns left, center or right
+          spacing = 4,               -- spacing between columns
+          align = "center",          -- align columns left, center or right
         },
       })
 
@@ -38,7 +38,7 @@ return {
 
       wk.register({
         ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" },
-        ["r"] = { "<cmd>lua require'lute'.run_selection()<cr>", "[RUN]"}
+        ["r"] = { "<cmd>lua require'lute'.run_selection()<cr>", "[RUN]" },
       }, v_opts)
 
       wk.register({
@@ -58,55 +58,19 @@ return {
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
-        -- FINDERS
-        ["S"] = {
-          "<cmd>Telescope lsp_document_symbols<cr>",
-          "Symbols",
-        },
+        ["f"] = {
+          name = "[FIND]",
 
-        ["D"] = {
-          "<cmd>Telescope lsp_definitions<cr>",
-          "Definitions",
-        },
+          ["f"] = { "<cmd>Telescope find_files hidden=true<cr>", "File" },
+          ["s"] = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbol" },
+          ["w"] = { "<cmd>Telescope live_grep<cr>", "Word" },
+          ["o"] = { "<cmd>Telescope oldfiles<cr>", "Recent" },
+          ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+          ["t"] = { "<cmd>Telescope<cr>", "Builtin" },
 
-        ["E"] = {
-          "<cmd>Telescope diagnostics<cr>",
-          "Diagnostics",
-        },
-
-        ["R"] = {
-          "<cmd>Telescope lsp_references<cr>",
-          "References",
-        },
-
-        ["T"] = {
-          "<cmd>Telescope<cr>",
-          "[FIND] Builtin",
-        },
-
-        ["F"] = {
-          "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
-          "[FIND] File",
-        },
-
-        ["G"] = {
-          "<cmd>Telescope live_grep<cr>",
-          "[FIND] Grep",
-        },
-
-        ["O"] = {
-          "<cmd>Telescope oldfiles<cr>",
-          "[FIND] Recents",
-        },
-
-        ["M"] = {
-          "<cmd>Telescope marks<cr>",
-          "[FIND] Marks",
-        },
-
-        ["W"] = {
-          "<cmd>Telescope grep_string<cr>",
-          "[FIND] Word",
+          ["r"] = { "<cmd>Trouble lsp_references<cr>", "References" },
+          ["d"] = { "<cmd>Trouble lsp_definitions", "Definitions" },
+          ["i"] = { "<cmd>Trouble lsp_implementations", "Implementations"}
         },
 
         -- LSP
@@ -117,8 +81,7 @@ return {
           ["j"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
           ["k"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
           -- LSP specifics
-          -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-          ["a"] = { "<cmd>CodeActionMenu<cr>", "Code action" },
+          ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
           ["f"] = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
           ["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
           ["h"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
