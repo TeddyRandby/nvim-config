@@ -45,7 +45,20 @@ return {
 						path = 4,
 					},
 				},
-				lualine_x = {},
+				lualine_x = {
+          function()
+            local clients = vim.lsp.get_active_clients { bufnr = 0 }
+            local names = {}
+
+            for client in pairs(clients) do
+              local name = clients[client].name
+
+              table.insert(names, name)
+            end
+
+            return table.concat(names, "  ")
+          end,
+        },
 				lualine_y = {
 					{
 						"diagnostics",
