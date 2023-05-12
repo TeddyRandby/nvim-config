@@ -1,12 +1,8 @@
 local adapters = {
 	["node"] = {
-		type = "server",
-		host = "localhost",
-		port = "${port}",
-		executable = {
-			command = "node",
-			args = { "~/.local/share/nvim/mason/bin/node-debug2-adapter", "${port}" },
-		},
+		type = "executable",
+    command = "node",
+    args = { "~/.local/share/nvim/mason/bin/node-debug2-adapter"  },
 	},
 }
 
