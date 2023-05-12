@@ -46,8 +46,6 @@ return {
 
 				["q"] = { "<cmd>q<cr>", "[QUIT]" },
 
-				["h"] = { "<cmd>noh<cr>", "[HIGHLIGHT] Clear" },
-
 				["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
 				[";"] = { "<cmd>Alpha<cr>", "[HOME]" },
@@ -67,6 +65,15 @@ return {
 				["B"] = { "<cmd>Telescope buffers<cr>", "[FIND] Buffers" },
 
 				["T"] = { "<cmd>Telescope<cr>", "[FIND] Builtin" },
+
+				["H"] = { "<cmd>lua require 'harpoon.ui' .toggle_quick_menu()<cr>", "[FIND] Harpoon" },
+
+        ["h"] = {
+          name = "[HARPOON]",
+          ["a"] = { "<cmd>lua require 'harpoon.mark' .add_file()<cr>", "Append file" },
+          ["j"] = { "<cmd>lua require 'harpoon.ui' .nav_next()<cr>", "Next" },
+          ["k"] = { "<cmd>lua require 'harpoon.ui' .nav_prev()<cr>", "Previous" },
+        },
 
 				-- LSP
 				["l"] = {
@@ -113,9 +120,9 @@ return {
 						function()
 							if vim.fn.filereadable(".vscode/launch.json") then
 								require("dap.ext.vscode").load_launchjs(nil, {
-                  node = { 'typescript', 'javascript' },
-                  cppdbg = { 'c', 'cpp' },
-                })
+									node = { "typescript", "javascript" },
+									cppdbg = { "c", "cpp" },
+								})
 							end
 
 							require("dap").continue()

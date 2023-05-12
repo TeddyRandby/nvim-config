@@ -11,6 +11,9 @@ return {
 					NormalFloat = { bg = dracula.colors().menu, fg = dracula.colors().fg },
 					FloatBorder = { bg = dracula.colors().menu, fg = dracula.colors().menu },
 
+          HarpoonWindow = { bg = dracula.colors().menu, fg = dracula.colors().fg },
+          HarpoonBorder = { bg = dracula.colors().menu, fg = dracula.colors().menu },
+
           TreeSitterContext = { bg = dracula.colors().bg, fg = dracula.colors().fg },
           TreeSitterContextBottom = { underline = false },
 
