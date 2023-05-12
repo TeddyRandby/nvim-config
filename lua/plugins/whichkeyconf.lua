@@ -113,7 +113,6 @@ return {
 						function()
 							if vim.fn.filereadable(".vscode/launch.json") then
 								require("dap.ext.vscode").load_launchjs(nil, {
-                  node = { 'typescript', 'javascript' },
                   cppdbg = { 'c', 'cpp' },
                 })
 							end
