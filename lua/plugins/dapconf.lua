@@ -27,7 +27,4 @@ return {
       },
     },
   },
-  config = function()
-    require('dap.ext.vscode').load_launchjs(nil, {})
-  end,
 }

@@ -69,7 +69,7 @@ return {
 			},
 			inactive_sections = {},
 			tabline = {
-				lualine_b = {
+				lualine_c = {
 					{
 						function()
 							return require("nvim-navic").get_location()

@@ -1,134 +1,139 @@
 return {
-  {
-    "folke/which-key.nvim",
-    config = function()
-      local wk = require("which-key")
+	{
+		"folke/which-key.nvim",
+		config = function()
+			local wk = require("which-key")
 
-      wk.setup({
-        window = {
-          border = "none",     -- none, single, double, shadow
-          position = "bottom", -- bottom, top
-          margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-          padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-          winblend = 0,
-        },
-        layout = {
-          height = { min = 4, max = 25 }, -- min and max height of the columns
-          width = { min = 20, max = 50 }, -- min and max width of the columns
-          spacing = 4,               -- spacing between columns
-          align = "center",          -- align columns left, center or right
-        },
-      })
+			wk.setup({
+				window = {
+					border = "none", -- none, single, double, shadow
+					position = "bottom", -- bottom, top
+					margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+					padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+					winblend = 0,
+				},
+				layout = {
+					height = { min = 4, max = 25 }, -- min and max height of the columns
+					width = { min = 20, max = 50 }, -- min and max width of the columns
+					spacing = 4, -- spacing between columns
+					align = "center", -- align columns left, center or right
+				},
+			})
 
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
+			local opts = {
+				mode = "n",
+				prefix = "<leader>",
+				silent = true,
+				noremap = true,
+				nowait = true,
+			}
 
-      local v_opts = {
-        mode = "v",
-        prefix = "<leader>",
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
+			local v_opts = {
+				mode = "v",
+				prefix = "<leader>",
+				silent = true,
+				noremap = true,
+				nowait = true,
+			}
 
-      wk.register({
-        ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" },
-        ["r"] = { "<cmd>lua require'lute'.run_selection()<cr>", "[RUN]" },
-      }, v_opts)
+			wk.register({
+				["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" },
+				["r"] = { "<cmd>lua require'lute'.run_selection()<cr>", "[RUN]" },
+			}, v_opts)
 
-      wk.register({
-        ["c"] = { "<cmd>bd<cr>", "[BUFFER] Close" },
+			wk.register({
+				["c"] = { "<cmd>bd<cr>", "[BUFFER] Close" },
 
-        ["q"] = { "<cmd>q<cr>", "[QUIT]" },
+				["q"] = { "<cmd>q<cr>", "[QUIT]" },
 
-        ["h"] = { "<cmd>noh<cr>", "[HIGHLIGHT] Clear" },
+				["h"] = { "<cmd>noh<cr>", "[HIGHLIGHT] Clear" },
 
-        ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
+				["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
-        [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
+				[";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
-        ["m"] = { "<cmd>Mason<cr>", "[MASON]" },
+				["m"] = { "<cmd>Mason<cr>", "[MASON]" },
 
-        ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
+				["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
 
-        ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
+				["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
-        ["f"] = {
-          name = "[FIND]",
+				["F"] = { "<cmd>Telescope find_files hidden=true<cr>", "[FIND] File" },
 
-          ["f"] = { "<cmd>Telescope find_files hidden=true<cr>", "File" },
-          ["s"] = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbol" },
-          ["w"] = { "<cmd>Telescope live_grep<cr>", "Word" },
-          ["o"] = { "<cmd>Telescope oldfiles<cr>", "Recent" },
-          ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-          ["t"] = { "<cmd>Telescope<cr>", "Builtin" },
+				["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
 
-          ["r"] = { "<cmd>Trouble lsp_references<cr>", "References" },
-          ["d"] = { "<cmd>Trouble lsp_definitions", "Definitions" },
-          ["i"] = { "<cmd>Trouble lsp_implementations", "Implementations"}
-        },
+				["O"] = { "<cmd>Telescope oldfiles<cr>", "[FIND] Recent" },
 
-        -- LSP
-        ["l"] = {
-          name = "[LSP]",
-          -- Diagnostiscs
-          ["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Preview diagnostic" },
-          ["j"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
-          ["k"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
-          -- LSP specifics
-          ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-          ["f"] = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
-          ["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-          ["h"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
-          ["i"] = { "<cmd>LspInfo<cr>", "Info" },
-        },
+				["B"] = { "<cmd>Telescope buffers<cr>", "[FIND] Buffers" },
 
-        -- Gitsigns
-        ["g"] = {
-          name = "[GITSIGNS]",
-          -- Helpers
-          s = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },
-          h = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
-          d = { "<cmd>Gitsigns diffthis<cr>", "Show diff" },
-          b = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
-          -- Git Pickers
-          B = { "<cmd>Telescope git_branches<cr>", "Branches" },
-          S = { "<cmd>Telescope git_status<cr>", "Status" },
-        },
+				["T"] = { "<cmd>Telescope<cr>", "[FIND] Builtin" },
 
-        ["r"] = {
-          name = "[RUN]",
+				-- LSP
+				["l"] = {
+					name = "[LSP]",
+					-- Diagnostiscs
+					["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Preview diagnostic" },
+					["j"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
+					["k"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
 
-          f = { "<cmd> lua require'lute'.run_file()<cr>", "File" },
-          a = { "<cmd> lua require'lute'.again()<cr>", "Again" },
-        },
+					-- LSP specifics
+					["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
+					["f"] = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
+					["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+					["h"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+					["i"] = { "<cmd>LspInfo<cr>", "Info" },
 
-        -- Dap
-        ["d"] = {
-          name = "[DAP]",
+					-- Finders
+					["R"] = { "<cmd>Trouble lsp_references<cr>", "[FIND] Reference" },
+					["D"] = { "<cmd>Trouble lsp_definitions", "[FIND] Definition" },
+					["I"] = { "<cmd>Trouble lsp_implementations", "[FIND] Implementation" },
+					["S"] = { "<cmd>Telescope lsp_document_symbols<cr>", "[FIND] Symbol" },
+				},
 
-          ["c"] = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
-          ["o"] = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
-          ["i"] = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
-          ["a"] = { "<cmd>lua require('dap').step_out()<cr>", "Step out" },
-          ["b"] = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+				-- Git
+				["g"] = {
+					name = "[GITSIGNS]",
 
-          ["r"] = { "<cmd>lua require('dap').repl.open()<cr>", "Toggle breakpoint" },
+					-- Helpers
+					["s"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },
+					["h"] = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
+					["d"] = { "<cmd>Gitsigns diffthis<cr>", "Show diff" },
+					["b"] = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
 
-          ["h"] = { "<cmd>lua require('dap.ui.widgets').hover()", "Hover" },
+					-- Finders
+					["B"] = { "<cmd>Telescope git_branches<cr>", "[FIND] Branches" },
+					["S"] = { "<cmd>Telescope git_status<cr>", "[FIND] Status" },
+				},
 
-          ["p"] = { "<cmd>lua require('dap.ui.widgets').preview()", "Preview" },
+				-- Dap
+				["d"] = {
+					name = "[DAP]",
 
-          ["f"] = { "<cmd>lua require('dap.ui.widgets').frames()", "Frames" },
+					["c"] = {
+						function()
+							if vim.fn.filereadable(".vscode/launch.json") then
+								require("dap.ext.vscode").load_launchjs(nil, {
+                  node = { 'typescript', 'javascript' },
+                  cppdbg = { 'c', 'cpp' },
+                })
+							end
 
-          ["s"] = { "<cmd>lua require('dap.ui.widgets').scopes()", "Scopes" },
-        },
-      }, opts)
-    end,
-  },
+							require("dap").continue()
+						end,
+						"Continue",
+					},
+					["o"] = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
+					["i"] = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
+					["a"] = { "<cmd>lua require('dap').step_out()<cr>", "Step out" },
+					["b"] = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+
+					["r"] = { "<cmd>lua require('dap').repl.open()<cr>", "Toggle breakpoint" },
+					["h"] = { "<cmd>lua require('dap.ui.widgets').hover()", "Hover" },
+					["p"] = { "<cmd>lua require('dap.ui.widgets').preview()", "Preview" },
+					["f"] = { "<cmd>lua require('dap.ui.widgets').frames()", "Frames" },
+					["s"] = { "<cmd>lua require('dap.ui.widgets').scopes()", "Scopes" },
+				},
+			}, opts)
+		end,
+	},
 }
