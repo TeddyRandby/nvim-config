@@ -1,9 +1,12 @@
 local adapters = {
 	["node"] = {
 		type = "executable",
-    command = "node",
-    args = { "~/.local/share/nvim/mason/bin/node-debug2-adapter"  },
+    command = "~/.local/share/nvim/mason/bin/node-debug2-adapter",
 	},
+  ["c"] = {
+    type = "executable",
+    command = "~/.local/share/nvim/mason/bin/codelldb",
+  },
 }
 
 return {

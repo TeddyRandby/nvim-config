@@ -46,6 +46,8 @@ return {
 
 				["q"] = { "<cmd>q<cr>", "[QUIT]" },
 
+        ["e"] = { "<cmd>noh<cr>", "[HIGHLIGHTS] Clear" },
+
 				["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
 				[";"] = { "<cmd>Alpha<cr>", "[HOME]" },
@@ -67,6 +69,8 @@ return {
 				["T"] = { "<cmd>Telescope<cr>", "[FIND] Builtin" },
 
 				["H"] = { "<cmd>lua require 'harpoon.ui' .toggle_quick_menu()<cr>", "[FIND] Harpoon" },
+
+				["R"] = { "<cmd>lua require 'harpoon.cmd-ui' .toggle_quick_menu()<cr>", "[FIND] Harpoon" },
 
         ["h"] = {
           name = "[HARPOON]",
@@ -92,8 +96,8 @@ return {
 
 					-- Finders
 					["R"] = { "<cmd>Trouble lsp_references<cr>", "[FIND] Reference" },
-					["D"] = { "<cmd>Trouble lsp_definitions", "[FIND] Definition" },
-					["I"] = { "<cmd>Trouble lsp_implementations", "[FIND] Implementation" },
+					["D"] = { "<cmd>Trouble lsp_definitions<cr>", "[FIND] Definition" },
+					["I"] = { "<cmd>Trouble lsp_implementations<cr>", "[FIND] Implementation" },
 					["S"] = { "<cmd>Telescope lsp_document_symbols<cr>", "[FIND] Symbol" },
 				},
 

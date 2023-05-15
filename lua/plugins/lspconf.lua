@@ -15,6 +15,7 @@ return {
 				"lua_ls",
 				"prismals",
 				"sqlls",
+        "gopls",
 			}
 
 			for _, server in ipairs(servers) do
