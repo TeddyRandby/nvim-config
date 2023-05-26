@@ -1,18 +1,27 @@
 local adapters = {
 	["node"] = {
 		type = "executable",
-    command = "~/.local/share/nvim/mason/bin/node-debug2-adapter",
+		command = "~/.local/share/nvim/mason/bin/node-debug2-adapter",
 	},
-  ["c"] = {
-    type = "executable",
-    command = "~/.local/share/nvim/mason/bin/codelldb",
-  },
+	["codelldb"] = {
+		type = "executable",
+		command = "~/.local/share/nvim/mason/bin/codelldb",
+	},
+	-- ["delve"] = {
+	-- 	type = "server",
+	-- 	port = "${port}",
+	-- 	executable = {
+	-- 		command = "~/.local/share/nvim/mason/bin/dlv",
+	-- 		args = { "dap", "-l", "127.0.0.1:${port}" },
+	-- 	},
+	-- },
 }
 
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
+    { "leoluz/nvim-dap-go", opts = {} },
 		{
 			"theHamsta/nvim-dap-virtual-text",
 			opts = {
@@ -38,11 +47,11 @@ return {
 			},
 		},
 	},
-  config = function ()
-    local dap_adapters = require 'dap'.adapters
+	config = function()
+		local dap_adapters = require("dap").adapters
 
-    for dap, adapter in pairs(adapters) do
-      dap_adapters[dap] = adapter
-    end
-  end,
+		for dap, adapter in pairs(adapters) do
+			dap_adapters[dap] = adapter
+		end
+	end,
 }
