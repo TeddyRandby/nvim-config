@@ -90,10 +90,10 @@ return {
           end,
         },
         sources = {
-          { name = "copilot" },
-          { name = "nvim_lua" },
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" },
+          { name = "copilot" },
+          { name = "nvim_lua" },
           { name = "luasnip" },
           { name = "path" },
           { name = "buffer" },
