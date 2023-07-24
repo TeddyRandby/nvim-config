@@ -68,16 +68,14 @@ return {
           ["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
         },
 
-        ["h"] = {
-          name = "[HARPOON]",
+        ["p"] = {
+          name = "[PIN]",
 
-          ["a"] = { "<cmd>lua require 'harpoon.mark' .add_file()<cr>", "Append file" },
-          ["j"] = { "<cmd>lua require 'harpoon.ui' .nav_next()<cr>", "Next" },
-          ["k"] = { "<cmd>lua require 'harpoon.ui' .nav_prev()<cr>", "Previous" },
-
-          -- Finders
-          ["H"] = { "<cmd>lua require 'harpoon.ui' .toggle_quick_menu()<cr>", "[FIND] Harpoon" },
-          ["R"] = { "<cmd>lua require 'harpoon.cmd-ui' .toggle_quick_menu()<cr>", "[FIND] Harpoon CMD" },
+          ["a"] = { "<cmd>TPRoot<cr>", "Pin root" },
+          ["j"] = { "<cmd>TPGrow<cr>", "Grow" },
+          ["k"] = { "<cmd>TPShrink<cr>", "Shrink" },
+          ["g"] = { "<cmd>TPGo<cr>", "Go" },
+          ["t"] = { "<cmd>TPToggle<cr>", "Toggle" },
         },
 
         -- LSP

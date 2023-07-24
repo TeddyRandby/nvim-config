@@ -5,15 +5,9 @@ return {
       local dracula = require("dracula")
 
       dracula.setup({
-        -- set italic comment
-        italic_comment = true, -- default false
         overrides = {
           NormalFloat = { bg = dracula.colors().menu, fg = dracula.colors().fg },
           FloatBorder = { bg = dracula.colors().menu, fg = dracula.colors().menu },
-
-          HarpoonWindow = { bg = dracula.colors().menu, fg = dracula.colors().fg },
-          HarpoonBorder = { bg = dracula.colors().menu, fg = dracula.colors().menu },
-
           TreeSitterContext = { bg = dracula.colors().bg, fg = dracula.colors().fg },
           TreeSitterContextBottom = { underline = false },
 
@@ -67,6 +61,40 @@ return {
           CmpItemKindInterface = { bg = dracula.colors().pink, fg = dracula.colors().menu },
           CmpItemKindColor = { bg = dracula.colors().pink, fg = dracula.colors().menu },
           CmpItemKindTypeParameter = { bg = dracula.colors().pink, fg = dracula.colors().menu },
+
+          NavicIconsFile = { fg = dracula.colors().bright_magenta, bg = dracula.colors().bg },
+          NavicIconsModule = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+          NavicIconsNamespace = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+          NavicIconsPackage = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+
+          NavicIconsClass = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+          NavicIconsMethod = { fg = dracula.colors().orange, bg = dracula.colors().bg },
+          NavicIconsProperty = { fg = dracula.colors().red, bg = dracula.colors().bg },
+          NavicIconsField = { fg = dracula.colors().red, bg = dracula.colors().bg },
+          NavicIconsConstructor = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsEnum = { fg = dracula.colors().green, bg = dracula.colors().bg },
+          NavicIconsInterface = { fg = dracula.colors().pink, bg = dracula.colors().bg },
+          NavicIconsFunction = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+          NavicIconsVariable = { fg = dracula.colors().bright_magenta, bg = dracula.colors().bg },
+          NavicIconsEnumMember = { fg = dracula.colors().orange, bg = dracula.colors().bg },
+          NavicIconsStruct = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+          NavicIconsEvent = { fg = dracula.colors().red, bg = dracula.colors().bg },
+          NavicIconsOperator = { fg = dracula.colors().bright_blue, bg = dracula.colors().bg },
+          NavicIconsTypeParameter = { fg = dracula.colors().pink, bg = dracula.colors().bg },
+          NavicIconsKeyword = { fg = dracula.colors().green, bg = dracula.colors().bg },
+          NavicIconsReference = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+
+          NavicIconsConstant = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsString = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsNumber = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsBoolean = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsArray = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsObject = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsNull= { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+          NavicIconsKey = { fg = dracula.colors().yellow, bg = dracula.colors().bg },
+
+          NavicText = { fg = dracula.colors().fg, bg = dracula.colors().bg },
+          NavicSeparator = { fg = dracula.colors().fg, bg = dracula.colors().bg },
         },
       })
 

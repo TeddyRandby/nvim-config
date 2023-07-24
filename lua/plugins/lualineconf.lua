@@ -10,8 +10,9 @@ return {
 					lsp = {
 						auto_attach = true,
 					},
-					highlight = false,
-					separator = "",
+					highlight = true,
+					separator = " ",
+          depth_limit = 4,
 				},
 			},
 		},
@@ -69,7 +70,7 @@ return {
 			},
 			inactive_sections = {},
 			tabline = {
-				lualine_c = {
+				lualine_b = {
 					{
 						function()
 							return require("nvim-navic").get_location()
