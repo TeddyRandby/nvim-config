@@ -80,12 +80,6 @@ return {
 						end,
 					},
 				},
-				lualine_z = {
-					{
-						"buffers",
-						mode = 1,
-					},
-				},
 			},
 			winbar = {},
 			inactive_winbar = {},
