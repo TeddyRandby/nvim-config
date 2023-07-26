@@ -95,6 +95,14 @@ return {
 
           NavicText = { fg = dracula.colors().fg, bg = dracula.colors().bg },
           NavicSeparator = { fg = dracula.colors().fg, bg = dracula.colors().bg },
+
+          RainbowDelimiterRed = { fg = dracula.colors().red },
+          RainbowDelimiterOrange = { fg = dracula.colors().orange },
+          RainbowDelimiterYellow = { fg = dracula.colors().yellow },
+          RainbowDelimiterGreen = { fg = dracula.colors().green },
+          RainbowDelimiterBlue = { fg = dracula.colors().bright_blue },
+          RainbowDelimiterViolet = { fg = dracula.colors().bright_magenta },
+          RainbowDelimiterCyan = { fg = dracula.colors().cyan },
         },
       })
 
