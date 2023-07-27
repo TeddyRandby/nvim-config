@@ -38,7 +38,12 @@ return {
 
       wk.register({
         ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" },
-        ["r"] = { "<cmd>lua require'lute'.run_selection()<cr>", "[RUN]" },
+        ["r"] = {
+          name = "[ROBOT]",
+          ["e"] = { "<cmd>ChatGPTRun explain_code<cr>", "Explain" },
+          ["s"] = { "<cmd>ChatGPTRun summarize<cr>", "Summarize" },
+          ["d"] = { "<cmd>ChatGPTRun docstring<cr>", "Document" },
+        },
       }, v_opts)
 
       wk.register({
@@ -68,6 +73,13 @@ return {
           ["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
         },
 
+        -- The Robot
+        ["r"] = {
+          name = "[ROBOT]",
+          ["c"] = { "<cmd>ChatGPT<cr>", "Chat" },
+        },
+
+        -- TREEPIN
         ["p"] = {
           name = "[PIN]",
 

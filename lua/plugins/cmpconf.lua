@@ -33,7 +33,7 @@ return {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
           }),
-          { "i", "s" }
+          { "i", "s", "c" }
         ),
         ["<C-q>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
         ["<C-j>"] = cmp.mapping(function(fallback)
@@ -65,10 +65,10 @@ return {
         },
         window = {
           completion = cmp.config.window.bordered({
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
           }),
           documentation = cmp.config.window.bordered({
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
           }),
         },
         completion = {
