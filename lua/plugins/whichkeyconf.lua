@@ -6,17 +6,17 @@ return {
 
       wk.setup({
         window = {
-          border = "none",     -- none, single, double, shadow
-          position = "bottom", -- bottom, top
-          margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+          border = "none",          -- none, single, double, shadow
+          position = "bottom",      -- bottom, top
+          margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]
           padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
           winblend = 0,
         },
         layout = {
           height = { min = 4, max = 25 }, -- min and max height of the columns
           width = { min = 20, max = 50 }, -- min and max width of the columns
-          spacing = 4,               -- spacing between columns
-          align = "center",          -- align columns left, center or right
+          spacing = 4,                    -- spacing between columns
+          align = "center",               -- align columns left, center or right
         },
       })
 
@@ -57,11 +57,17 @@ return {
 
         [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
-        ["m"] = { "<cmd>Mason<cr>", "[MASON]" },
+        ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
+
+        ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
 
-        ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
+        ["m"] = {
+          name = "[MARKS]",
+          ["c"] = { "<cmd>delmarks!<cr>", "Clear" },
+          ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
+        },
 
         ["f"] = {
           name = "[FILE]",

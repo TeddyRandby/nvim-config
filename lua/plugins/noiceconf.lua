@@ -19,7 +19,7 @@ return {
           enabled = false,
         },
         signature = {
-          auto_open = false,
+          enabled = false,
         },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -48,6 +48,30 @@ return {
         fg = c.bg_dark,
       }
 
+      hl.NoiceCmdlineIcon = {
+        bg = c.bg_dark,
+        fg = c.blue,
+      }
+
+      hl.NoiceCmdlinePopupBorder = {
+        bg = c.bg_dark,
+        fg = c.bg_dark,
+      }
+
+      hl.NoiceCmdlinePopupBorderSearch = hl.NoiceCmdlinePopupBorder
+      hl.NoiceCmdlinePopupBorderLua = hl.NoiceCmdlinePopupBorder
+      hl.NoiceCmdlinePopupBorderHelp = hl.NoiceCmdlinePopupBorder
+
+      hl.NoiceCmdlinePopupTitle = {
+        bg = c.bg_dark,
+        fg = c.bg_dark,
+      }
+
+      hl.NoiceCmdlinePopup = {
+        bg = c.bg_dark,
+        fg = c.fg_dark,
+      }
+
       hl.Pmenu = { bg = "NONE", fg = c.fg_dark }
 
       hl.PmenuSel = { bg = "NONE", fg = c.fg_dark }
