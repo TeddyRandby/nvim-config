@@ -1,5 +1,16 @@
 local home = vim.fn.expand("$HOME")
 local cmd = home .. "/.config/openapikey.sh"
+local winhighlight = "Normal:TelescopePreviewNormal,FloatBorder:FloatBorder"
+local prompthighlight = "Normal:TelescopePromptNormal,FloatBorder:TelescopePromptBorder"
+
+local border_options = {
+  highlight = "FloatBorder",
+  text = {},
+}
+
+local win_options = {
+  winhighlight = winhighlight,
+}
 
 return {
   "jackMort/ChatGPT.nvim",
@@ -12,31 +23,29 @@ return {
   opts = {
     api_key_cmd = cmd,
     chat = {
-      settings_window = {
-        win_options = {
-          winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-        },
+      sessions_window = {
+        border = border_options,
+        win_options = win_options,
       },
     },
-    sessions_window = {
-      win_options = {
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-      },
+    settings_window = {
+      border = border_options,
+      win_options = win_options,
     },
     popup_window = {
-      win_options = {
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-      },
+      border = border_options,
+      win_options = win_options,
     },
     popup_input = {
+      border = {
+        highlight = prompthighlight
+      },
       win_options = {
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+        winhighlight = prompthighlight
       },
     },
     system_window = {
-      win_options = {
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-      },
+      win_options = win_options,
     },
   },
 }

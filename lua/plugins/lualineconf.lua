@@ -13,13 +13,14 @@ return {
 					highlight = true,
 					separator = " ",
           depth_limit = 4,
+          safe_output = false,
 				},
 			},
 		},
 		opts = {
 			options = {
 				icons_enabled = true,
-				theme = "dracula-nvim",
+				theme = "auto",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				disabled_filetypes = {
@@ -70,8 +71,9 @@ return {
 			},
 			inactive_sections = {},
 			tabline = {
-				lualine_b = {
+				lualine_a = {
 					{
+            padding = 0,
 						function()
 							return require("nvim-navic").get_location()
 						end,

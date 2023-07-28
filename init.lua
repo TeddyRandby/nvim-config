@@ -21,3 +21,5 @@ require "lazy".setup("plugins", {
     path = "~/repos/"
   }
 })
+
+vim.cmd [[ colorscheme tokyonight-moon ]]

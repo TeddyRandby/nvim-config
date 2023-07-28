@@ -41,8 +41,8 @@ return {
         ["r"] = {
           name = "[ROBOT]",
           ["e"] = { "<cmd>ChatGPTRun explain_code<cr>", "Explain" },
-          ["s"] = { "<cmd>ChatGPTRun summarize<cr>", "Summarize" },
-          ["d"] = { "<cmd>ChatGPTRun docstring<cr>", "Document" },
+          ["a"] = { "<cmd>ChatGPTRun code_readability_analysis<cr>", "Analyze Readability" },
+          ["i"] = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit Interactively" },
         },
       }, v_opts)
 
