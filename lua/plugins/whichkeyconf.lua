@@ -37,12 +37,21 @@ return {
       }
 
       wk.register({
-        ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "[COMMENT] Block" },
+        ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment" },
+        ["f"] = { function()
+          local from, to = vim.api.nvim_get_mark("<"), vim.api.nvim_get_mark(">")
+          local cmd = vim.fn.input('cmd ')
+          vim.cmd(from .. "," .. to .. "!" .. cmd)
+        end, "Filter" },
         ["r"] = {
           name = "[ROBOT]",
           ["e"] = { "<cmd>ChatGPTRun explain_code<cr>", "Explain" },
           ["a"] = { "<cmd>ChatGPTRun code_readability_analysis<cr>", "Analyze Readability" },
           ["i"] = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit Interactively" },
+        },
+        ["d"] = {
+          name = "[DAP]",
+          ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
         },
       }, v_opts)
 
@@ -67,6 +76,12 @@ return {
           name = "[MARKS]",
           ["c"] = { "<cmd>delmarks!<cr>", "Clear" },
           ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
+        },
+
+        ["s"] = {
+          name = "[SHELL]",
+          ["o"] = { "<cmd>terminal<cr>", "Open" },
+          ["r"] = { "<cmd><cr>", "Run" },
         },
 
         ["f"] = {
@@ -137,29 +152,26 @@ return {
           name = "[DAP]",
 
           ["c"] = {
-            function()
-              if vim.fn.filereadable(".vscode/launch.json") then
-                require("dap.ext.vscode").load_launchjs(nil, {
-                  node = { "typescript", "javascript" },
-                  codelldb = { "c", "cpp" },
-                  delve = { "go" },
-                })
-              end
-
-              require("dap").continue()
-            end,
+            "<cmd>DapLoadLaunchJSON<cr><cmd>DapContinue<cr>",
             "Continue",
           },
-          ["o"] = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
-          ["i"] = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
-          ["a"] = { "<cmd>lua require('dap').step_out()<cr>", "Step out" },
-          ["b"] = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+          ["o"] = { "<cmd>DapStepOver<cr>", "Step over" },
+          ["i"] = { "<cmd>DapStepInto<cr>", "Step into" },
+          ["a"] = { "<cmd>DapStepOut<cr>", "Step out" },
 
-          ["r"] = { "<cmd>lua require('dap').repl.open()<cr>", "Toggle breakpoint" },
-          ["h"] = { "<cmd>lua require('dap.ui.widgets').hover()", "Hover" },
-          ["p"] = { "<cmd>lua require('dap.ui.widgets').preview()", "Preview" },
-          ["f"] = { "<cmd>lua require('dap.ui.widgets').frames()", "Frames" },
-          ["s"] = { "<cmd>lua require('dap.ui.widgets').scopes()", "Scopes" },
+          ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
+
+          ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
+          ["u"] = { "<cmd>lua require('dapui').toggle { layout = 1 }<cr>", "UI" },
+
+          ["C"] = {
+            "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations<cr>",
+            "[FIND] Configurations",
+          },
+          ["B"] = {
+            "<cmd>Telescope dap list_breakpoints<cr>",
+            "[FIND] Breakpoints",
+          },
         },
       }, opts)
     end,

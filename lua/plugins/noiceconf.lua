@@ -3,6 +3,11 @@ return {
     "folke/noice.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
+      cmdline = {
+        format = {
+          input = { pattern = "^cmd", icon = "$", lang = "bash", conceal = true },
+        },
+      },
       messages = {
         enabled = false,
         view_error = "notify",
@@ -29,7 +34,7 @@ return {
       },
       -- you can enable a preset for easier configuration
       presets = {
-        command_palette = true, -- position the cmdline and popupmenu together
+        command_palette = true,       -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         lsp_doc_border = true,
       },

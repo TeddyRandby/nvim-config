@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
+    enabled = true,
 		config = function()
 			local null_ls = require "null-ls"
 

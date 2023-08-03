@@ -38,6 +38,26 @@ return {
         fg = c.bg_dark,
       }
 
+      hl.DapUINormal = {
+        bg = "NONE",
+        fg = c.fg,
+      }
+
+      hl.DapUIValue = {
+        bg =  "NONE",
+        fg = c.fg_dark,
+      }
+
+      hl.DapUIFloatNormal = {
+        bg = c.bg_dark,
+        fg = c.fg_dark,
+      }
+
+      hl.DapUIFloatBorder = {
+        bg = c.bg_dark,
+        fg = c.bg_dark,
+      }
+
       hl.NormalFloat = {
         bg = c.bg_dark,
         fg = c.fg_dark,

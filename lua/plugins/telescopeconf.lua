@@ -4,7 +4,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
-      "nvim-telescope/telescope-dap.nvim",
+      { "nvim-telescope/telescope-dap.nvim", dependencies = { "mfussenegger/nvim-dap" } },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
