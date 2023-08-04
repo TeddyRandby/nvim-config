@@ -59,24 +59,36 @@ return {
           repl = "r",
           toggle = "t"
         },
-        layouts = { {
-          elements = {
-            {
-              id = "watches",
-              size = 0.6,
+        layouts = {
+          {
+            elements = {
+              {
+                id = "repl",
+                size = 1,
+              },
             },
-            {
-              id = "stacks",
-              size = 0.2,
-            },
-            {
-              id = "breakpoints",
-              size = 0.2,
-            },
+            size = .3,
+            position = "bottom",
           },
-          size = .2,
-          position = "bottom",
-        } },
+          {
+            elements = {
+              {
+                id = "stacks",
+                size = 0.2,
+              },
+              {
+                id = "watches",
+                size = 0.6,
+              },
+              {
+                id = "breakpoints",
+                size = 0.2,
+              },
+            },
+            size = .2,
+            position = "left",
+          },
+        },
       },
     },
     {

@@ -154,10 +154,10 @@ return {
           ["i"] = { "<cmd>DapStepInto<cr>", "Step into" },
           ["a"] = { "<cmd>DapStepOut<cr>", "Step out" },
 
-          ["b"] = { "<cmd>DapToggleBreakpoint<cr><cmd>lua require('dapui').open()<cr>", "Toggle breakpoint" },
+          ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
 
-          ["h"] = { [[<cmd>lua require('dapui').elements.watches.add()<cr><cmd>lua require('dapui').open()<cr>]], "Hover" },
-          ["u"] = { "<cmd>lua require('dapui').toggle { layout = 1 }<cr>", "UI" },
+          ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
+          ["u"] = { "<cmd>lua require('dapui').toggle() <cr>", "UI" },
 
           ["C"] = {
             "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations<cr>",
