@@ -86,7 +86,7 @@ return {
             vertical = {
               mirror = true,
             },
-            width = 0.60,
+            width = 70,
             height = 0.35,
             anchor = "N",
           },
