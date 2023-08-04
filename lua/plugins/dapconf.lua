@@ -64,11 +64,11 @@ return {
             elements = {
               {
                 id = "repl",
-                size = 0.3,
+                size = 0.5,
               },
               {
                 id = "console",
-                size = 0.7,
+                size = 0.5,
               },
             },
             size = .3,
