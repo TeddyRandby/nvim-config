@@ -17,7 +17,6 @@ local GO_ADAPTER = {
 local JS_ADAPTER = {
   type = "executable",
   command = meson_executable("node-debug2-adapter"),
-
 }
 
 local C_ADAPTER = {
@@ -30,19 +29,17 @@ local C_ADAPTER = {
 }
 
 local adapters = {
-  ["ts"] = JS_ADAPTER,
-  ["typescript"] = JS_ADAPTER,
-  ["js"] = JS_ADAPTER,
-  ["javascript"] = JS_ADAPTER,
-  ["node"] = JS_ADAPTER,
+  typescript = JS_ADAPTER,
+  javascript = JS_ADAPTER,
+  node = JS_ADAPTER,
 
-  ["c"] = C_ADAPTER,
-  ["cpp"] = C_ADAPTER,
-  ["codelldb"] = C_ADAPTER,
+  c = C_ADAPTER,
+  cpp = C_ADAPTER,
+  codelldb = C_ADAPTER,
 
-  ["go"] = GO_ADAPTER,
-  ["dlv"] = GO_ADAPTER,
-  ["delve"] = GO_ADAPTER,
+  go = GO_ADAPTER,
+  dlv = GO_ADAPTER,
+  delve = GO_ADAPTER,
 }
 
 return {
