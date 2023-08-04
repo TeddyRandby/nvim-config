@@ -63,8 +63,12 @@ return {
           {
             elements = {
               {
+                id = "repl",
+                size = 0.3,
+              },
+              {
                 id = "console",
-                size = 1,
+                size = 0.7,
               },
             },
             size = .3,
