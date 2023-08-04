@@ -38,11 +38,6 @@ return {
 
       wk.register({
         ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment" },
-        ["f"] = { function()
-          local from, to = vim.api.nvim_get_mark("<"), vim.api.nvim_get_mark(">")
-          local cmd = vim.fn.input('cmd ')
-          vim.cmd(from .. "," .. to .. "!" .. cmd)
-        end, "Filter" },
         ["r"] = {
           name = "[ROBOT]",
           ["e"] = { "<cmd>ChatGPTRun explain_code<cr>", "Explain" },
@@ -125,9 +120,9 @@ return {
           ["i"] = { "<cmd>LspInfo<cr>", "Info" },
 
           -- Finders
-          ["R"] = { "<cmd>Trouble lsp_references<cr>", "[FIND] Reference" },
-          ["D"] = { "<cmd>Trouble lsp_definitions<cr>", "[FIND] Definition" },
-          ["I"] = { "<cmd>Trouble lsp_implementations<cr>", "[FIND] Implementation" },
+          ["R"] = { "<cmd>Telescope lsp_references<cr>", "[FIND] Reference" },
+          ["D"] = { "<cmd>Telescope lsp_definitions<cr>", "[FIND] Definition" },
+          ["I"] = { "<cmd>Telescope lsp_implementations<cr>", "[FIND] Implementation" },
           ["S"] = { "<cmd>Telescope lsp_document_symbols<cr>", "[FIND] Symbol" },
           ["E"] = { "<cmd>Telescope diagnostics<cr>", "[FIND] Diagnostics" },
         },
@@ -159,9 +154,9 @@ return {
           ["i"] = { "<cmd>DapStepInto<cr>", "Step into" },
           ["a"] = { "<cmd>DapStepOut<cr>", "Step out" },
 
-          ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
+          ["b"] = { "<cmd>DapToggleBreakpoint<cr><cmd>lua require('dapui').open()<cr>", "Toggle breakpoint" },
 
-          ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
+          ["h"] = { [[<cmd>lua require('dapui').elements.watches.add()<cr><cmd>lua require('dapui').open()<cr>]], "Hover" },
           ["u"] = { "<cmd>lua require('dapui').toggle { layout = 1 }<cr>", "UI" },
 
           ["C"] = {

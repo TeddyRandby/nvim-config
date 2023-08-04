@@ -5,7 +5,9 @@ return {
     opts = {
       cmdline = {
         format = {
-          input = { pattern = "^cmd", icon = "$", lang = "bash", conceal = true },
+          telescope = { kind = "cmd", pattern = "^:Telescope%s+", icon = " " },
+          filter = { pattern = { "^:%s*!", "^:'<,'>%s*!" }, icon = "$", lang = "bash" },
+          grep = { kind = "filter", pattern = ".*grep%s+", icon = " ", lang="regex" },
         },
       },
       messages = {
@@ -20,12 +22,8 @@ return {
       },
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        progress = {
-          enabled = false,
-        },
-        signature = {
-          enabled = false,
-        },
+        progress = { enabled = false },
+        signature = { enabled = false },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,

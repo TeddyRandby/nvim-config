@@ -30,6 +30,11 @@ vim.api.nvim_set_keymap("n", "<A-l>", "<C-w>l", opts)
 vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
 
+vim.fn.sign_define("DapStopped", {text='', texthl='Character' })
+vim.fn.sign_define("DapBreakpoint", {text='', texthl='' })
+vim.fn.sign_define("DapBreakpointConditional", {text=' ', texthl='Conditional' })
+vim.fn.sign_define("DapBreakpointRejected", {text='', texthl='Error' })
+
 vim.cmd([[set fcs=eob:\ ]])
 
 local options = {

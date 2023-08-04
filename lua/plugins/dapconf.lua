@@ -30,6 +30,8 @@ local C_ADAPTER = {
 }
 
 local adapters = {
+  ["ts"] = JS_ADAPTER,
+  ["typescript"] = JS_ADAPTER,
   ["js"] = JS_ADAPTER,
   ["javascript"] = JS_ADAPTER,
   ["node"] = JS_ADAPTER,
