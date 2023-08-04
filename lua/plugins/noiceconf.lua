@@ -5,9 +5,12 @@ return {
     opts = {
       cmdline = {
         format = {
-          telescope = { kind = "cmd", pattern = "^:Telescope%s+", icon = " " },
+          man = { kind="cmd", pattern = "^:Man%s+", icon = "" },
+          telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = "󰭎 " },
           filter = { pattern = { "^:%s*!", "^:'<,'>%s*!" }, icon = "$", lang = "bash" },
           grep = { kind = "filter", pattern = ".*grep%s+", icon = " ", lang="regex" },
+          sed = { kind = "filter", pattern = ".*sed%s+", icon = "󱐋", lang="regex" },
+          tr = { kind = "filter", pattern = ".*tr%s+", icon = "󱐋", lang="regex" },
         },
       },
       messages = {

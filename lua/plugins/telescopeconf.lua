@@ -15,9 +15,7 @@ return {
       local trouble = require("trouble.providers.telescope")
 
       telescope.setup({
-        picker = {
-          hidden = false,
-        },
+        picker = { hidden = false },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_cursor({}),
@@ -64,7 +62,6 @@ return {
                   return function(e)
                     return displayer({
                       { e.value.add.command_title },
-                      { e.value.add.client_name,  "TelescopeResultsComment" },
                     })
                   end
                 end,
@@ -73,24 +70,25 @@ return {
           },
         },
         defaults = {
-          prompt_prefix = "     ",
+          prompt_prefix = "   ",
           selection_caret = "  ",
           entry_prefix = "   ",
           initial_mode = "insert",
           selection_strategy = "reset",
-          sorting_strategy = "descending",
+          sorting_strategy = "ascending",
           layout_strategy = "horizontal",
           layout_config = {
             horizontal = {
-              prompt_position = "bottom",
+              prompt_position = "top",
               preview_width = 0,
-              results_width = 0.8,
+              results_width = 1,
             },
             vertical = {
               mirror = true,
             },
-            width = 0.80,
-            height = 0.85,
+            width = 0.60,
+            height = 0.35,
+            anchor = "N",
           },
           file_sorter = require("telescope.sorters").get_fuzzy_file,
           file_ignore_patterns = { "node_modules", ".git/", "dist/" },
