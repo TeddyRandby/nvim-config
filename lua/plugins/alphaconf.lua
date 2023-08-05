@@ -1,7 +1,7 @@
 return {
   {
     "goolord/alpha-nvim",
-    config = function ()
+    config = function()
       local alpha = require "alpha"
 
       local dashboard = require("alpha.themes.dashboard")
@@ -34,10 +34,10 @@ return {
       }
 
       dashboard.section.buttons.val = {
-        button("הּ F", "  Find File", "<cmd>Telescope find_files<cr>"),
-        button("הּ O", "󱋢  Recents", "<cmd>Telescope oldfiles<cr>"),
-        button("הּ G", "  Find Word", "<cmd>Telescope live_grep<cr>"),
-        button("הּ M", "  Bookmarks", "<cmd>Telescope marks<cr>"),
+        button("הּ f F", "  Find File", "<cmd>Telescope find_files<cr>"),
+        button("הּ f W", "  Find Word", "<cmd>Telescope live_grep<cr>"),
+        button("הּ f O", "󱋢  Recent", "<cmd>Telescope oldfiles<cr>"),
+        button("הּ f M", "  Bookmarks", "<cmd>Telescope marks<cr>"),
       }
 
       dashboard.section.footer.val = ""

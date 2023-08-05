@@ -1,11 +1,11 @@
 local home = vim.fn.expand("$HOME")
 local cmd = home .. "/.config/openapikey.sh"
-local winhighlight = "Normal:TelescopePreviewNormal,FloatBorder:FloatBorder"
-local prompthighlight = "Normal:TelescopePromptNormal,FloatBorder:TelescopePromptBorder"
+local winhighlight = "FloatBorder:FloatBorder"
+local prompthighlight = "FloatBorder:TelescopePromptBorder"
 
 local border_options = {
-  highlight = "FloatBorder",
-  text = {},
+  highlight = "FloatBorder:FloatBorder",
+  text = false,
 }
 
 local win_options = {
@@ -27,6 +27,13 @@ return {
         border = border_options,
         win_options = win_options,
       },
+      keymaps = {
+        close = { "<C-c>", "<esc>" },
+        select_session = "<cr>",
+        delete_session = "x",
+        scroll_up = { "<C-j>", "<up>" },
+        scroll_down = { "<C-k>", "<down>" },
+      },
     },
     settings_window = {
       border = border_options,
@@ -38,7 +45,8 @@ return {
     },
     popup_input = {
       border = {
-        highlight = prompthighlight
+        highlight = prompthighlight,
+        text = false,
       },
       win_options = {
         winhighlight = prompthighlight

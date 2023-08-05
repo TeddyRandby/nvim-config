@@ -4,7 +4,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
-      { "nvim-telescope/telescope-dap.nvim", dependencies = { "mfussenegger/nvim-dap" } },
+      { "nvim-telescope/telescope-dap.nvim",        dependencies = { "mfussenegger/nvim-dap" } },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
@@ -18,7 +18,7 @@ return {
         picker = { hidden = false },
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_cursor({}),
+            require("telescope.themes").get_dropdown {},
             specific_opts = {
               ["codeaction"] = {
                 make_indexed = function(items)
@@ -70,9 +70,9 @@ return {
           },
         },
         defaults = {
-          prompt_prefix = "   ",
-          selection_caret = "  ",
-          entry_prefix = "   ",
+          prompt_prefix = require("utils.symbol_map").Telescope,
+          selection_caret = require("utils.symbol_map").Selection,
+          entry_prefix = require('utils.symbol_map').Entry,
           initial_mode = "insert",
           selection_strategy = "reset",
           sorting_strategy = "ascending",
@@ -91,7 +91,7 @@ return {
             anchor = "N",
           },
           file_sorter = require("telescope.sorters").get_fuzzy_file,
-          file_ignore_patterns = { "node_modules", ".git/", "dist/" },
+          file_ignore_patterns = { "node_modules", ".git/", "dist/", "build/" },
           generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
           path_display = { "absolute" },
           winblend = 0,

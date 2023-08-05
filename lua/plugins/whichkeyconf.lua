@@ -67,18 +67,6 @@ return {
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
 
-        ["m"] = {
-          name = "[MARKS]",
-          ["c"] = { "<cmd>delmarks!<cr>", "Clear" },
-          ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
-        },
-
-        ["s"] = {
-          name = "[SHELL]",
-          ["o"] = { "<cmd>terminal<cr>", "Open" },
-          ["r"] = { "<cmd><cr>", "Run" },
-        },
-
         ["f"] = {
           name = "[FILE]",
 
@@ -87,23 +75,13 @@ return {
           ["O"] = { "<cmd>Telescope oldfiles<cr>", "[FIND] Recent" },
           ["B"] = { "<cmd>Telescope buffers<cr>", "[FIND] Buffers" },
           ["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
+          ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
         },
 
         -- The Robot
         ["r"] = {
-          name = "[ROBOT]",
-          ["c"] = { "<cmd>ChatGPT<cr>", "Chat" },
-        },
-
-        -- TREEPIN
-        ["p"] = {
-          name = "[PIN]",
-
-          ["a"] = { "<cmd>TPRoot<cr>", "Pin root" },
-          ["j"] = { "<cmd>TPGrow<cr>", "Grow" },
-          ["k"] = { "<cmd>TPShrink<cr>", "Shrink" },
-          ["g"] = { "<cmd>TPGo<cr>", "Go" },
-          ["t"] = { "<cmd>TPToggle<cr>", "Toggle" },
+          "<cmd>ChatGPT<cr>",
+          "[ROBOT] Chat",
         },
 
         -- LSP
@@ -129,12 +107,12 @@ return {
 
         -- Git
         ["g"] = {
-          name = "[GITSIGNS]",
+          name = "[GIT]",
+
+          ["o"] = { "<cmd>Neogit kind=auto<cr>", "Open" },
 
           -- Helpers
           ["s"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },
-          ["h"] = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
-          ["d"] = { "<cmd>Gitsigns diffthis<cr>", "Show diff" },
           ["b"] = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
 
           -- Finders
