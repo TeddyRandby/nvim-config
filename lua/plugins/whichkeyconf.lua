@@ -51,21 +51,19 @@ return {
       }, v_opts)
 
       wk.register({
-        ["c"] = { "<cmd>bd<cr>", "[BUFFER] Close" },
-
-        ["q"] = { "<cmd>q<cr>", "[QUIT]" },
-
-        ["e"] = { "<cmd>noh<cr>", "[HIGHLIGHTS] Clear" },
-
         ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
         [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
+        ["v"] = { "<cmd>Neogit<cr>", "[GIT]" },
+
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
+
+        ["r"] = { "<cmd>ChatGPT<cr>", "[ROBOT]", },
 
         ["f"] = {
           name = "[FILE]",
@@ -78,11 +76,6 @@ return {
           ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
         },
 
-        -- The Robot
-        ["r"] = {
-          "<cmd>ChatGPT<cr>",
-          "[ROBOT] Chat",
-        },
 
         -- LSP
         ["l"] = {
@@ -108,8 +101,6 @@ return {
         -- Git
         ["g"] = {
           name = "[GIT]",
-
-          ["o"] = { "<cmd>DiffviewOpen <cr>", "Open" },
 
           -- Helpers
           ["s"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },

@@ -16,7 +16,37 @@ vim.opt.rtp:prepend(lazypath)
 require "settings"
 require "lsp"
 
+local symbols = require("utils.symbol_map")
+
 require "lazy".setup("plugins", {
+  ui = {
+    size = { width = 0.8, height = 0.8 },
+    border = "solid",
+    pills = true,
+    icons = {
+      cmd = symbols.Shell,
+      config = "",
+      event = symbols.Event,
+      ft = symbols.File,
+      init = " ",
+      import = symbols.Move,
+      keys = " ",
+      lazy = "󰒲 ",
+      loaded = symbols.Installed,
+      not_loaded = symbols.Uninstalled,
+      plugin = " ",
+      runtime = " ",
+      source = " ",
+      start = "",
+      task = "✔ ",
+      list = {
+        "●",
+        "➜",
+        "★",
+        "‒",
+      },
+    },
+  },
   dev = {
     path = "~/repos/"
   }

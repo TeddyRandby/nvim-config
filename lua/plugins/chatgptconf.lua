@@ -28,7 +28,7 @@ return {
         win_options = win_options,
       },
       keymaps = {
-        close = { "<C-c>", "<esc>" },
+        close = { "<C-c>", "<esc>", "q" },
         select_session = "<cr>",
         delete_session = "x",
         scroll_up = { "<C-j>", "<up>" },
@@ -38,6 +38,12 @@ return {
     settings_window = {
       border = border_options,
       win_options = win_options,
+    },
+    popup_layout = {
+      center = {
+        width = "90%",
+        height = "80%",
+      },
     },
     popup_window = {
       border = border_options,
