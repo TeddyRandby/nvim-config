@@ -109,7 +109,7 @@ return {
         ["g"] = {
           name = "[GIT]",
 
-          ["o"] = { "<cmd>Neogit kind=auto<cr>", "Open" },
+          ["o"] = { "<cmd>DiffviewOpen <cr>", "Open" },
 
           -- Helpers
           ["s"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },
