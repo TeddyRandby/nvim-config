@@ -57,6 +57,7 @@ return {
   Warning = "  ",
   Info = "  ",
   Hint = "  ",
+  Git = " 󰊢 ",
   GitAdd = "┃",
   GitChange = "┃",
   GitDelete = "",

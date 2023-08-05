@@ -13,6 +13,7 @@ return {
           chatgpt = { kind = "cmd", pattern = "^:ChatGPTRu?n?%s+", icon = require('utils.symbol_map').Robot },
 
           filter = { pattern = { "^:%s*!", "^:'<,'>%s*!" }, icon = require('utils.symbol_map').Shell, lang = "bash" },
+          git = { pattern = "^:%s*!%s*git%s+", icon = require('utils.symbol_map').Git, lang = "bash" },
         },
       },
       messages = {
