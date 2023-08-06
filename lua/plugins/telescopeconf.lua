@@ -12,13 +12,37 @@ return {
       local entry_display = require("telescope.pickers.entry_display")
       local strings = require("plenary.strings")
 
-      local trouble = require("trouble.providers.telescope")
+      local function send_to_trouble(prompt_bufnr)
+        require("telescope.actions").send_to_qflist(prompt_bufnr)
+        require("trouble").open("quickfix")
+      end
 
       telescope.setup({
-        picker = { hidden = false },
+        pickers = {
+          git_branches = {
+            theme = "dropdown",
+            previewer = false,
+            mappings = {
+              n = {
+                ["r"] = "git_rebase_branch",
+                ["x"] = "git_delete_branch",
+              },
+            },
+          },
+          git_status = {
+            mappings = {
+              n = {
+                ["<tab>"] = "toggle_selection",
+                ["-"] = "git_staging_toggle",
+              },
+            },
+          },
+        },
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
+            require("telescope.themes").get_dropdown {
+              initial_mode = "normal",
+            },
             specific_opts = {
               ["codeaction"] = {
                 make_indexed = function(items)
@@ -70,9 +94,9 @@ return {
           },
         },
         defaults = {
-          prompt_prefix = require("utils.symbol_map").Telescope,
-          selection_caret = require("utils.symbol_map").Selection,
-          entry_prefix = require('utils.symbol_map').Entry,
+          prompt_prefix = require("utils").icons.Telescope .. ' ',
+          selection_caret = require("utils").icons.Selection,
+          entry_prefix = require('utils').icons.Entry,
           initial_mode = "insert",
           selection_strategy = "reset",
           sorting_strategy = "ascending",
@@ -106,12 +130,14 @@ return {
             i = {
               ["<C-j>"] = "move_selection_next",
               ["<C-k>"] = "move_selection_previous",
-              ["<C-t>"] = trouble.open_with_trouble,
+              ["<C-t>"] = send_to_trouble,
             },
             n = {
               ["<C-j>"] = "move_selection_next",
               ["<C-k>"] = "move_selection_previous",
-              ["<C-t>"] = trouble.open_with_trouble,
+              ["<C-t>"] = send_to_trouble,
+              ["t"] = send_to_trouble,
+              ["q"] = "close",
             },
           },
         },

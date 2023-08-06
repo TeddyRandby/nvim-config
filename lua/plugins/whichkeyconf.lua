@@ -57,8 +57,6 @@ return {
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
-        ["v"] = { "<cmd>Neogit<cr>", "[GIT]" },
-
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
@@ -91,24 +89,30 @@ return {
           ["i"] = { "<cmd>LspInfo<cr>", "Info" },
 
           -- Finders
-          ["R"] = { "<cmd>Telescope lsp_references<cr>", "[FIND] Reference" },
-          ["D"] = { "<cmd>Telescope lsp_definitions<cr>", "[FIND] Definition" },
-          ["I"] = { "<cmd>Telescope lsp_implementations<cr>", "[FIND] Implementation" },
-          ["S"] = { "<cmd>Telescope lsp_document_symbols<cr>", "[FIND] Symbol" },
-          ["E"] = { "<cmd>Telescope diagnostics<cr>", "[FIND] Diagnostics" },
+          ["R"] = { "<cmd>Telescope lsp_references initial_mode=normal<cr>", "[FIND] Reference" },
+          ["D"] = { "<cmd>Telescope lsp_definitions initial_mode=normal<cr>", "[FIND] Definition" },
+          ["I"] = { "<cmd>Telescope lsp_implementations initial_mode=normal<cr>", "[FIND] Implementation" },
+          ["S"] = { "<cmd>Telescope lsp_document_symbols initial_mode=normal<cr>", "[FIND] Symbol" },
+          ["E"] = { "<cmd>Telescope diagnostics initial_mode=normal<cr>", "[FIND] Diagnostics" },
         },
 
         -- Git
         ["g"] = {
           name = "[GIT]",
 
-          -- Helpers
-          ["s"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle signs" },
+          ["a"] = { "<cmd>Gitsigns stage_hunk<cr>", "Stage hunk" },
+          ["u"] = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Unstage hunk" },
+
+          ["h"] = { "<cmd>Gitsigns preview_hunk_inline<cr>", "View hunk" },
+
+          ["j"] = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
+          ["k"] = { "<cmd>Gitsigns prev_hunk<cr>", "Previous hunk" },
+
           ["b"] = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
 
           -- Finders
           ["B"] = { "<cmd>Telescope git_branches<cr>", "[FIND] Branches" },
-          ["S"] = { "<cmd>Telescope git_status<cr>", "[FIND] Status" },
+          ["S"] = { "<cmd>Telescope git_status initial_mode=normal<cr>", "[FIND] Status" },
         },
 
         -- Dap

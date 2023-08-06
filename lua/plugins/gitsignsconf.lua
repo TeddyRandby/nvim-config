@@ -5,14 +5,14 @@ return {
       "nvim-lua/plenary.nvim",
     },
     opts = {
-      signcolumn = false,
+      signcolumn = true,
       signs = {
-        add = { text = require('utils.symbol_map').GitAdd },
-        change = { text = require('utils.symbol_map').GitChange },
-        delete = { text = require('utils.symbol_map').GitDelete },
-        topdelete = { text = require('utils.symbol_map').GitTopDelete },
-        changedelete = { text = require('utils.symbol_map').GitChangeDelete },
-        untracked = { text = require('utils.symbol_map').GitUntracked },
+        add = { text = require('utils').GitAdd },
+        change = { text = require('utils').GitChange },
+        delete = { text = require('utils').GitDelete },
+        topdelete = { text = require('utils').GitTopDelete },
+        changedelete = { text = require('utils').GitChangeDelete },
+        untracked = { text = require('utils').GitUntracked },
       },
       numhl = false,
       linehl = false,
@@ -31,6 +31,7 @@ return {
       yadm = {
         enable = false,
       },
+      trouble = true,
     },
   },
 }

@@ -5,15 +5,15 @@ return {
     opts = {
       cmdline = {
         format = {
-          cmdline = { pattern = "^:", icon = require('utils.symbol_map').Command, lang = "vim" },
-          cd = { kind = "cmd", pattern = "^:cd%s+", icon = require('utils.symbol_map').Folder },
-          edit = { kind = "cmd", pattern = "^:ed?i?t?%s+", icon = require('utils.symbol_map').Edit },
-          man = { kind = "cmd", pattern = "^:Man%s+", icon = require('utils.symbol_map').Help },
-          telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = require('utils.symbol_map').Telescope },
-          chatgpt = { kind = "cmd", pattern = "^:ChatGPTRu?n?%s+", icon = require('utils.symbol_map').Robot },
+          cmdline = { pattern = "^:", icon = require('utils').icons.Command, lang = "vim" },
+          cd = { kind = "cmd", pattern = "^:cd%s+", icon = require('utils').icons.Folder },
+          edit = { kind = "cmd", pattern = "^:ed?i?t?%s+", icon = require('utils').icons.Edit },
+          man = { kind = "cmd", pattern = "^:Man%s+", icon = require('utils').icons.Help },
+          telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = require('utils').icons.Telescope },
+          chatgpt = { kind = "cmd", pattern = "^:ChatGPTRu?n?%s+", icon = require('utils').icons.Robot },
 
-          filter = { pattern = { "^:%s*!", "^:'<,'>%s*!" }, icon = require('utils.symbol_map').Shell, lang = "bash" },
-          git = { pattern = "^:%s*!%s*git%s+", icon = require('utils.symbol_map').Git, lang = "bash" },
+          filter = { pattern = { "^:%s*!", "^:'<,'>%s*!" }, icon = require('utils').icons.Shell, lang = "bash" },
+          git = { pattern = "^:%s*!%s*git%s+", icon = require('utils').icons.Git, lang = "bash" },
         },
       },
       messages = {

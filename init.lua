@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require "settings"
 require "lsp"
 
-local symbols = require("utils.symbol_map")
+local symbols = require("utils")
 
 require "lazy".setup("plugins", {
   ui = {

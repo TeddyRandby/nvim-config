@@ -30,11 +30,6 @@ vim.api.nvim_set_keymap("n", "<A-l>", "<C-w>l", opts)
 vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
 
-vim.fn.sign_define("DapStopped", { text = require('utils.symbol_map').Stopped, texthl = 'Character' })
-vim.fn.sign_define("DapBreakpoint", { text = require('utils.symbol_map').Empty, texthl = '' })
-vim.fn.sign_define("DapBreakpointConditional", { text = require('utils.symbol_map').Warning, texthl = 'Conditional' })
-vim.fn.sign_define("DapBreakpointRejected", { text = require('utils.symbol_map').Error, texthl = 'Error' })
-
 vim.cmd([[set fcs=eob:\ ]])
 
 local options = {
@@ -71,6 +66,7 @@ local options = {
   laststatus = 3,
   updatetime = 250,
   background = "dark",
+  wrap = false,
 }
 
 vim.opt.shortmess:append("c")
@@ -78,5 +74,3 @@ vim.opt.shortmess:append("c")
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
-
-utils.setSpacesSize({ go = 4, python = 4, rust = 4, cpp = 4, c = 4 })

@@ -81,7 +81,7 @@ return {
           format = lspkind.cmp_format({
             mode = "symbol",
             maxwidth = 50,
-            symbol_map = require('utils.symbol_map'),
+            symbol_map = require('utils').icons,
           }),
         },
         snippet = {

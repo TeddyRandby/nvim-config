@@ -1,51 +1,85 @@
-local _M = {}
+local M = {}
 
-_M.powerline = {
-    circle = {
-        left = "",
-        right = "",
-    },
-    arrow = {
-        left = "",
-        right = "",
-    },
-    triangle = {
-        left = "",
-        right = "",
-    },
-    none = {
-        left = "",
-        right = "",
-    },
+M.icons = {
+  -- OTHER
+  Copilot = " 󱙺 ",
+  Text = " 󱔏 ",
+  Method = "  ",
+  Function = " 󰊕 ",
+  Constructor = "  ",
+  Field = "  ",
+  Variable = "  ",
+  Class = "  ",
+  Interface = "  ",
+  Module = " 󰘦 ",
+  Property = "  ",
+  Unit = " 󰊱 ",
+  Enum = "  ",
+  Keyword = "  ",
+  Snippet = " 󰅴 ",
+  Color = "  ",
+  File = "  ",
+  Folder = "  ",
+  Reference = "  ",
+  EnumMember = "  ",
+  Constant = "  ",
+  Struct = "  ",
+  Operator = "  ",
+  TypeParameter = "  ",
+  Namespace = "  ",
+  Package = "  ",
+  String = "  ",
+  Number = "  ",
+  Boolean = "  ",
+  Array = "  ",
+  Object = "  ",
+  Key = "  ",
+  Null = " 󰟢 ",
+  Event = "  ",
+  -- OTHER
+  Robot = " 󱙺 ",
+  Telescope = " 󰭎 ",
+  Search = "  ",
+  Shell = "  ",
+  Edit = " 󱇧 ",
+  Move = " 󰪹 ",
+  Filter = " 󰈲 ",
+  Help = "  ",
+  Selection = "   ",
+  Entry = "   ",
+  Command = "  ",
+  MiddleSeparator = "  ",
+  LeftSeparator = "  ",
+  RightSeparator = "  ",
+  LeftSeparatorSolid = "",
+  RightSeparatorSolid = "",
+  Empty = "󰝦 ",
+  Stopped = "󰙧 ",
+  Error = "󰅚 ",
+  Warning = "󰗖 ",
+  Info = "󰰅 ",
+  Hint = "󰰅 ",
+  Git = " 󰊢 ",
+  GitAdd = "┃",
+  GitChange = "┃",
+  GitDelete = "",
+  GitTopDelete = "",
+  GitChangeDelete = "󰜥 ",
+  GitUntracked = "",
+  Uninstalled = "󰄱 ",
+  Installed = "󰡖 ",
+  Pending = "󰄗 ",
 }
 
-_M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
-
-_M.setSpacesSize = function(filetypes)
-    for filetype, size in pairs(filetypes) do
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = filetype,
-            callback = function()
-                vim.opt.shiftwidth = size
-                vim.opt.tabstop = size
-            end,
-        })
-    end
-end
-
-_M.buf_command = function(bufnr, name, fn, opts)
-    vim.api.nvim_buf_create_user_command(bufnr, name, fn, opts or {})
-end
-
-_M.table = {
-    some = function(tbl, cb)
-        for k, v in pairs(tbl) do
-            if cb(k, v) then
-                return true
-            end
-        end
-        return false
-    end,
+M.signs = {
+  Error = { text = M.icons.Error, texthl = "DiagnosticError" },
+  Warn = { text = M.icons.Warning, texthl = "DiagnosticWarning" },
+  Hint = { text = M.icons.Hint, texthl = "DiagnosticHint" },
+  Info = { text = M.icons.Info, texthl = "DiagnosticInfo" },
+  DapStopped = { text = M.icons.Stopped, texthl = "DiagnosticHint" },
+  DapBreakpoint = { text = M.icons.Empty, texthl = "DiagnosticOk" },
+  DapBreakpointConditional = { text = M.icons.Warning, texthl = "DiagnosticWarning" },
+  DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
 }
 
-return _M
+return M

@@ -6,10 +6,10 @@ return {
       {
         "SmiteshP/nvim-navic",
         opts = {
-          icons = require("utils.symbol_map"),
+          icons = require("utils").icons,
           lsp = { auto_attach = true },
           highlight = true,
-          separator = require("utils.symbol_map").LeftSeparator,
+          separator = require("utils").icons.LeftSeparator,
           depth_limit = 4,
           safe_output = false,
         },
@@ -20,12 +20,12 @@ return {
         icons_enabled = true,
         theme = "auto",
         section_separators = {
-          left = require("utils.symbol_map").LeftSeparatorSolid,
-          right = require("utils.symbol_map").RightSeparatorSolid
+          left = require("utils").icons.LeftSeparatorSolid,
+          right = require("utils").icons.RightSeparatorSolid
         },
         component_separators = {
-          left = require("utils.symbol_map").LeftSeparator,
-          right = require("utils.symbol_map").RightSeparator
+          left = require("utils").icons.LeftSeparator,
+          right = require("utils").icons.RightSeparator
         },
         disabled_filetypes = {
           statusline = {},
@@ -62,17 +62,17 @@ return {
               table.insert(names, name)
             end
 
-            return table.concat(names, require('utils.symbol_map').MiddleSeparator)
+            return table.concat(names, require('utils').icons.MiddleSeparator)
           end,
         },
         lualine_y = {
           {
             "diagnostics",
             symbols = {
-              error = require("utils.symbol_map").Error,
-              warn = require("utils.symbol_map").Warning,
-              info = require("utils.symbol_map").Info,
-              hint = require("utils.symbol_map").Hint,
+              error = require("utils").icons.Error,
+              warn = require("utils").icons.Warning,
+              info = require("utils").icons.Info,
+              hint = require("utils").icons.Hint,
             }
           },
         },
