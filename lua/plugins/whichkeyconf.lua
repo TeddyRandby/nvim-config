@@ -70,25 +70,26 @@ return {
 
         ["r"] = { "<cmd>ChatGPT<cr>", "[ROBOT]", },
 
+        ["s"] = { "<cmd>ToggleTerm<cr>", "[SHELL]" },
+
+        ["d"] = { "<cmd>lua require('dapui').toggle() <cr>", "[DEBUG]" },
+
         ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
         [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
-        ["s"] = { "<cmd>ToggleTerm<cr>", "[SHELL]" },
-
         ["f"] = {
           name = "[FILE]",
 
           -- Finders
-          ["F"] = { "<cmd>Telescope find_files hidden=true<cr>", "[FIND] File" },
+          ["F"] = { "<cmd>Telescope find_files<cr>", "[FIND] File" },
           ["O"] = { "<cmd>Telescope oldfiles<cr>", "[FIND] Recent" },
           ["B"] = { "<cmd>Telescope buffers<cr>", "[FIND] Buffers" },
           ["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
           ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
         },
-
 
         -- LSP
         ["l"] = {
@@ -128,22 +129,22 @@ return {
         },
 
         -- Dap
-        ["d"] = {
-          name = "[DAP]",
+        ["b"] = {
+          name = "[BREAKPOINT]",
 
           ["c"] = {
             "<cmd>DapLoadLaunchJSON<cr><cmd>DapContinue<cr>",
             "Continue",
           },
-          ["o"] = { "<cmd>DapStepOver<cr>", "Step over" },
+          ["j"] = { "<cmd>DapStepOver<cr>", "Step over" },
+          ["k"] = { "<cmd>DapStepOut<cr>", "Step out" },
           ["i"] = { "<cmd>DapStepInto<cr>", "Step into" },
-          ["a"] = { "<cmd>DapStepOut<cr>", "Step out" },
 
           ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
 
           ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
-          ["u"] = { "<cmd>lua require('dapui').toggle() <cr>", "UI" },
 
+          -- Finders
           ["C"] = {
             "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations initial_mode=normal<cr>",
             "[FIND] Configurations",
