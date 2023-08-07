@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 vim.g.mapleader = " "
 
 vim.filetype.add({
@@ -10,9 +8,8 @@ vim.filetype.add({
 
 local opts = { noremap = true, silent = true, nowait = true }
 
-vim.api.nvim_set_keymap("i", "jk", "<ESC>", opts)
-vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-N>", opts)
-vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-N>", opts)
+vim.api.nvim_set_keymap("i", require('utils').keymaps.LeaveInsert, "<esc>", opts)
+vim.api.nvim_set_keymap("t", require('utils').keymaps.Quit, "<C-\\><C-N>", opts)
 
 vim.api.nvim_set_keymap("i", "<A-h>", "<C-\\><C-N><C-w>h", opts)
 vim.api.nvim_set_keymap("i", "<A-j>", "<C-\\><C-N><C-w>j", opts)
@@ -29,6 +26,8 @@ vim.api.nvim_set_keymap("n", "<A-l>", "<C-w>l", opts)
 
 vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
+vim.api.nvim_set_keymap("n", "J", "<cmd>tabn<cr>", opts)
+vim.api.nvim_set_keymap("n", "K", "<cmd>tabp<cr>", opts)
 
 vim.cmd([[set fcs=eob:\ ]])
 

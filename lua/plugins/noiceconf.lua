@@ -11,6 +11,7 @@ return {
           man = { kind = "cmd", pattern = "^:Man%s+", icon = require('utils').icons.Help },
           telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = require('utils').icons.Telescope },
           chatgpt = { kind = "cmd", pattern = "^:ChatGPTRu?n?%s+", icon = require('utils').icons.Robot },
+          tab = { kind = "cmd", pattern = "^:tab%s+", icon = require('utils').icons.Tab },
 
           filter = { pattern = { "^:%s*!", "^:'<,'>%s*!" }, icon = require('utils').icons.Shell, lang = "bash" },
           git = { pattern = "^:%s*!%s*git%s+", icon = require('utils').icons.Git, lang = "bash" },

@@ -1,3 +1,4 @@
+local keymaps = require('utils').keymaps
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -11,6 +12,8 @@ return {
       local telescope = require("telescope")
       local entry_display = require("telescope.pickers.entry_display")
       local strings = require("plenary.strings")
+      local picker = require("utils").build_picker
+      local qpicker = require("utils").build_qpicker
 
       local function send_to_trouble(prompt_bufnr)
         require("telescope.actions").send_to_qflist(prompt_bufnr)
@@ -19,21 +22,23 @@ return {
 
       telescope.setup({
         pickers = {
-          git_branches = {
-            theme = "dropdown",
-            previewer = false,
+          lsp_references = qpicker {},
+          lsp_incoming_calls = qpicker {},
+          lsp_outgoing_calls = qpicker {},
+          lsp_definitions = qpicker {},
+          lsp_type_definitions = qpicker {},
+          lsp_implementations = qpicker {},
+          diagnostics = qpicker {},
+          buffers = qpicker {},
+
+          lsp_document_symbols = picker {},
+          lsp_workspace_symbols = picker {},
+          lsp_dynamic_workspace_symbols = picker {},
+
+          git_branches = picker {
             mappings = {
               n = {
-                ["r"] = "git_rebase_branch",
-                ["x"] = "git_delete_branch",
-              },
-            },
-          },
-          git_status = {
-            mappings = {
-              n = {
-                ["<tab>"] = "toggle_selection",
-                ["-"] = "git_staging_toggle",
+                [require('utils').keymaps.Delete] = "git_delete_branch",
               },
             },
           },
@@ -128,16 +133,17 @@ return {
           buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
           mappings = {
             i = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
+              [keymaps.SelectNext] = "move_selection_next",
+              [keymaps.SelectPrev] = "move_selection_previous",
+              [keymaps.LeaveInsert] = "close",
               ["<C-t>"] = send_to_trouble,
             },
             n = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
-              ["<C-t>"] = send_to_trouble,
+              [keymaps.SelectNext] = "move_selection_next",
+              [keymaps.SelectPrev] = "move_selection_previous",
+              [keymaps.Quit] = "close",
               ["t"] = send_to_trouble,
-              ["q"] = "close",
+              ["<C-t>"] = send_to_trouble,
             },
           },
         },

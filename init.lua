@@ -22,7 +22,7 @@ require "lazy".setup("plugins", {
   ui = {
     size = { width = 0.8, height = 0.8 },
     border = "solid",
-    pills = true,
+    pills = false,
     icons = {
       cmd = symbols.Shell,
       config = "",
@@ -44,6 +44,12 @@ require "lazy".setup("plugins", {
         "➜",
         "★",
         "‒",
+      },
+      custom_keys = {
+        ["i"] = function () require("lazy").install() end,
+        ["u"] = function () require("lazy").update() end,
+        ["h"] = function () require("lazy").help() end,
+        ["q"] = false,
       },
     },
   },

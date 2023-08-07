@@ -47,7 +47,7 @@ return {
       hl.TelescopeNormal = hl.NormalFloat
       hl.TelescopeBorder = hl.FloatBorder
 
-      hl.TelescopePromptPrefix = { bg = hl.TelescopeBorder.bg, fg = c.cyan }
+      hl.TelescopePromptPrefix = { bg = hl.TelescopeBorder.bg, fg = c.fg }
 
       hl.TelescopePromptNormal = { bg = hl.TelescopeNormal.bg, fg = "NONE" }
 

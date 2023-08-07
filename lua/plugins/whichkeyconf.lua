@@ -1,22 +1,30 @@
 return {
   {
     "folke/which-key.nvim",
+    dependencies = { "akinsho/toggleterm.nvim" },
     config = function()
       local wk = require("which-key")
 
+      local Terminal = require("toggleterm.terminal").Terminal
+
+      local builder = require("utils").build_term
+
+      local lg = Terminal:new(builder("lazygit"))
+      local cl = Terminal:new(builder("clide"))
+
       wk.setup({
         window = {
-          border = "none",          -- none, single, double, shadow
-          position = "bottom",      -- bottom, top
-          margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]
-          padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+          border = "none",
+          position = "bottom",
+          margin = { 1, 0, 1, 0 },
+          padding = { 2, 2, 2, 2 },
           winblend = 0,
         },
         layout = {
-          height = { min = 4, max = 25 }, -- min and max height of the columns
-          width = { min = 20, max = 50 }, -- min and max width of the columns
-          spacing = 4,                    -- spacing between columns
-          align = "center",               -- align columns left, center or right
+          height = { min = 4, max = 25 },
+          width = { min = 20, max = 50 },
+          spacing = 4,
+          align = "center",
         },
       })
 
@@ -51,17 +59,22 @@ return {
       }, v_opts)
 
       wk.register({
-        ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
 
-        [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
+        ["v"] = { function() lg:toggle() end, "[LAZYGIT]" },
 
-        ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
+        ["c"] = { function() cl:toggle() end, "[CLIDE]" },
 
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
 
         ["r"] = { "<cmd>ChatGPT<cr>", "[ROBOT]", },
+
+        ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
+
+        [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
+
+        ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
         ["f"] = {
           name = "[FILE]",
@@ -89,19 +102,16 @@ return {
           ["i"] = { "<cmd>LspInfo<cr>", "Info" },
 
           -- Finders
-          ["R"] = { "<cmd>Telescope lsp_references initial_mode=normal<cr>", "[FIND] Reference" },
-          ["D"] = { "<cmd>Telescope lsp_definitions initial_mode=normal<cr>", "[FIND] Definition" },
-          ["I"] = { "<cmd>Telescope lsp_implementations initial_mode=normal<cr>", "[FIND] Implementation" },
-          ["S"] = { "<cmd>Telescope lsp_document_symbols initial_mode=normal<cr>", "[FIND] Symbol" },
-          ["E"] = { "<cmd>Telescope diagnostics initial_mode=normal<cr>", "[FIND] Diagnostics" },
+          ["R"] = { "<cmd>Telescope lsp_references<cr>", "[FIND] Reference" },
+          ["D"] = { "<cmd>Telescope lsp_definitions<cr>", "[FIND] Definition" },
+          ["I"] = { "<cmd>Telescope lsp_implementations<cr>", "[FIND] Implementation" },
+          ["S"] = { "<cmd>Telescope lsp_document_symbols<cr>", "[FIND] Symbol" },
+          ["E"] = { "<cmd>Telescope diagnostics<cr>", "[FIND] Diagnostics" },
         },
 
         -- Git
         ["g"] = {
           name = "[GIT]",
-
-          ["a"] = { "<cmd>Gitsigns stage_hunk<cr>", "Stage hunk" },
-          ["u"] = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Unstage hunk" },
 
           ["h"] = { "<cmd>Gitsigns preview_hunk_inline<cr>", "View hunk" },
 
@@ -112,7 +122,7 @@ return {
 
           -- Finders
           ["B"] = { "<cmd>Telescope git_branches<cr>", "[FIND] Branches" },
-          ["S"] = { "<cmd>Telescope git_status initial_mode=normal<cr>", "[FIND] Status" },
+          ["S"] = { "<cmd>Telescope git_status<cr>", "[FIND] Status" },
         },
 
         -- Dap

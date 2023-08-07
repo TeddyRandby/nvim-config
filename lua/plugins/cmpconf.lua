@@ -17,26 +17,28 @@ return {
     config = function()
       local cmp = require("cmp")
 
+      local keymaps = require("utils").keymaps
+
       require("copilot_cmp").setup()
+
+      require("luasnip.loaders.from_vscode").lazy_load()
 
       local luasnip = require("luasnip")
 
       local lspkind = require("lspkind")
 
-      require("luasnip.loaders.from_vscode").lazy_load()
-
       local mapping = {
-        ["<Up>"] = cmp.mapping.scroll_docs(-4),
-        ["<Down>"] = cmp.mapping.scroll_docs(4),
-        ["<Tab>"] = cmp.mapping(
+        [keymaps.ScrollUp] = cmp.mapping.scroll_docs(-4),
+        [keymaps.ScrollDown] = cmp.mapping.scroll_docs(4),
+        [keymaps.Select] = cmp.mapping(
           cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
           }),
           { "i", "s", "c" }
         ),
-        ["<C-q>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
-        ["<C-j>"] = cmp.mapping(function(fallback)
+        [keymaps.Quit] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
+        [keymaps.SelectNext] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           elseif luasnip.expand_or_jumpable() then
@@ -45,7 +47,7 @@ return {
             fallback()
           end
         end, { "i", "s", "c" }),
-        ["<C-k>"] = cmp.mapping(function(fallback)
+        [keymaps.SelectPrev] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
           elseif luasnip.jumpable(-1) then
@@ -96,7 +98,6 @@ return {
           { name = "nvim_lua" },
           { name = "luasnip" },
           { name = "path" },
-          { name = "buffer" },
         },
         preselect = cmp.PreselectMode.None,
       })

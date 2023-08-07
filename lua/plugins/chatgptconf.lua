@@ -12,6 +12,8 @@ local win_options = {
   winhighlight = winhighlight,
 }
 
+local keymaps = require('utils').keymaps
+
 return {
   "jackMort/ChatGPT.nvim",
   cevent = "VeryLazy",
@@ -28,11 +30,11 @@ return {
         win_options = win_options,
       },
       keymaps = {
-        close = { "<C-c>", "<esc>", "q" },
-        select_session = "<cr>",
-        delete_session = "x",
-        scroll_up = { "<C-j>", "<up>" },
-        scroll_down = { "<C-k>", "<down>" },
+        close = keymaps.Quit,
+        select_session = keymaps.Select,
+        delete_session = keymaps.Delete,
+        scroll_up = keymaps.SelectPrev,
+        scroll_down = keymaps.SelectNext,
       },
     },
     settings_window = {
@@ -41,25 +43,25 @@ return {
     },
     popup_layout = {
       center = {
-        width = "90%",
+        width = "80%",
         height = "80%",
       },
+    },
+    system_window = {
+      win_options = win_options,
     },
     popup_window = {
       border = border_options,
       win_options = win_options,
     },
     popup_input = {
+      prompt = " " .. require("utils").icons.Chat,
       border = {
         highlight = prompthighlight,
-        text = false,
       },
       win_options = {
         winhighlight = prompthighlight
       },
-    },
-    system_window = {
-      win_options = win_options,
     },
   },
 }

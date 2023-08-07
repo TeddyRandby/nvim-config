@@ -5,6 +5,9 @@ return {
 		opts = {
       group = true,
       auto_fold = true,
+      action_keys = {
+        ["<C-t>"] = "<cmd>Telescope quickfixlist<cr>",
+      },
       signs = {
         error = require("utils").icons.Error,
         warning = require("utils").icons.Warning,

@@ -1,5 +1,17 @@
 local M = {}
 
+M.keymaps = {
+  ScrollUp = "<c-u",
+  ScrollDown = "<c-d>",
+  SelectNext = "<c-j>",
+  SelectPrev = "<c-k>",
+  LeaveInsert = "jk",
+  Select = "<tab>",
+  Expand = "<cr>",
+  Delete = "x",
+  Quit = "q",
+}
+
 M.icons = {
   -- OTHER
   Copilot = " 󱙺 ",
@@ -69,6 +81,8 @@ M.icons = {
   Uninstalled = "󰄱 ",
   Installed = "󰡖 ",
   Pending = "󰄗 ",
+  Chat = "󰭹 ",
+  Tab = "󰓩 ",
 }
 
 M.signs = {
@@ -81,5 +95,32 @@ M.signs = {
   DapBreakpointConditional = { text = M.icons.Warning, texthl = "DiagnosticWarning" },
   DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
 }
+
+M.build_term = function(cmd)
+  return {
+    cmd = cmd,
+    hidden = true,
+    direction = "float",
+    highlights = {
+      NormalFloat = { link = "NormalFloat" },
+      FloatBorder = { link = "FloatBorder" },
+    },
+    float_opts = {
+      border = "solid",
+    },
+  }
+end
+
+M.build_qpicker = function(opts)
+  return vim.tbl_extend("force", {
+    initial_mode = "normal",
+  }, opts)
+end
+
+M.build_picker = function(opts)
+  return vim.tbl_extend("force", {
+    initial_mode = "insert",
+  }, opts)
+end
 
 return M
