@@ -30,7 +30,7 @@ return {
         win_options = win_options,
       },
       keymaps = {
-        close = keymaps.Quit,
+        close = keymaps.QuitInsert,
         select_session = keymaps.Select,
         delete_session = keymaps.Delete,
         scroll_up = keymaps.SelectPrev,

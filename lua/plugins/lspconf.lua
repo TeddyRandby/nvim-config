@@ -1,35 +1,31 @@
 return {
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-		},
-		config = function()
-			local lsp_config = require("lspconfig")
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+          ensure_installed = { "prismals", "bashls", "tsserver", "jsonls", "sqlls", "gopls" },
+          handlers = {
+            function(server)
+              local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-			local cmp_nvim_lsp = require("cmp_nvim_lsp")
+              local conf_ok, try_conf = pcall(require, "lsp.servers." .. server)
 
-			local servers = {
-				"bashls",
-				"tsserver",
-				"clangd",
-				"lua_ls",
-				"prismals",
-				"sqlls",
-        "gopls",
-			}
+              local conf = vim.tbl_extend("keep", conf_ok and try_conf or {}, {
+                on_attach = function() end,
+                flags = {},
+                settings = {},
+                capabilities = cmp_nvim_lsp.default_capabilities(),
+              })
 
-			for _, server in ipairs(servers) do
-				local conf_ok, try_conf = pcall(require, "lsp.servers." .. server)
 
-				local conf = vim.tbl_extend("keep", conf_ok and try_conf or {}, {
-					on_attach = function() end,
-					flags = {},
-					settings = {},
-					capabilities = cmp_nvim_lsp.default_capabilities(),
-				})
-
-				lsp_config[server].setup(conf)
-			end
-		end,
-	},
+              require("lspconfig")[server].setup(conf)
+            end
+          },
+        },
+      }
+    },
+    config = false,
+  },
 }

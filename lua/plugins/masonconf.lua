@@ -12,7 +12,7 @@ return {
 					package_uninstalled = require('utils').icons.Uninstalled,
 				},
         keymaps = {
-          close_window = keymaps.Quit,
+          close_window = keymaps.QuitNormal,
           toggle_package_expand = keymaps.Select,
           uninstall_package = keymaps.Delete,
           update_all_packages = "S",

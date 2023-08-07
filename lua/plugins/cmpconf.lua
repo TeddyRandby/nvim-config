@@ -37,7 +37,6 @@ return {
           }),
           { "i", "s", "c" }
         ),
-        [keymaps.Quit] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
         [keymaps.SelectNext] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })

@@ -4,7 +4,6 @@ return {
 		dependencies = "kyazdani42/nvim-web-devicons",
 		opts = {
       group = true,
-      auto_fold = true,
       action_keys = {
         ["<C-t>"] = "<cmd>Telescope quickfixlist<cr>",
       },

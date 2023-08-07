@@ -46,6 +46,10 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     {
+      "jay-babu/mason-nvim-dap.nvim",
+      opts = {},
+    },
+    {
       "rcarriga/nvim-dap-ui",
       opts = {
         floating = {

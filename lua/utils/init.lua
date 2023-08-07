@@ -9,7 +9,8 @@ M.keymaps = {
   Select = "<tab>",
   Expand = "<cr>",
   Delete = "x",
-  Quit = "q",
+  QuitInsert = "<esc>",
+  QuitNormal = "q",
 }
 
 M.icons = {
