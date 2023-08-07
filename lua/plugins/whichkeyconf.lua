@@ -145,11 +145,11 @@ return {
           ["u"] = { "<cmd>lua require('dapui').toggle() <cr>", "UI" },
 
           ["C"] = {
-            "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations<cr>",
+            "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations initial_mode=normal<cr>",
             "[FIND] Configurations",
           },
           ["B"] = {
-            "<cmd>Telescope dap list_breakpoints<cr>",
+            "<cmd>Telescope dap list_breakpoints initial_mode=normal<cr>",
             "[FIND] Breakpoints",
           },
         },

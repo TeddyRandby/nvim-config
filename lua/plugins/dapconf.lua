@@ -1,54 +1,6 @@
-local DEBUG_SERVER_PORT = "42000"
-
-local function meson_executable(name)
-  local MESON_BIN_DIR = "~/.local/share/nvim/mason/bin"
-  return vim.fn.expand(MESON_BIN_DIR .. "/" .. name)
-end
-
-local GO_ADAPTER = {
-  type = "server",
-  port = DEBUG_SERVER_PORT,
-  executable = {
-    command = meson_executable("dlv"),
-    args = { "dap", "-l", "127.0.0.1:" .. DEBUG_SERVER_PORT },
-  },
-}
-
-local JS_ADAPTER = {
-  type = "executable",
-  command = meson_executable("node-debug2-adapter"),
-}
-
-local C_ADAPTER = {
-  type = "server",
-  port = DEBUG_SERVER_PORT,
-  executable = {
-    command = meson_executable("codelldb"),
-    args = { "--port", DEBUG_SERVER_PORT },
-  }
-}
-
-local adapters = {
-  typescript = JS_ADAPTER,
-  javascript = JS_ADAPTER,
-  node = JS_ADAPTER,
-
-  c = C_ADAPTER,
-  cpp = C_ADAPTER,
-  codelldb = C_ADAPTER,
-
-  go = GO_ADAPTER,
-  dlv = GO_ADAPTER,
-  delve = GO_ADAPTER,
-}
-
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    {
-      "jay-babu/mason-nvim-dap.nvim",
-      opts = {},
-    },
     {
       "rcarriga/nvim-dap-ui",
       opts = {
@@ -123,10 +75,20 @@ return {
         -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
       },
     },
-  },
-  config = function()
-    local dap = require("dap")
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      opts = {
+        ensure_installed = { "node-debug2-adapter", "delve", "codelldb" },
+        handlers = {
+          function(config)
+            -- all sources with no handler get passed here
 
-    dap.adapters = vim.tbl_extend("force", dap.adapters, adapters)
-  end,
+            -- Keep original functionality
+            require('mason-nvim-dap').default_setup(config)
+          end,
+        },
+      },
+    },
+  },
+  config = false,
 }
