@@ -76,6 +76,8 @@ return {
 
         ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
 
+        ["s"] = { "<cmd>ToggleTerm<cr>", "[SHELL]" },
+
         ["f"] = {
           name = "[FILE]",
 

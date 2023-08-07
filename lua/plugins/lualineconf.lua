@@ -94,7 +94,7 @@ return {
       },
       winbar = {},
       inactive_winbar = {},
-      extensions = { "trouble" },
+      extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
     },
   },
 }
