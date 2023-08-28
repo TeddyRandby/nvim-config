@@ -1,10 +1,10 @@
 local M = {}
 
 M.keymaps = {
-  ScrollUp = "<c-u",
-  ScrollDown = "<c-d>",
-  SelectNextInsert = "<c-j>",
-  SelectPrevInsert = "<c-k>",
+  ScrollUp = "<C-u",
+  ScrollDown = "<C-d>",
+  SelectNextInsert = "<C-j>",
+  SelectPrevInsert = "<C-k>",
   SelectNext = "j",
   SelectPrev = "j",
   LeaveInsert = "jk",
@@ -114,7 +114,7 @@ M.build_term = function(cmd)
     close_on_exit = true,
     on_exit = function(_, _, exit_code, name)
       if exit_code ~= 0 then
-        vim.notify(name .. "Failed", vim.log.levels.ERROR)
+        vim.notify(name .. " exited with code " .. exit_code, vim.log.levels.ERROR)
       end
     end,
   }
