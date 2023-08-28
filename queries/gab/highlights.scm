@@ -19,10 +19,6 @@
 ] @string
 
 [
- "impl"
-] @type.definition
-
-[
  "for"
  "in"
  "loop"
@@ -51,7 +47,6 @@
 ] @keyword.storage.type
 
 [
-  "!"
   ","
   "."
   ":"
@@ -91,8 +86,6 @@
   ">>"
   "<<"
 ] @operator
-
-(impl name: (identifier) @type)
 
 (call callee: (identifier) @method.call)
 

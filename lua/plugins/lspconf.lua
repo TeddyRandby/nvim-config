@@ -19,7 +19,6 @@ return {
                 capabilities = cmp_nvim_lsp.default_capabilities(),
               })
 
-
               require("lspconfig")[server].setup(conf)
             end
           },

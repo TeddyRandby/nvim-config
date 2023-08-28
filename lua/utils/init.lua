@@ -3,12 +3,14 @@ local M = {}
 M.keymaps = {
   ScrollUp = "<c-u",
   ScrollDown = "<c-d>",
-  SelectNext = "<c-j>",
-  SelectPrev = "<c-k>",
+  SelectNextInsert = "<c-j>",
+  SelectPrevInsert = "<c-k>",
+  SelectNext = "j",
+  SelectPrev = "j",
   LeaveInsert = "jk",
   Select = "<tab>",
   Expand = "<cr>",
-  Delete = "x",
+  DeleteNormal = "x",
   QuitInsert = "<esc>",
   QuitNormal = "q",
 }
@@ -58,16 +60,16 @@ M.icons = {
   Move = " 󰪹 ",
   Filter = " 󰈲 ",
   Help = "  ",
-  Selection = "   ",
-  Entry = "   ",
+  Selection = " ",
+  Entry = " ",
   Command = "  ",
   MiddleSeparator = "  ",
-  LeftSeparator = "  ",
-  RightSeparator = "  ",
-  LeftSeparatorSolid = "",
-  RightSeparatorSolid = "",
+  LeftSeparator = "",
+  RightSeparator = "",
+  LeftSeparatorSolid = "",
+  RightSeparatorSolid = "",
   Empty = "󰝦 ",
-  Stopped = "󰙧 ",
+  Selected = "󰙧 ",
   Error = "󰅚 ",
   Warning = "󰗖 ",
   Info = "󰰅 ",
@@ -91,7 +93,7 @@ M.signs = {
   Warn = { text = M.icons.Warning, texthl = "DiagnosticWarning" },
   Hint = { text = M.icons.Hint, texthl = "DiagnosticHint" },
   Info = { text = M.icons.Info, texthl = "DiagnosticInfo" },
-  DapStopped = { text = M.icons.Stopped, texthl = "DiagnosticHint" },
+  DapStopped = { text = M.icons.Selected, texthl = "DiagnosticHint" },
   DapBreakpoint = { text = M.icons.Empty, texthl = "DiagnosticOk" },
   DapBreakpointConditional = { text = M.icons.Warning, texthl = "DiagnosticWarning" },
   DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
@@ -109,6 +111,12 @@ M.build_term = function(cmd)
     float_opts = {
       border = "solid",
     },
+    close_on_exit = true,
+    on_exit = function(_, _, exit_code, name)
+      if exit_code ~= 0 then
+        vim.notify(name .. "Failed", vim.log.levels.ERROR)
+      end
+    end,
   }
 end
 

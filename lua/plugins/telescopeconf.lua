@@ -6,6 +6,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       { "nvim-telescope/telescope-dap.nvim",        dependencies = { "mfussenegger/nvim-dap" } },
+      { 'LukasPietzschmann/telescope-tabs' },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
@@ -29,7 +30,13 @@ return {
           lsp_type_definitions = qpicker {},
           lsp_implementations = qpicker {},
           diagnostics = qpicker {},
-          buffers = qpicker {},
+          buffers = qpicker {
+            mappings = {
+              n = {
+                [require('utils').keymaps.DeleteNormal] = "git_delete_branch",
+              },
+            },
+          },
 
           lsp_document_symbols = picker {},
           lsp_workspace_symbols = picker {},
@@ -38,16 +45,28 @@ return {
           git_branches = picker {
             mappings = {
               n = {
-                [require('utils').keymaps.Delete] = "git_delete_branch",
+                [require('utils').keymaps.DeleteNormal] = "git_delete_branch",
               },
             },
           },
         },
         extensions = {
+          ["telescope-tabs"] = qpicker {
+            entry_formatter = function(tabid, buffer_ids, file_names, file_paths, is_current)
+              local cwd = vim.fn.expand(
+                vim.fn.haslocaldir(-1, tabid) and vim.fn.getcwd(-1, tabid) or ""
+              )
+
+              local entry_string = table.concat(vim.tbl_map(function(v)
+                return vim.fn.fnamemodify(v, ":t")
+              end, file_paths), ', ')
+
+              return string.format('%s: %s', cwd, entry_string)
+            end,
+            close_tab_shortcut_n = require('utils').keymaps.DeleteNormal,
+          },
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown {
-              initial_mode = "normal",
-            },
+            qpicker {},
             specific_opts = {
               ["codeaction"] = {
                 make_indexed = function(items)
@@ -133,8 +152,8 @@ return {
           buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
           mappings = {
             i = {
-              [keymaps.SelectNext] = "move_selection_next",
-              [keymaps.SelectPrev] = "move_selection_previous",
+              [keymaps.SelectNextInsert] = "move_selection_next",
+              [keymaps.SelectPrevInsert] = "move_selection_previous",
               [keymaps.LeaveInsert] = "close",
               [keymaps.QuitInsert] = "close",
               ["<C-t>"] = send_to_trouble,
@@ -151,7 +170,7 @@ return {
         },
       })
 
-      local extensions = { "dap", "noice", "fzf", "ui-select" }
+      local extensions = { "dap", "noice", "fzf", "ui-select", "telescope-tabs" }
 
       for _, ext in ipairs(extensions) do
         telescope.load_extension(ext)

@@ -37,7 +37,7 @@ return {
           }),
           { "i", "s", "c" }
         ),
-        [keymaps.SelectNext] = cmp.mapping(function(fallback)
+        [keymaps.SelectNextInsert] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           elseif luasnip.expand_or_jumpable() then
@@ -46,7 +46,7 @@ return {
             fallback()
           end
         end, { "i", "s", "c" }),
-        [keymaps.SelectPrev] = cmp.mapping(function(fallback)
+        [keymaps.SelectPrevInsert] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
           elseif luasnip.jumpable(-1) then

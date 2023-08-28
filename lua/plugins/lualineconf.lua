@@ -43,9 +43,21 @@ return {
       sections = {
         lualine_a = {
           "branch",
+          "diff",
         },
-        lualine_b = { "diff" },
+        lualine_b = {
+          {
+            "diagnostics",
+            symbols = {
+              error = require("utils").icons.Error,
+              warn = require("utils").icons.Warning,
+              info = require("utils").icons.Info,
+              hint = require("utils").icons.Hint,
+            }
+          },
+        },
         lualine_c = {
+          "filetype",
           {
             "filename",
             path = 4,
@@ -90,6 +102,9 @@ return {
               return require("nvim-navic").is_available()
             end,
           },
+        },
+        lualine_z = {
+          "tabs",
         },
       },
       winbar = {},

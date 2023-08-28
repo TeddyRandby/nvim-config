@@ -89,6 +89,7 @@ return {
           ["B"] = { "<cmd>Telescope buffers<cr>", "[FIND] Buffers" },
           ["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
           ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
+          ["T"] = { "<cmd>Telescope telescope-tabs list_tabs<cr>", "[FIND] Tabs" },
         },
 
         -- LSP
@@ -123,14 +124,13 @@ return {
 
           ["b"] = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
 
-          -- Finders
           ["B"] = { "<cmd>Telescope git_branches<cr>", "[FIND] Branches" },
           ["S"] = { "<cmd>Telescope git_status<cr>", "[FIND] Status" },
         },
 
         -- Dap
         ["b"] = {
-          name = "[BREAKPOINT]",
+          name = "[DEBUG]",
 
           ["c"] = {
             "<cmd>DapLoadLaunchJSON<cr><cmd>DapContinue<cr>",
@@ -144,7 +144,6 @@ return {
 
           ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
 
-          -- Finders
           ["C"] = {
             "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations initial_mode=normal<cr>",
             "[FIND] Configurations",
