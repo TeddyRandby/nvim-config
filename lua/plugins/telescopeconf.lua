@@ -33,7 +33,7 @@ return {
           buffers = qpicker {
             mappings = {
               n = {
-                [require('utils').keymaps.DeleteNormal] = "git_delete_branch",
+                [require('utils').keymaps.DeleteNormal] = "delete_buffer",
               },
             },
           },
