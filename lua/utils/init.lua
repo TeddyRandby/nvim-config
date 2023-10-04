@@ -11,8 +11,6 @@ M.keymaps = {
   Select = "<tab>",
   Expand = "<cr>",
   DeleteNormal = "x",
-  QuitInsert = "<esc>",
-  QuitNormal = "q",
 }
 
 M.icons = {
@@ -103,15 +101,15 @@ M.build_term = function(cmd)
   return {
     cmd = cmd,
     hidden = true,
-    direction = "float",
+    direction = "horizontal",
     highlights = {
       NormalFloat = { link = "NormalFloat" },
       FloatBorder = { link = "FloatBorder" },
     },
-    float_opts = {
-      border = "solid",
-    },
     close_on_exit = true,
+    on_create = function()
+      vim.api.nvim_create_autocmd("BufLeave", { buffer = 0, command = ":q" })
+    end,
     on_exit = function(_, _, exit_code, name)
       if exit_code ~= 0 then
         vim.notify(name .. " exited with code " .. exit_code, vim.log.levels.ERROR)
@@ -121,14 +119,20 @@ M.build_term = function(cmd)
 end
 
 M.build_qpicker = function(opts)
-  return vim.tbl_extend("force", {
+  return vim.tbl_deep_extend("force", {
     initial_mode = "normal",
+    layout_config = {
+      height = 0.4,
+    },
   }, opts)
 end
 
 M.build_picker = function(opts)
-  return vim.tbl_extend("force", {
+  return vim.tbl_deep_extend("force", {
     initial_mode = "insert",
+    layout_config = {
+      height = 0.8,
+    },
   }, opts)
 end
 

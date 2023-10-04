@@ -11,6 +11,7 @@ return {
 
       local lg = Terminal:new(builder("lazygit"))
       local cl = Terminal:new(builder("clide"))
+      local sh = Terminal:new(builder(vim.o.shell))
 
       wk.setup({
         window = {
@@ -60,17 +61,17 @@ return {
 
       wk.register({
 
-        ["v"] = { function() lg:toggle() end, "[LAZYGIT]" },
+        ["v"] = { function() lg:open() end, "[LAZYGIT]" },
 
-        ["c"] = { function() cl:toggle() end, "[CLIDE]" },
+        ["c"] = { function() cl:open() end, "[CLIDE]" },
+
+        ["s"] = { function() sh:open() end, "[SHELL]" },
 
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
 
         ["r"] = { "<cmd>ChatGPT<cr>", "[ROBOT]", },
-
-        ["s"] = { "<cmd>ToggleTerm<cr>", "[SHELL]" },
 
         ["d"] = { "<cmd>lua require('dapui').toggle() <cr>", "[DEBUG]" },
 

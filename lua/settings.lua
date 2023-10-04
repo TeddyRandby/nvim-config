@@ -8,9 +8,6 @@ vim.filetype.add({
 
 local opts = { noremap = true, silent = true, nowait = true }
 
-vim.api.nvim_set_keymap("i", require('utils').keymaps.LeaveInsert, "<esc>", opts)
-vim.api.nvim_set_keymap("t", require('utils').keymaps.QuitInsert, "<C-\\><C-N>", opts)
-
 vim.api.nvim_set_keymap("i", "<A-h>", "<C-\\><C-N><C-w>h", opts)
 vim.api.nvim_set_keymap("i", "<A-j>", "<C-\\><C-N><C-w>j", opts)
 vim.api.nvim_set_keymap("i", "<A-k>", "<C-\\><C-N><C-w>k", opts)

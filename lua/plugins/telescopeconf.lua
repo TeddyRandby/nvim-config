@@ -38,6 +38,9 @@ return {
             },
           },
 
+          live_grep = picker {},
+          old_files = picker {},
+          find_files = picker {},
           lsp_document_symbols = picker {},
           lsp_workspace_symbols = picker {},
           lsp_dynamic_workspace_symbols = picker {},
@@ -154,15 +157,11 @@ return {
             i = {
               [keymaps.SelectNextInsert] = "move_selection_next",
               [keymaps.SelectPrevInsert] = "move_selection_previous",
-              [keymaps.LeaveInsert] = "close",
-              [keymaps.QuitInsert] = "close",
               ["<C-t>"] = send_to_trouble,
             },
             n = {
               [keymaps.SelectNext] = "move_selection_next",
               [keymaps.SelectPrev] = "move_selection_previous",
-              [keymaps.QuitInsert] = "close",
-              [keymaps.QuitNormal] = "close",
               ["t"] = send_to_trouble,
               ["<C-t>"] = send_to_trouble,
             },
