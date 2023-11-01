@@ -1,10 +1,14 @@
-; (lambda) @scope
-; (function_definition) @scope
-; (for) @scope
-; (while) @scope
-; (block_body) @scope
+[
+  (body)
+  (function_definition)
+  (block)
+] @local.scope
 
-; (function_definition name: ((identifier) @definition.var) (#set! "definition.var.scope" "parent"))
-; (function_definition parameters: (identifier) @definition.var)
+(const_definition name: (identifier) @local.definition)
+(function_definition name: (identifier) @local.definition)
+(object_definition name: (identifier) @local.definition)
+(assignment left: (identifier) @local.definition)
+(parameters (identifier) @local.definition)
+(for local: (identifier) @local.definition)
 
-; (identifier) @reference
+(identifier) @local.reference

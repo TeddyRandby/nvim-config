@@ -32,9 +32,11 @@ return {
         highlight = {
           enable = true,
         },
-        textObjects = {
+        textobjects = {
           select = {
             enable = true,
+
+            include_surrounding_whitespace = true,
 
             -- Automatically jump forward to textobj, similar to targets.vim
             lookahead = true,
@@ -43,9 +45,12 @@ return {
               -- You can use the capture groups defined in textobjects.scm
               ["if"] = { query = "@function.inner", desc = "Select inner part of a function" },
               ["af"] = { query = "@function.outer", desc = "Select outer part of a function" },
-              ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
               ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
-              ["as"] = { query = "@scope", query_group = "locals", desc = "Select outer part of a scope" },
+              ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
+              ["is"] = { query = "@block.inner", desc = "Select the body of a bloc" },
+              ["as"] = { query = "@block.outer", desc = "Select an entire block" },
+              ["ia"] = { query = "@parameter.inner", desc = "Select a parameter" },
+              ["aa"] = { query = "@parameter.outer", desc = "Select a whole parameter list" },
             },
             -- You can choose the select mode (default is charwise 'v')
             --
@@ -55,10 +60,13 @@ return {
             -- and should return the mode ('v', 'V', or '<c-v>') or a table
             -- mapping query_strings to modes.
             selection_modes = {
-              ["@parameter.outer"] = "v",               -- charwise
-              ["@function.outer"] = "V",                -- linewise
-              ["@class.outer"] = "<c-v>",               -- blockwise
-              ["@scope"] = "V",
+              ["@parameter.outer"] = "v",    -- charwise
+              ["@function.inner"] = "<c-v>", -- linewise
+              ["@function.outer"] = "V",     -- linewise
+              ["@class.inner"] = "<c-v>",    -- blockwise
+              ["@class.outer"] = "V",        -- blockwise
+              ["@block.inner"] = "<c-v>",
+              ["@block.outer"] = "V",
             },
           },
         },
@@ -68,14 +76,14 @@ return {
 
       parser_config.gab = {
         install_info = {
-          url = "https://github.com/TeddyRandby/tree-sitter-gab",           -- local path or git repo
+          url = "https://github.com/TeddyRandby/tree-sitter-gab", -- local path or git repo
           files = { "src/parser.c" },
           -- optional entries:
-          branch = "main",                                 -- default branch in case of git repo if different from master
-          generate_requires_npm = false,                   -- if stand-alone parser without npm dependencies
-          requires_generate_from_grammar = true,           -- if folder contains pre-generated src/parser.c
+          branch = "main",                       -- default branch in case of git repo if different from master
+          generate_requires_npm = false,         -- if stand-alone parser without npm dependencies
+          requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
         },
-        filetype = "gab",                                  -- if filetype does not match the parser name
+        filetype = "gab",                        -- if filetype does not match the parser name
       }
     end,
   },
