@@ -8,6 +8,8 @@ vim.filetype.add({
 
 local opts = { noremap = true, silent = true, nowait = true }
 
+vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
+vim.api.nvim_set_keymap("i", "jk", "<ESC>", opts)
 vim.api.nvim_set_keymap("i", "<A-h>", "<C-\\><C-N><C-w>h", opts)
 vim.api.nvim_set_keymap("i", "<A-j>", "<C-\\><C-N><C-w>j", opts)
 vim.api.nvim_set_keymap("i", "<A-k>", "<C-\\><C-N><C-w>k", opts)
