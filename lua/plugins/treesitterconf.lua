@@ -10,6 +10,8 @@ return {
 
       treesitter.setup({
         ensure_installed = {
+          "c",
+          "make",
           "regex",
           "vim",
           "lua",

@@ -6,7 +6,7 @@ return {
       {
         "jay-babu/mason-null-ls.nvim",
         opts = {
-          ensure_installed = { "eslint_d", "shellcheck", "prettier_d" },
+          ensure_installed = { "eslint_d", "prettier_d" },
         },
       },
 		},
@@ -21,7 +21,6 @@ return {
 					null_ls.builtins.code_actions.eslint_d,
 
 					null_ls.builtins.diagnostics.eslint_d,
-					null_ls.builtins.diagnostics.shellcheck,
 				},
 			})
 		end,

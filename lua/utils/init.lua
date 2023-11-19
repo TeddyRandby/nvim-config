@@ -1,7 +1,7 @@
 local M = {}
 
 M.keymaps = {
-  ScrollUp = "<C-u",
+  ScrollUp = "<C-u>",
   ScrollDown = "<C-d>",
   SelectNextInsert = "<C-j>",
   SelectPrevInsert = "<C-k>",
