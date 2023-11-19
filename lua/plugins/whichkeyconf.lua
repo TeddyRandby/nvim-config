@@ -11,6 +11,7 @@ return {
 
       local lg = Terminal:new(builder("lazygit"))
       local cl = Terminal:new(builder("clide"))
+      local rg = Terminal:new(builder("ranger"))
       local sh = Terminal:new(builder(vim.o.shell))
 
       wk.setup({
@@ -60,6 +61,8 @@ return {
       }, v_opts)
 
       wk.register({
+
+        ["e"] = { function() rg:open() end, "[RANGER]" },
 
         ["v"] = { function() lg:open() end, "[LAZYGIT]" },
 
