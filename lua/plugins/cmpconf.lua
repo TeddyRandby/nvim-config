@@ -9,8 +9,6 @@ return {
       "hrsh7th/cmp-cmdline",
       "rcarriga/cmp-dap",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
-      "L3MON4D3/LuaSnip",
       "zbirenbaum/copilot-cmp",
       "onsails/lspkind.nvim",
     },
@@ -20,10 +18,6 @@ return {
       local keymaps = require("utils").keymaps
 
       require("copilot_cmp").setup()
-
-      require("luasnip.loaders.from_vscode").lazy_load()
-
-      local luasnip = require("luasnip")
 
       local lspkind = require("lspkind")
 
@@ -40,8 +34,6 @@ return {
         [keymaps.SelectNextInsert] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
           else
             fallback()
           end
@@ -49,8 +41,6 @@ return {
         [keymaps.SelectPrevInsert] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
           else
             fallback()
           end
@@ -85,17 +75,11 @@ return {
             symbol_map = require('utils').icons,
           }),
         },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
         sources = {
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "copilot" },
           { name = "nvim_lua" },
-          { name = "luasnip" },
           { name = "path" },
         },
         preselect = cmp.PreselectMode.None,

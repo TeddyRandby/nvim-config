@@ -17,14 +17,12 @@
 ] @string
 
 [
- "for"
- "in"
  "loop"
  "until"
+ "break"
 ] @repeat
 
 [
- "match"
  "and"
  "or"
  "then"
@@ -50,6 +48,7 @@
 ] @punctuation.delimiter
 
 [
+  "in"
   "do"
   "end"
 ] @keyword
@@ -81,9 +80,16 @@
   "|"
   ">>"
   "<<"
+  "^"
 ] @operator
 
-(call callee: (identifier) @method.call)
+[
+ (call callee: (identifier))
+ (blkcall callee: (identifier))
+ (symcall callee: (identifier))
+ (strcall callee: (identifier))
+ (reccall callee: (identifier))
+] @method.call
 
 (send (message name: (identifier) @constructor))
 
