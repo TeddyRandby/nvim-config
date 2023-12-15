@@ -48,12 +48,6 @@ return {
 
       wk.register({
         ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment" },
-        ["r"] = {
-          name = "[ROBOT]",
-          ["e"] = { "<cmd>ChatGPTRun explain_code<cr>", "Explain" },
-          ["a"] = { "<cmd>ChatGPTRun code_readability_analysis<cr>", "Analyze Readability" },
-          ["i"] = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit Interactively" },
-        },
         ["d"] = {
           name = "[DAP]",
           ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
@@ -73,8 +67,6 @@ return {
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
-
-        ["r"] = { "<cmd>ChatGPT<cr>", "[ROBOT]", },
 
         ["d"] = { "<cmd>lua require('dapui').toggle() <cr>", "[DEBUG]" },
 
