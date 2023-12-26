@@ -43,26 +43,11 @@ return {
       sections = {
         lualine_a = {
           "branch",
-          "diff",
         },
         lualine_b = {
-          {
-            "diagnostics",
-            symbols = {
-              error = require("utils").icons.Error,
-              warn = require("utils").icons.Warning,
-              info = require("utils").icons.Info,
-              hint = require("utils").icons.Hint,
-            }
-          },
+          "diff",
         },
-        lualine_c = {
-          "filetype",
-          {
-            "filename",
-            path = 4,
-          },
-        },
+        lualine_c = {},
         lualine_x = {
           function()
             local clients = vim.lsp.get_active_clients { bufnr = 0 }
@@ -88,11 +73,19 @@ return {
             }
           },
         },
-        lualine_z = { "location" },
+        lualine_z = { "tabs" },
       },
       inactive_sections = {},
-      tabline = {
-        lualine_a = {
+      tabline = {},
+      winbar = {
+        lualine_b = {
+          "filetype",
+          {
+            "filename",
+            path = 4,
+          },
+        },
+        lualine_c = {
           {
             padding = 0,
             function()
@@ -103,12 +96,16 @@ return {
             end,
           },
         },
-        lualine_z = {
-          "tabs",
+      },
+      inactive_winbar = {
+        lualine_c = {
+          "filetype",
+          {
+            "filename",
+            path = 4,
+          },
         },
       },
-      winbar = {},
-      inactive_winbar = {},
       extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
     },
   },

@@ -16,7 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 require "settings"
 require "lsp"
 
-local symbols = require("utils")
+local symbols = require("utils").icons
+local keymaps = require("utils").keymaps
 
 require "lazy".setup("plugins", {
   ui = {
@@ -49,7 +50,7 @@ require "lazy".setup("plugins", {
         ["i"] = function () require("lazy").install() end,
         ["u"] = function () require("lazy").update() end,
         ["h"] = function () require("lazy").help() end,
-        ["q"] = false,
+        [keymaps.QuitNormal] = function() require("lazy").close() end,
       },
     },
   },

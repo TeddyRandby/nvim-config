@@ -11,10 +11,12 @@ M.keymaps = {
   Select = "<tab>",
   Expand = "<cr>",
   DeleteNormal = "x",
+  QuitNormal = "q"
 }
 
 M.icons = {
   -- OTHER
+  Codeium = " 󱙺 ",
   Copilot = " 󱙺 ",
   Text = " 󱔏 ",
   Method = "  ",

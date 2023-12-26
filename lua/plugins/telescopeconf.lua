@@ -155,11 +155,13 @@ return {
           buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
           mappings = {
             i = {
+              [keymaps.LeaveInsert] = "close",
               [keymaps.SelectNextInsert] = "move_selection_next",
               [keymaps.SelectPrevInsert] = "move_selection_previous",
               ["<C-t>"] = send_to_trouble,
             },
             n = {
+              [keymaps.QuitNormal] = "close",
               [keymaps.SelectNext] = "move_selection_next",
               [keymaps.SelectPrev] = "move_selection_previous",
               ["t"] = send_to_trouble,
