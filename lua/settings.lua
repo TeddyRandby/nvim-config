@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.filetype.add({
   extension = {
     gab = "gab",
+    hurl = "hurl",
   },
 })
 
@@ -11,7 +12,7 @@ local opts = { noremap = true, silent = true, nowait = true }
 -- Convenient escape from insert mode
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", opts)
--- Alt + h/j/k/l to switch active buffer left/down/up/right (in insert, normal, terminal mode)
+-- Alt + h/j/k/l to switch active bu<C-\\><C-N>ffer left/down/up/right (in insert, normal, terminal mode)
 vim.api.nvim_set_keymap("i", "<A-h>", "<C-\\><C-N><C-w>h", opts)
 vim.api.nvim_set_keymap("i", "<A-j>", "<C-\\><C-N><C-w>j", opts)
 vim.api.nvim_set_keymap("i", "<A-k>", "<C-\\><C-N><C-w>k", opts)
@@ -34,8 +35,10 @@ vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
 
 -- SHift + j/k to cycle through tabs
-vim.api.nvim_set_keymap("n", "J", "<cmd>tabn<cr>", opts)
-vim.api.nvim_set_keymap("n", "K", "<cmd>tabp<cr>", opts)
+vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>tabn<cr>", opts)
+vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>tabp<cr>", opts)
+vim.api.nvim_set_keymap("t", "J", "<C-\\><C-N><cmd>tabn<cr>", opts)
+vim.api.nvim_set_keymap("t", "K", "<C-\\><C-N><cmd>tabp<cr>", opts)
 
 vim.cmd([[set fcs=eob:\ ]])
 
@@ -74,6 +77,9 @@ local options = {
   updatetime = 250,
   background = "dark",
   wrap = false,
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldenable = false,
 }
 
 vim.opt.shortmess:append("c")

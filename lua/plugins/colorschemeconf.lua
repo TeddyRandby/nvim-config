@@ -10,6 +10,9 @@ return {
         return new_hl
       end
 
+      hl.InclineNormal = { bg = c.bg_highlight, fg = c.fg_dark }
+      hl.InclineNormalNC = { bg = c.bg_highlight, fg = c.fg_dark }
+
       hl.NormalFloat = { bg = c.bg_dark, fg = c.fg_dark }
       hl.FloatBorder = { bg = c.bg_dark, fg = c.bg_dark }
 
@@ -21,8 +24,6 @@ return {
 
       hl.MasonMutedBlock = hl.LazyButton
       hl.MasonHighlightBlock = hl.LazyButtonActive
-
-      hl.NeogitCursorLine = { bg = "none" }
 
       hl.NeogitDiffAdd = { fg = c.green, bg = hl.NormalFloat.bg }
       hl.NeogitDiffDelete = { fg = c.red, bg = hl.NormalFloat.bg }

@@ -1,20 +1,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = {
-      "kyazdani42/nvim-web-devicons",
-      {
-        "SmiteshP/nvim-navic",
-        opts = {
-          icons = require("utils").icons,
-          lsp = { auto_attach = true },
-          highlight = true,
-          separator = require("utils").icons.LeftSeparator,
-          depth_limit = 4,
-          safe_output = false,
-        },
-      },
-    },
+    dependencies = { "kyazdani42/nvim-web-devicons" },
     opts = {
       options = {
         icons_enabled = true,
@@ -27,28 +14,25 @@ return {
           left = require("utils").icons.LeftSeparator,
           right = require("utils").icons.RightSeparator
         },
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
-        },
-        ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = true,
         refresh = {
           statusline = 1000,
           tabline = 1000,
           winbar = 1000,
         },
+        globalstatusline = true,
       },
       sections = {
         lualine_a = {
-          "branch",
         },
         lualine_b = {
+          "branch",
           "diff",
         },
-        lualine_c = {},
+        lualine_c = {
+        },
         lualine_x = {
+          "diagnostics",
           function()
             local clients = vim.lsp.get_active_clients { bufnr = 0 }
             local names = {}
@@ -63,50 +47,24 @@ return {
           end,
         },
         lualine_y = {
-          {
-            "diagnostics",
-            symbols = {
-              error = require("utils").icons.Error,
-              warn = require("utils").icons.Warning,
-              info = require("utils").icons.Info,
-              hint = require("utils").icons.Hint,
-            }
-          },
+          "filetype",
         },
+        lualine_z = {},
+      },
+      tabline = {
+        lualine_a = { "buffers" },
+        lualine_b = {
+        },
+        lualine_c = {},
+        lualine_x = {
+        },
+        lualine_y = {},
         lualine_z = { "tabs" },
       },
-      inactive_sections = {},
-      tabline = {},
-      winbar = {
-        lualine_b = {
-          "filetype",
-          {
-            "filename",
-            path = 4,
-          },
-        },
-        lualine_c = {
-          {
-            padding = 0,
-            function()
-              return require("nvim-navic").get_location()
-            end,
-            cond = function()
-              return require("nvim-navic").is_available()
-            end,
-          },
-        },
-      },
-      inactive_winbar = {
-        lualine_c = {
-          "filetype",
-          {
-            "filename",
-            path = 4,
-          },
-        },
-      },
-      extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
     },
+    inactive_sections = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
   },
 }

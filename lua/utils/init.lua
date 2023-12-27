@@ -86,6 +86,9 @@ M.icons = {
   Pending = "󰄗 ",
   Chat = "󰭹 ",
   Tab = "󰓩 ",
+  Removed = "",
+  Changed = "",
+  Added = "",
 }
 
 M.signs = {
@@ -103,7 +106,10 @@ M.build_term = function(cmd)
   return {
     cmd = cmd,
     hidden = true,
-    direction = "horizontal",
+    direction = "tab",
+    size = function()
+      return vim.o.columns
+    end,
     highlights = {
       NormalFloat = { link = "NormalFloat" },
       FloatBorder = { link = "FloatBorder" },

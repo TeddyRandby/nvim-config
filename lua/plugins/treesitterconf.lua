@@ -30,6 +30,7 @@ return {
           "python",
           "javascript",
           "typescript",
+          "hurl",
         },
         highlight = {
           enable = true,
@@ -49,8 +50,8 @@ return {
               ["af"] = { query = "@function.outer", desc = "Select outer part of a function" },
               ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
               ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
-              ["is"] = { query = "@block.inner", desc = "Select the body of a bloc" },
-              ["as"] = { query = "@block.outer", desc = "Select an entire block" },
+              ["iu"] = { query = "@block.inner", desc = "Select the body of a block" },
+              ["au"] = { query = "@block.outer", desc = "Select an entire block" },
               ["ia"] = { query = "@parameter.inner", desc = "Select a parameter" },
               ["aa"] = { query = "@parameter.outer", desc = "Select a whole parameter list" },
             },

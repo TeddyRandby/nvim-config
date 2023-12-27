@@ -9,15 +9,14 @@ return {
       "hrsh7th/cmp-cmdline",
       "rcarriga/cmp-dap",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "zbirenbaum/copilot-cmp",
       "onsails/lspkind.nvim",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       local cmp = require("cmp")
 
       local keymaps = require("utils").keymaps
-
-      require("copilot_cmp").setup()
 
       local lspkind = require("lspkind")
 
@@ -48,12 +47,13 @@ return {
       }
 
       cmp.setup({
-        mapping = mapping,
-        confirmation = {
-          get_commit_characters = function()
-            return {}
+        snippet = {
+          -- REQUIRED - you must specify a snippet engine
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
+        mapping = mapping,
         window = {
           completion = cmp.config.window.bordered({
             winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
@@ -79,6 +79,7 @@ return {
           { name = "codeium" },
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
+          { name = "luasnip" },
           { name = "nvim_lua" },
           { name = "path" },
         },
