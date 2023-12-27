@@ -66,8 +66,8 @@ M.icons = {
   MiddleSeparator = "  ",
   LeftSeparator = "",
   RightSeparator = "",
-  LeftSeparatorSolid = "",
-  RightSeparatorSolid = "",
+  LeftSeparatorSolid = "",
+  RightSeparatorSolid = "",
   Empty = "󰝦 ",
   Selected = "󰙧 ",
   Error = "󰅚 ",
@@ -86,9 +86,9 @@ M.icons = {
   Pending = "󰄗 ",
   Chat = "󰭹 ",
   Tab = "󰓩 ",
-  Removed = "",
-  Changed = "",
-  Added = "",
+  Removed = " ",
+  Changed = " ",
+  Added = " ",
 }
 
 M.signs = {

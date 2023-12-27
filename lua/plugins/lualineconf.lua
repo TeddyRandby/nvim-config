@@ -20,45 +20,54 @@ return {
           tabline = 1000,
           winbar = 1000,
         },
-        globalstatusline = true,
+        globalstatus = true,
       },
+      tabline = {},
       sections = {
-        lualine_a = {
-        },
-        lualine_b = {
-          "branch",
-          "diff",
-        },
-        lualine_c = {
-        },
-        lualine_x = {
-          "diagnostics",
-          function()
-            local clients = vim.lsp.get_active_clients { bufnr = 0 }
-            local names = {}
-
-            for client in pairs(clients) do
-              local name = clients[client].name
-
-              table.insert(names, name)
-            end
-
-            return table.concat(names, require('utils').icons.MiddleSeparator)
-          end,
-        },
-        lualine_y = {
-          "filetype",
-        },
-        lualine_z = {},
-      },
-      tabline = {
-        lualine_a = {},
+        lualine_a = { "branch" },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
         lualine_z = { "tabs" },
       },
+      inactive_sections = {},
+      winbar = {
+        lualine_b = {
+          {
+            "filetype",
+            icon_only = true,
+          },
+          {
+            "filename",
+            path = 4,
+            file_status = false,
+          },
+        },
+        lualine_c = {
+          {
+            "diff",
+            symbols = {
+              added = require("utils").icons.Added,
+              modified = require("utils").icons.Changed,
+              removed = require("utils").icons.Removed,
+            },
+          },
+          {
+            "diagnostics",
+            symbols = {
+              error = require("utils").icons.Error,
+              warn = require("utils").icons.Warning,
+              hint = require("utils").icons.Hint,
+              info = require("utils").icons.Info,
+            },
+          },
+        },
+      },
+      inactive_winbar = {
+        lualine_x = {},
+      },
     },
-    inactive_sections = {},
-    winbar = {},
-    inactive_winbar = {},
     extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
   },
 }
