@@ -65,7 +65,36 @@ return {
         },
       },
       inactive_winbar = {
-        lualine_x = {},
+        lualine_b = {
+          {
+            "filetype",
+            icon_only = true,
+          },
+          {
+            "filename",
+            path = 4,
+            file_status = false,
+          },
+        },
+        lualine_c = {
+          {
+            "diff",
+            symbols = {
+              added = require("utils").icons.Added,
+              modified = require("utils").icons.Changed,
+              removed = require("utils").icons.Removed,
+            },
+          },
+          {
+            "diagnostics",
+            symbols = {
+              error = require("utils").icons.Error,
+              warn = require("utils").icons.Warning,
+              hint = require("utils").icons.Hint,
+              info = require("utils").icons.Info,
+            },
+          },
+        },
       },
     },
     extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
