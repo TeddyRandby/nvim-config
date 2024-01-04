@@ -31,6 +31,7 @@ return {
           "javascript",
           "typescript",
           "hurl",
+          "prisma",
         },
         highlight = {
           enable = true,
@@ -63,12 +64,13 @@ return {
             -- and should return the mode ('v', 'V', or '<c-v>') or a table
             -- mapping query_strings to modes.
             selection_modes = {
+              ["@parameter.inner"] = "v",    -- charwise
               ["@parameter.outer"] = "v",    -- charwise
-              ["@function.inner"] = "<c-v>", -- linewise
+              ["@function.inner"] = "v", -- linewise
               ["@function.outer"] = "V",     -- linewise
-              ["@class.inner"] = "<c-v>",    -- blockwise
+              ["@class.inner"] = "v",    -- blockwise
               ["@class.outer"] = "V",        -- blockwise
-              ["@block.inner"] = "<c-v>",
+              ["@block.inner"] = "v",
               ["@block.outer"] = "V",
             },
           },
