@@ -48,7 +48,6 @@
 ] @punctuation.delimiter
 
 [
-  "in"
   "do"
   "end"
 ] @keyword
@@ -81,6 +80,7 @@
   ">>"
   "<<"
   "^"
+  ".."
 ] @operator
 
 [

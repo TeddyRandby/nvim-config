@@ -33,6 +33,9 @@ return {
           "hurl",
           "prisma",
         },
+        indent = {
+          enable = true,
+        },
         highlight = {
           enable = true,
         },

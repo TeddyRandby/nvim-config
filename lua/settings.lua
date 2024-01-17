@@ -7,7 +7,12 @@ vim.filetype.add({
   },
 })
 
+
 local opts = { noremap = true, silent = true, nowait = true }
+
+-- Move the selected range up one, and correct indentation
+vim.api.nvim_set_keymap("v", "K", ":m -2<CR>==gv", opts)
+vim.api.nvim_set_keymap("v", "J", ":m +1<CR>==gv", opts)
 
 -- Convenient escape from insert mode
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
@@ -83,6 +88,7 @@ local options = {
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
   foldenable = false,
+  indentexpr = "nvim_treesitter#indentexpr()",
   showtabline = 0,
 }
 
