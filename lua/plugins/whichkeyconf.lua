@@ -9,10 +9,10 @@ return {
 
       local builder = require("utils").build_term
 
-      local lg = Terminal:new(builder("lazygit"))
-      local cl = Terminal:new(builder("clide"))
-      local rg = Terminal:new(builder("ranger"))
-      local sh = Terminal:new(builder(vim.o.shell))
+      local lg = Terminal:new(builder("lazygit", "tab"))
+      local sh = Terminal:new(builder(vim.o.shell, "tab"))
+      local cl = Terminal:new(builder("clide", "float"))
+      local rg = Terminal:new(builder("ranger", "horizontal"))
 
       wk.setup({
         window = {

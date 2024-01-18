@@ -102,11 +102,11 @@ M.signs = {
   DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
 }
 
-M.build_term = function(cmd)
+M.build_term = function(cmd, dir)
   return {
     cmd = cmd,
     hidden = true,
-    direction = "tab",
+    direction = dir or "tab",
     size = function()
       return vim.o.columns
     end,
