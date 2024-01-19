@@ -9,8 +9,7 @@ return {
         return new_hl
       end
 
-      hl.InclineNormal = { bg = c.bg_highlight, fg = c.fg_dark }
-      hl.InclineNormalNC = { bg = c.bg_highlight, fg = c.fg_dark }
+      hl.HelpVim = { bg = c.bg_highlight, fg = c.fg_highlight}
 
       hl.NormalFloat = { bg = c.bg_dark, fg = c.fg_dark }
       hl.FloatBorder = { bg = c.bg_dark, fg = c.bg_dark }
@@ -23,26 +22,6 @@ return {
 
       hl.MasonMutedBlock = hl.LazyButton
       hl.MasonHighlightBlock = hl.LazyButtonActive
-
-      hl.NeogitDiffAdd = { fg = c.green, bg = hl.NormalFloat.bg }
-      hl.NeogitDiffDelete = { fg = c.red, bg = hl.NormalFloat.bg }
-      hl.NeogitDiffContext = { fg = c.fg_dark, bg = hl.NormalFloat.bg }
-      hl.NeogitDiffHeader = { fg = c.fg_dark, bg = hl.NormalFloat.bg }
-
-      hl.NeogitDiffAddHighlight = { fg = hl.NeogitDiffAdd.fg, bg = c.bg_highlight }
-      hl.NeogitDiffDeleteHighlight = { fg = hl.NeogitDiffDelete.fg, bg = c.bg_highlight }
-      hl.NeogitDiffContextHighlight = { fg = hl.NeogitDiffContext.fg, bg = c.bg_highlight }
-      hl.NeogitDiffHeaderHighlight = { fg = hl.NeogitDiffHeader.fg, bg = c.bg_highlight }
-
-      hl.NeogitHunkHeader = swap_colors(hl.NeogitDiffHeader)
-      hl.NeogitHunkHeaderHighlight = hl.NeogitHunkHeader
-
-      hl.NeogitUntrackedfiles = { fg = c.cyan, bg = hl.NormalFloat.bg }
-      hl.NeogitUnstagedchanges = { fg = c.red, bg = hl.NormalFloat.bg }
-      hl.NeogitRecentcommits = { fg = c.yellow, bg = hl.NormalFloat.bg }
-
-      hl.NeogitStagedchanges = { fg = c.green, bg = hl.NormalFloat.bg }
-
 
       hl.TelescopeNormal = hl.NormalFloat
       hl.TelescopeBorder = hl.FloatBorder
@@ -102,38 +81,6 @@ return {
       hl.CmpItemKindInterface = { bg = c.pink, fg = hl.CmpItemKind.fg }
       hl.CmpItemKindColor = { bg = c.pink, fg = hl.CmpItemKind.fg }
       hl.CmpItemKindTypeParameter = { bg = c.pink, fg = hl.CmpItemKind.fg }
-
-      hl.NavicIconsFile = swap_colors(hl.CmpItemKindFile)
-      hl.NavicIconsModule = swap_colors(hl.CmpItemKindModule)
-      hl.NavicIconsNamespace = swap_colors(hl.CmpItemKindModule)
-      hl.NavicIconsPackage = swap_colors(hl.CmpItemKindModule)
-      hl.NavicIconsClass = swap_colors(hl.CmpItemKindClass)
-      hl.NavicIconsMethod = swap_colors(hl.CmpItemKindMethod)
-      hl.NavicIconsProperty = swap_colors(hl.CmpItemKindProperty)
-      hl.NavicIconsField = swap_colors(hl.CmpItemKindField)
-      hl.NavicIconsConstructor = swap_colors(hl.CmpItemKindConstructor)
-      hl.NavicIconsEnum = swap_colors(hl.CmpItemKindEnum)
-      hl.NavicIconsInterface = swap_colors(hl.CmpItemKindInterface)
-      hl.NavicIconsFunction = swap_colors(hl.CmpItemKindFunction)
-      hl.NavicIconsVariable = swap_colors(hl.CmpItemKindVariable)
-      hl.NavicIconsEnumMember = swap_colors(hl.CmpItemKindEnumMember)
-      hl.NavicIconsStruct = swap_colors(hl.CmpItemKindStruct)
-      hl.NavicIconsEvent = swap_colors(hl.CmpItemKindEvent)
-      hl.NavicIconsOperator = swap_colors(hl.CmpItemKindOperator)
-      hl.NavicIconsTypeParameter = swap_colors(hl.CmpItemKindTypeParameter)
-      hl.NavicIconsKeyword = swap_colors(hl.CmpItemKindKeyword)
-      hl.NavicIconsReference = swap_colors(hl.CmpItemKindReference)
-      hl.NavicIconsConstant = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsString = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsNumber = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsBoolean = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsArray = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsObject = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsNull = swap_colors(hl.CmpItemKindConstant)
-      hl.NavicIconsKey = swap_colors(hl.CmpItemKindConstant)
-
-      hl.NavicText = hl.NormalFloat
-      hl.NavicSeparator = hl.NormalFloat
     end,
   },
 }

@@ -1,4 +1,9 @@
 local keymaps = require('utils').keymaps
+
+local function format_icon(icon_name)
+  return " " .. require('utils').icons[icon_name] .. "  "
+end
+
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -6,8 +11,8 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       { "nvim-telescope/telescope-dap.nvim",        dependencies = { "mfussenegger/nvim-dap" } },
-      { 'LukasPietzschmann/telescope-tabs' },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { 'LukasPietzschmann/telescope-tabs' },
     },
     config = function()
       local telescope = require("telescope")
@@ -121,7 +126,7 @@ return {
           },
         },
         defaults = {
-          prompt_prefix = require("utils").icons.Telescope .. ' ',
+          prompt_prefix = format_icon("Telescope"),
           selection_caret = require("utils").icons.Selection,
           entry_prefix = require('utils').icons.Entry,
           initial_mode = "insert",
@@ -130,16 +135,11 @@ return {
           layout_strategy = "horizontal",
           layout_config = {
             horizontal = {
-              prompt_position = "top",
               preview_width = 0,
-              results_width = 1,
+              anchor = "N",
+              prompt_position = "top",
+              width = 0.6,
             },
-            vertical = {
-              mirror = true,
-            },
-            width = 70,
-            height = 0.35,
-            anchor = "N",
           },
           file_sorter = require("telescope.sorters").get_fuzzy_file,
           file_ignore_patterns = { "node_modules", ".git/", "dist/", "build/" },

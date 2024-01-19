@@ -1,3 +1,7 @@
+local function format_icon(icon_name)
+  return "  " .. require('utils').icons[icon_name]
+end
+
 return {
   {
     "folke/noice.nvim",
@@ -5,16 +9,19 @@ return {
     opts = {
       cmdline = {
         format = {
-          cmdline = { pattern = "^:", icon = require('utils').icons.Command, lang = "vim" },
-          cd = { kind = "cmd", pattern = "^:cd%s+", icon = require('utils').icons.Folder },
-          tcd = { kind = "cmd", pattern = "^:tcd%s+", icon = require('utils').icons.Folder },
-          edit = { kind = "cmd", pattern = "^:ed?i?t?%s+", icon = require('utils').icons.Edit },
-          man = { kind = "cmd", pattern = "^:Man%s+", icon = require('utils').icons.Help, lang = "man" },
-          telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = require('utils').icons.Telescope },
-          tab = { kind = "cmd", pattern = "^:tab%s+", icon = require('utils').icons.Tab },
-
-          filter = { pattern = "^:%s*!", icon = require('utils').icons.Shell, lang = "bash"},
-          git = { pattern = "^:%s*!%s*git%s+", icon = require('utils').icons.Git, lang = "bash" },
+          cmdline = { pattern = "^:", icon = format_icon("Command"), lang = "vim" },
+          cd = { kind = "cmd", pattern = "^:cd%s+", icon = format_icon("Folder") },
+          tcd = { kind = "cmd", pattern = "^:tcd%s+", icon = format_icon("Folder") },
+          edit = { kind = "cmd", pattern = "^:ed?i?t?%s+", icon = format_icon("Edit") },
+          help = { kind = "cmd", pattern = "^:help%s+", icon = format_icon("Help") },
+          man = { kind = "cmd", pattern = "^:Man%s+", icon = format_icon("Help"), lang = "man" },
+          telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = format_icon("Telescope") },
+          tab = { kind = "cmd", pattern = "^:tab%s+", icon = format_icon("Tab") },
+          filter = { pattern = "^:%s*!", icon = format_icon("Filter"), lang = "bash" },
+          git = { pattern = "^:%s*!%s*git%s+", icon = format_icon("Git"), lang = "bash" },
+          search_down = { kind = "search", pattern = "^/", icon = format_icon("SearchDown"), lang = "regex" },
+          search_up = { kind = "search", pattern = "^%?", icon = format_icon("SearchUp"), lang = "regex" },
+          lua = { pattern = "^:%s*lua%s+", icon = format_icon("Lua"), lang = "lua" },
         },
       },
       messages = {
@@ -22,9 +29,23 @@ return {
         view_error = "notify",
         view_search = "virtualtext"
       },
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 2,
+            col = 0.5,
+          },
+          size = {
+            width = 0.6,
+          },
+          border = {
+            padding = { 0, -1 },
+          },
+        },
+      },
       popupmenu = {
         enabled = true,
-        backend = "cmp",
+        backend = "nui",
         kind_icons = false,
       },
       lsp = {
