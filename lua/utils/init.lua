@@ -133,18 +133,12 @@ end
 M.build_qpicker = function(opts)
   return vim.tbl_deep_extend("force", {
     initial_mode = "normal",
-    layout_config = {
-      height = 0.4,
-    },
   }, opts)
 end
 
 M.build_picker = function(opts)
   return vim.tbl_deep_extend("force", {
     initial_mode = "insert",
-    layout_config = {
-      height = 0.8,
-    },
   }, opts)
 end
 

@@ -1,7 +1,7 @@
 local keymaps = require('utils').keymaps
 
 local function format_icon(icon_name)
-  return " " .. require('utils').icons[icon_name] .. "  "
+  return require('utils').icons[icon_name] .. " "
 end
 
 return {
@@ -9,16 +9,30 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       { "nvim-telescope/telescope-dap.nvim",        dependencies = { "mfussenegger/nvim-dap" } },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { 'LukasPietzschmann/telescope-tabs' },
     },
     config = function()
+      local layout = require("nui.layout")
+      local popup = require("nui.popup")
+
       local telescope = require("telescope")
       local entry_display = require("telescope.pickers.entry_display")
+
+      local tslayout = require("telescope.pickers.layout")
+
+      local function make_popup(options)
+        local p = popup(options)
+
+        return tslayout.Window(p)
+      end
+
       local strings = require("plenary.strings")
-      local picker = require("utils").build_picker
+
+      local ipicker = require("utils").build_picker
       local qpicker = require("utils").build_qpicker
 
       local function send_to_trouble(prompt_bufnr)
@@ -43,14 +57,14 @@ return {
             },
           },
 
-          live_grep = picker {},
-          old_files = picker {},
-          find_files = picker {},
-          lsp_document_symbols = picker {},
-          lsp_workspace_symbols = picker {},
-          lsp_dynamic_workspace_symbols = picker {},
+          live_grep = ipicker {},
+          old_files = ipicker {},
+          find_files = ipicker {},
+          lsp_document_symbols = ipicker {},
+          lsp_workspace_symbols = ipicker {},
+          lsp_dynamic_workspace_symbols = ipicker {},
 
-          git_branches = picker {
+          git_branches = ipicker {
             mappings = {
               n = {
                 [require('utils').keymaps.DeleteNormal] = "git_delete_branch",
@@ -126,6 +140,39 @@ return {
           },
         },
         defaults = {
+          create_layout = function(picker)
+            local results = make_popup({
+              border = {
+                style = "none",
+                padding = { 1, 2 },
+              },
+            })
+
+            local prompt = make_popup({
+              enter = true,
+              border = {
+                style = "none",
+                padding = { 1, 2 },
+              },
+            })
+
+            local box = layout.Box({
+              layout.Box(prompt, { size = 3 }),
+              layout.Box(results, { grow = 1 }),
+            }, { dir = "col" })
+
+            local lo = layout({
+              relative = "editor",
+              position = { row = 2, col = 0.5 },
+              size = picker.layout_config.horizontal.size,
+            }, box)
+
+            lo.picker = picker
+            lo.results = results
+            lo.prompt = prompt
+
+            return tslayout(lo)
+          end,
           prompt_prefix = format_icon("Telescope"),
           selection_caret = require("utils").icons.Selection,
           entry_prefix = require('utils').icons.Entry,
@@ -135,10 +182,10 @@ return {
           layout_strategy = "horizontal",
           layout_config = {
             horizontal = {
-              preview_width = 0,
-              anchor = "N",
-              prompt_position = "top",
-              width = 0.6,
+              size = {
+                height = 0.35,
+                width = 0.6
+              },
             },
           },
           file_sorter = require("telescope.sorters").get_fuzzy_file,

@@ -13,10 +13,10 @@ return {
           cd = { kind = "cmd", pattern = "^:cd%s+", icon = format_icon("Folder") },
           tcd = { kind = "cmd", pattern = "^:tcd%s+", icon = format_icon("Folder") },
           edit = { kind = "cmd", pattern = "^:ed?i?t?%s+", icon = format_icon("Edit") },
-          help = { kind = "cmd", pattern = "^:help%s+", icon = format_icon("Help") },
+          help = { kind = "cmd", pattern = "^:h?e?l?p?%s+", icon = format_icon("Help") },
           man = { kind = "cmd", pattern = "^:Man%s+", icon = format_icon("Help"), lang = "man" },
           telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = format_icon("Telescope") },
-          tab = { kind = "cmd", pattern = "^:tab%s+", icon = format_icon("Tab") },
+          tab = { kind = "cmd", pattern = "^:tab+", icon = format_icon("Tab") },
           filter = { pattern = "^:%s*!", icon = format_icon("Filter"), lang = "bash" },
           git = { pattern = "^:%s*!%s*git%s+", icon = format_icon("Git"), lang = "bash" },
           search_down = { kind = "search", pattern = "^/", icon = format_icon("SearchDown"), lang = "regex" },
@@ -31,15 +31,12 @@ return {
       },
       views = {
         cmdline_popup = {
-          position = {
-            row = 2,
-            col = 0.5,
-          },
-          size = {
-            width = 0.6,
-          },
+          relative = "editor",
+          position = { row = 3, col = 0.5 },
+          size = { width = 0.6 },
           border = {
-            padding = { 0, -1 },
+            style = "none",
+            padding = { 1, 0 },
           },
         },
       },
