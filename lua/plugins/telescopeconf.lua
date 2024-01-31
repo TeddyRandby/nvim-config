@@ -144,7 +144,7 @@ return {
             local results = make_popup({
               border = {
                 style = "none",
-                padding = { 1, 2 },
+                padding = { 0, 2, 1, 2 },
               },
             })
 
@@ -164,6 +164,10 @@ return {
             local lo = layout({
               relative = "editor",
               position = { row = 2, col = 0.5 },
+              border = {
+                style = "none",
+                padding = { 1, 1 },
+              },
               size = picker.layout_config.horizontal.size,
             }, box)
 

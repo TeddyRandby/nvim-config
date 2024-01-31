@@ -1,5 +1,5 @@
 local function format_icon(icon_name)
-  return "  " .. require('utils').icons[icon_name]
+  return require('utils').icons[icon_name]
 end
 
 return {
@@ -36,7 +36,7 @@ return {
           size = { width = 0.6 },
           border = {
             style = "none",
-            padding = { 1, 0 },
+            padding = { 1, 2 },
           },
         },
       },
