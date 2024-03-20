@@ -1,7 +1,10 @@
+local keymaps = require('utils').keymaps
+
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
     {
+      "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
       opts = {
         floating = {
@@ -9,9 +12,8 @@ return {
         },
         mappings = {
           edit = "i",
-          expand = { "l", "h" },
-          open = "<cr>",
-          remove = "x",
+          open = keymaps.Select,
+          remove = keymaps.DeleteNormal,
           repl = "r",
           toggle = "t"
         },

@@ -12,7 +12,6 @@ return {
       "onsails/lspkind.nvim",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      "danymat/neogen",
     },
     config = function()
       local cmp = require("cmp")
@@ -113,8 +112,6 @@ return {
           { name = "cmdline" },
         }),
       })
-
-      require('neogen').setup({ snippet_engine = "luasnip" })
     end,
   },
 }
