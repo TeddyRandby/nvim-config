@@ -5,7 +5,7 @@ return {
       {
         "williamboman/mason-lspconfig.nvim",
         opts = {
-          ensure_installed = { "prismals", "bashls", "tsserver", "jsonls", "sqlls", "gopls", "swift_mesonls", "lua_ls", "clangd" },
+          ensure_installed = { "prismals", "bashls", "tsserver", "jsonls", "sqlls", "gopls", "lua_ls", "clangd", "eslint" },
           handlers = {
             function(server)
               local cmp_nvim_lsp = require("cmp_nvim_lsp")

@@ -16,30 +16,32 @@ vim.opt.rtp:prepend(lazypath)
 require "settings"
 require "lsp"
 
-local symbols = require("utils").icons
-local keymaps = require("utils").keymaps
+local utils = require("utils")
+
+local symbols = utils.icons
+local keymaps = utils.keymaps
 
 require "lazy".setup("plugins", {
   ui = {
     size = { width = 0.8, height = 0.8 },
-    border = "solid",
+    border = utils.BorderStyle,
     pills = false,
     icons = {
       cmd = symbols.Shell,
-      config = "",
       event = symbols.Event,
       ft = symbols.File,
-      init = " ",
       import = symbols.Move,
-      keys = " ",
-      lazy = "󰒲 ",
       loaded = symbols.Installed,
       not_loaded = symbols.Uninstalled,
-      plugin = " ",
-      runtime = " ",
-      source = " ",
-      start = "",
-      task = "✔ ",
+      config = symbols.Config,
+      init = symbols.Config,
+      keys =symbols.Keys,
+      lazy = symbols.Lazy,
+      plugin = symbols.Plugin,
+      runtime = symbols.Runtime,
+      source = symbols.Source,
+      start = symbols.Start,
+      task = symbols.Task,
       list = {
         "●",
         "➜",
@@ -47,9 +49,9 @@ require "lazy".setup("plugins", {
         "‒",
       },
       custom_keys = {
-        ["i"] = function () require("lazy").install() end,
-        ["u"] = function () require("lazy").update() end,
-        ["h"] = function () require("lazy").help() end,
+        ["i"] = function() require("lazy").install() end,
+        ["u"] = function() require("lazy").update() end,
+        ["h"] = function() require("lazy").help() end,
         [keymaps.QuitNormal] = function() require("lazy").close() end,
       },
     },

@@ -1,5 +1,18 @@
 local M = {}
 
+M.strtruncate = function(str, len, replace)
+  replace = replace or "..."
+  str = vim.trim(str or "")
+
+  if #str > (len + #replace) then
+    return vim.fn.strcharpart(str, 0, len - #replace) .. replace
+  end
+
+  return str or ""
+end
+
+M.BorderStyle = "rounded"
+
 M.keymaps = {
   ScrollUp = "<C-u>",
   ScrollDown = "<C-d>",
@@ -93,6 +106,16 @@ M.icons = {
   Removed = " ",
   Changed = " ",
   Added = " ",
+  Config = "",
+  Init = " ",
+  Keys = " ",
+  Lazy = "󰒲 ",
+  Plugin = " ",
+  Runtime = " ",
+  Source = " ",
+  Start = "",
+  Task = "✔ ",
+  -- LAZY
 }
 
 M.signs = {
@@ -106,28 +129,36 @@ M.signs = {
   DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
 }
 
-M.build_term = function(cmd, dir)
-  return {
-    cmd = cmd,
-    hidden = true,
-    direction = dir or "tab",
-    size = function()
-      return vim.o.columns
-    end,
-    highlights = {
-      NormalFloat = { link = "NormalFloat" },
-      FloatBorder = { link = "FloatBorder" },
-    },
-    close_on_exit = true,
-    on_create = function()
-      vim.api.nvim_create_autocmd("BufLeave", { buffer = 0, command = ":q" })
-    end,
-    on_exit = function(_, _, exit_code, name)
-      if exit_code ~= 0 then
-        vim.notify(name .. " exited with code " .. exit_code, vim.log.levels.ERROR)
-      end
-    end,
-  }
+M.build_term = function(cmd)
+  return function ()
+    local bid = vim.api.nvim_create_buf(false, true)
+    assert(bid ~= 0, "Failed to create buffer")
+
+    local wid = vim.api.nvim_open_win(bid, true, {
+      relative = 'editor',
+      col = vim.fn.floor(vim.o.columns * 0.1),
+      row = vim.fn.floor(vim.o.lines * 0.1),
+      width = vim.fn.floor(vim.o.columns * 0.8),
+      height = vim.fn.floor(vim.o.lines * 0.8),
+      border = M.BorderStyle,
+      style = "minimal",
+    })
+    assert(wid ~= 0, "Failed to create window")
+
+    local close_window = function() vim.api.nvim_win_close(wid, true) end
+
+    vim.api.nvim_create_autocmd("BufLeave", { buffer = 0, command = ":q" })
+
+    local jid = vim.fn.termopen(cmd, {
+      on_exit = close_window,
+      on_stderr = function(_, data)
+        vim.notify_once(data, vim.log.levels.ERROR)
+      end,
+    })
+    assert(jid ~= 0, "Failed to open job")
+
+    vim.cmd [[ startinsert ]]
+  end
 end
 
 M.build_qpicker = function(opts)

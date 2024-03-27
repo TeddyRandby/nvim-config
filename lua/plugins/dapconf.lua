@@ -1,4 +1,5 @@
-local keymaps = require('utils').keymaps
+local utils = require('utils')
+local keymaps = utils.keymaps
 
 return {
   "mfussenegger/nvim-dap",
@@ -8,7 +9,7 @@ return {
       "rcarriga/nvim-dap-ui",
       opts = {
         floating = {
-          border = "solid",
+          border = utils.BorderStyle,
         },
         mappings = {
           edit = "i",

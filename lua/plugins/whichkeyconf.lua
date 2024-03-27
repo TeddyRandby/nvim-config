@@ -1,18 +1,15 @@
 return {
   {
     "folke/which-key.nvim",
-    dependencies = { "akinsho/toggleterm.nvim" },
     config = function()
       local wk = require("which-key")
 
-      local Terminal = require("toggleterm.terminal").Terminal
-
       local builder = require("utils").build_term
 
-      local lg = Terminal:new(builder("lazygit", "tab"))
-      local sh = Terminal:new(builder(vim.o.shell, "tab"))
-      local cl = Terminal:new(builder("clide", "float"))
-      local rg = Terminal:new(builder("ranger", "horizontal"))
+      local lg = builder("lazygit", "tab")
+      local sh = builder(vim.o.shell, "tab")
+      local cl = builder("clide", "float")
+      local rg = builder("ranger", "horizontal")
 
       wk.setup({
         window = {
@@ -56,13 +53,13 @@ return {
 
       wk.register({
 
-        ["e"] = { function() rg:open() end, "[RANGER]" },
+        ["e"] = { function() rg() end, "[RANGER]" },
 
-        ["v"] = { function() lg:open() end, "[LAZYGIT]" },
+        ["v"] = { function() lg() end, "[LAZYGIT]" },
 
-        ["c"] = { function() cl:open() end, "[CLIDE]" },
+        ["c"] = { function() cl() end, "[CLIDE]" },
 
-        ["s"] = { function() sh:open() end, "[SHELL]" },
+        ["s"] = { function() sh() end, "[SHELL]" },
 
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 

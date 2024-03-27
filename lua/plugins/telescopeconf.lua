@@ -1,4 +1,5 @@
 local keymaps = require('utils').keymaps
+local borderStyle = require('utils').BorderStyle
 
 local function format_icon(icon_name)
   return require('utils').icons[icon_name] .. " "
@@ -29,8 +30,6 @@ return {
 
         return tslayout.Window(p)
       end
-
-      local strings = require("plenary.strings")
 
       local ipicker = require("utils").build_picker
       local qpicker = require("utils").build_qpicker
@@ -87,72 +86,22 @@ return {
             end,
             close_tab_shortcut_n = require('utils').keymaps.DeleteNormal,
           },
-          ["ui-select"] = {
-            qpicker {},
-            specific_opts = {
-              ["codeaction"] = {
-                make_indexed = function(items)
-                  local indexed_items = {}
-                  local widths = {
-                    command_title = 0,
-                    client_name = 0,
-                  }
-                  for idx, item in ipairs(items) do
-                    local client = vim.lsp.get_client_by_id(item[1])
-                    local entry = {
-                      idx = idx,
-                      ["add"] = {
-                        command_title = item[2].title:gsub("\r\n", "\\r\\n"):gsub("\n", "\\n"),
-                        client_name = client and client.name or "",
-                      },
-                      text = item,
-                    }
-                    table.insert(indexed_items, entry)
-
-                    widths.command_title = math.max(
-                      widths.command_title,
-                      strings.strdisplaywidth(entry.add.command_title)
-                    )
-
-                    widths.client_name =
-                        math.max(widths.client_name, strings.strdisplaywidth(entry.add.client_name))
-                  end
-                  return indexed_items, widths
-                end,
-                make_displayer = function(widths)
-                  return entry_display.create({
-                    separator = " ",
-                    items = {
-                      { width = widths.command_title },
-                      { width = widths.client_name },
-                    },
-                  })
-                end,
-                make_display = function(displayer)
-                  return function(e)
-                    return displayer({
-                      { e.value.add.command_title },
-                    })
-                  end
-                end,
-              },
-            },
-          },
+          ["ui-select"] = { qpicker {} },
         },
         defaults = {
           create_layout = function(picker)
             local results = make_popup({
               border = {
-                style = "none",
-                padding = { 0, 2, 1, 2 },
+                style = borderStyle,
+                -- padding = { 0, 2, 1, 2 },
               },
             })
 
             local prompt = make_popup({
               enter = true,
               border = {
-                style = "none",
-                padding = { 1, 2 },
+                style = borderStyle,
+                -- padding = { 1, 2 },
               },
             })
 
@@ -164,10 +113,6 @@ return {
             local lo = layout({
               relative = "editor",
               position = { row = 2, col = 0.5 },
-              border = {
-                style = "none",
-                padding = { 1, 1 },
-              },
               size = picker.layout_config.horizontal.size,
             }, box)
 

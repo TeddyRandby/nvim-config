@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -9,35 +11,30 @@ return {
       "hrsh7th/cmp-cmdline",
       "rcarriga/cmp-dap",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "onsails/lspkind.nvim",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       local cmp = require("cmp")
 
-      local keymaps = require("utils").keymaps
-
-      local lspkind = require("lspkind")
-
       local mapping = {
-        [keymaps.ScrollUp] = cmp.mapping.scroll_docs(-4),
-        [keymaps.ScrollDown] = cmp.mapping.scroll_docs(4),
-        [keymaps.Select] = cmp.mapping(
+        [utils.keymaps.ScrollUp] = cmp.mapping.scroll_docs(-4),
+        [utils.keymaps.ScrollDown] = cmp.mapping.scroll_docs(4),
+        [utils.keymaps.Select] = cmp.mapping(
           cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
           }),
           { "i", "s", "c" }
         ),
-        [keymaps.SelectNextInsert] = cmp.mapping(function(fallback)
+        [utils.keymaps.SelectNextInsert] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           else
             fallback()
           end
         end, { "i", "s", "c" }),
-        [keymaps.SelectPrevInsert] = cmp.mapping(function(fallback)
+        [utils.keymaps.SelectPrevInsert] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
           else
@@ -54,13 +51,24 @@ return {
           end,
         },
         mapping = mapping,
+        view = {
+          entries = "custom",
+          docs = {
+            auto_open = true,
+          },
+        },
         window = {
-          completion = cmp.config.window.bordered({
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-          }),
-          documentation = cmp.config.window.bordered({
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-          }),
+          completion = {
+            winhighlight = "FloatBorder:FloatBorder",
+            border = require("utils").BorderStyle,
+            col_offset = 0,
+            side_padding = 0,
+          },
+          documentation = {
+            winhighlight = "FloatBorder:FloatBorder",
+            border = require("utils").BorderStyle,
+            maxwidth = 10,
+          },
         },
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -69,11 +77,12 @@ return {
         },
         formatting = {
           fields = { "kind", "abbr", "menu" },
-          format = lspkind.cmp_format({
-            mode = "symbol",
-            maxwidth = 50,
-            symbol_map = require('utils').icons,
-          }),
+          format = function(_, vim_item)
+            vim_item.kind = (utils.icons[vim_item.kind] or '')
+            vim_item.abbr = utils.strtruncate(vim_item.abbr, 30, "")
+            vim_item.menu = utils.strtruncate(vim_item.menu, 20)
+            return vim_item
+          end,
         },
         sources = {
           { name = "codeium" },
