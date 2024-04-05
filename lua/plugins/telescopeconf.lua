@@ -21,7 +21,6 @@ return {
       local popup = require("nui.popup")
 
       local telescope = require("telescope")
-      local entry_display = require("telescope.pickers.entry_display")
 
       local tslayout = require("telescope.pickers.layout")
 
@@ -73,27 +72,16 @@ return {
         },
         extensions = {
           ["telescope-tabs"] = qpicker {
-            entry_formatter = function(tabid, buffer_ids, file_names, file_paths, is_current)
-              local cwd = vim.fn.expand(
-                vim.fn.haslocaldir(-1, tabid) and vim.fn.getcwd(-1, tabid) or ""
-              )
-
-              local entry_string = table.concat(vim.tbl_map(function(v)
-                return vim.fn.fnamemodify(v, ":t")
-              end, file_paths), ', ')
-
-              return string.format('%s: %s', cwd, entry_string)
-            end,
             close_tab_shortcut_n = require('utils').keymaps.DeleteNormal,
           },
-          ["ui-select"] = { qpicker {} },
+          ["ui-select"] = qpicker {},
         },
         defaults = {
           create_layout = function(picker)
             local results = make_popup({
               border = {
                 style = borderStyle,
-                -- padding = { 0, 2, 1, 2 },
+                padding = { 0, 2 },
               },
             })
 
@@ -101,8 +89,8 @@ return {
               enter = true,
               border = {
                 style = borderStyle,
-                -- padding = { 1, 2 },
               },
+              padding = { 0, 2 },
             })
 
             local box = layout.Box({

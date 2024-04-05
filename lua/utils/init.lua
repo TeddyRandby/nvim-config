@@ -129,7 +129,8 @@ M.signs = {
   DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
 }
 
-M.build_term = function(cmd)
+M.build_term = function(cmd, title)
+  title = title or cmd
   return function ()
     local bid = vim.api.nvim_create_buf(false, true)
     assert(bid ~= 0, "Failed to create buffer")
@@ -142,6 +143,8 @@ M.build_term = function(cmd)
       height = vim.fn.floor(vim.o.lines * 0.8),
       border = M.BorderStyle,
       style = "minimal",
+      title = title,
+      title_pos = "center",
     })
     assert(wid ~= 0, "Failed to create window")
 

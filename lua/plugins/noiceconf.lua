@@ -1,5 +1,5 @@
 local function format_icon(icon_name)
-  return require('utils').icons[icon_name]
+  return " " .. require('utils').icons[icon_name]
 end
 
 return {
@@ -31,12 +31,13 @@ return {
       },
       views = {
         cmdline_popup = {
+          enter = true,
           relative = "editor",
           position = { row = 3, col = 0.5 },
           size = { width = 0.6 },
           border = {
             style = "none",
-            padding = { 1, 2 },
+            padding = { 1, 0 },
           },
         },
       },

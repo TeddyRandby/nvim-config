@@ -4,8 +4,8 @@ local keymaps = utils.keymaps
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
+    "nvim-neotest/nvim-nio",
     {
-      "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
       opts = {
         floating = {
@@ -13,7 +13,8 @@ return {
         },
         mappings = {
           edit = "i",
-          open = keymaps.Select,
+          expand = keymaps.Select,
+          open = keymaps.Expand,
           remove = keymaps.DeleteNormal,
           repl = "r",
           toggle = "t"

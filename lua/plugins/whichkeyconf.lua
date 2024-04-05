@@ -6,10 +6,9 @@ return {
 
       local builder = require("utils").build_term
 
-      local lg = builder("lazygit", "tab")
-      local sh = builder(vim.o.shell, "tab")
-      local cl = builder("clide", "float")
-      local rg = builder("ranger", "horizontal")
+      local lg = builder("lazygit")
+      local sh = builder(vim.o.shell)
+      local cl = builder("clide")
 
       wk.setup({
         window = {
@@ -52,9 +51,6 @@ return {
       }, v_opts)
 
       wk.register({
-
-        ["e"] = { function() rg() end, "[RANGER]" },
-
         ["v"] = { function() lg() end, "[LAZYGIT]" },
 
         ["c"] = { function() cl() end, "[CLIDE]" },

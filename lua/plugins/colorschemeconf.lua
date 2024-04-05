@@ -2,6 +2,12 @@ return {
   "folke/tokyonight.nvim",
   priority = 1000,
   opts = {
+    terminal_colors = true,
+    styles = {
+      comments = { italic = true },
+      sidebars = "normal",
+      floats = "light",
+    },
     on_highlights = function(hl, c)
       local function swap_colors(h)
         local new_hl = {}
@@ -9,7 +15,7 @@ return {
         return new_hl
       end
 
-      hl.HelpVim = { bg = c.bg_highlight, fg = c.fg_highlight}
+      hl.HelpVim = { bg = c.bg_highlight, fg = c.fg_highlight }
 
       hl.NormalFloat = { bg = c.bg_dark, fg = c.fg_dark }
       hl.FloatBorder = { bg = c.bg_dark, fg = c.bg_dark }
