@@ -13,7 +13,7 @@ return {
           cd = { kind = "cmd", pattern = "^:cd%s+", icon = format_icon("Folder") },
           tcd = { kind = "cmd", pattern = "^:tcd%s+", icon = format_icon("Folder") },
           edit = { kind = "cmd", pattern = "^:ed?i?t?%s+", icon = format_icon("Edit") },
-          help = { kind = "cmd", pattern = "^:h?e?l?p?%s+", icon = format_icon("Help") },
+          help = { kind = "cmd", pattern = "^:he?l?p?%s+", icon = format_icon("Help") },
           man = { kind = "cmd", pattern = "^:Man%s+", icon = format_icon("Help"), lang = "man" },
           telescope = { kind = "cmd", pattern = "^:Tele?s?c?o?p?e?%s+", icon = format_icon("Telescope") },
           tab = { kind = "cmd", pattern = "^:tab+", icon = format_icon("Tab") },
@@ -31,7 +31,6 @@ return {
       },
       views = {
         cmdline_popup = {
-          enter = true,
           relative = "editor",
           position = { row = 3, col = 0.5 },
           size = { width = 0.6 },
