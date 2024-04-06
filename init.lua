@@ -25,7 +25,6 @@ require "lazy".setup("plugins", {
   ui = {
     size = { width = 0.8, height = 0.8 },
     border = utils.BorderStyle,
-    pills = false,
     icons = {
       cmd = symbols.Shell,
       event = symbols.Event,
