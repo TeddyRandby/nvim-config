@@ -43,10 +43,10 @@ vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
 
 -- Shift + j/k to cycle through tabs
-vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>tabn<cr>", opts)
-vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>tabp<cr>", opts)
-vim.api.nvim_set_keymap("t", "J", "<C-\\><C-N><cmd>tabn<cr>", opts)
-vim.api.nvim_set_keymap("t", "K", "<C-\\><C-N><cmd>tabp<cr>", opts)
+vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>TabooNext skip<cr>", opts)
+vim.api.nvim_set_keymap("t", "J", "<C-\\><C-N><cmd>TabooNext skip<cr>", opts)
+vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>TabooPrev skip<cr>", opts)
+vim.api.nvim_set_keymap("t", "K", "<C-\\><C-N><cmd>TabooPrev skip<cr>", opts)
 
 vim.cmd([[set fcs=eob:\ ]])
 

@@ -4,12 +4,6 @@ return {
     config = function()
       local wk = require("which-key")
 
-      local builder = require("utils").build_term
-
-      local lg = builder("lazygit")
-      local sh = builder(vim.o.shell)
-      local cl = builder("clide")
-
       wk.setup({
         window = {
           border = "none",
@@ -51,11 +45,11 @@ return {
       }, v_opts)
 
       wk.register({
-        ["v"] = { function() lg() end, "[LAZYGIT]" },
+        ["v"] = { "<cmd>TabooLaunch lazygit<cr>", "[LAZYGIT]" },
 
-        ["c"] = { function() cl() end, "[CLIDE]" },
+        ["c"] = { "<cmd>TabooLaunch clide<cr>", "[CLIDE]" },
 
-        ["s"] = { function() sh() end, "[SHELL]" },
+        ["s"] = { "<cmd>TabooLaunch shell<cr>", "[SHELL]" },
 
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
