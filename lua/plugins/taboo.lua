@@ -1,1 +1,5 @@
-return { dir = "~/repos/taboo.nvim", opts = {} }
+return {
+  -- dir = "~/repos/taboo.nvim",
+  "TeddyRandby/taboo.nvim",
+  opts = {},
+}
