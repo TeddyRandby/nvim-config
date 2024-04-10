@@ -3,7 +3,7 @@ return {
   name = "catppuccin",
   priority = 1000,
   opts = {
-    flavour = "mocha",
+    flavour = "frappe",
     term_colors = true,
     styles = {
       comments = { "italic" },

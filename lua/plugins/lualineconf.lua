@@ -1,3 +1,15 @@
+local function lsp_clients()
+  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+
+  local names = {}
+
+  for _, value in ipairs(clients) do
+    table.insert(names, value.name)
+  end
+
+  return table.concat(names, require("utils").icons.MiddleSeparator)
+end
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -24,12 +36,12 @@ return {
       },
       tabline = {},
       sections = {
-        lualine_a = { "branch" },
+        lualine_a = { "mode", "branch" },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { "tabs" },
+        lualine_z = { lsp_clients },
       },
       inactive_sections = {},
       winbar = {
