@@ -5,7 +5,7 @@ return {
     opts = {
       options = {
         icons_enabled = true,
-        theme = "auto",
+        theme = "catppuccin",
         section_separators = {
           left = require("utils").icons.LeftSeparatorSolid,
           right = require("utils").icons.RightSeparatorSolid
