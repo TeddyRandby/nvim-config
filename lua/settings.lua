@@ -93,7 +93,7 @@ local options = {
 vim.opt.shortmess:append("c")
 
 for key, value in pairs(options) do
-  vim.opt[key] = value
+  vim.opt_global[key] = value
 end
 
 vim.o.guicursor= 'n-v-c-sm-i-ci-ve:block,a:Cursor/lCursor'
