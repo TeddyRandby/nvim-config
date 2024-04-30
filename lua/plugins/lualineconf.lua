@@ -16,6 +16,9 @@ return {
     dependencies = { "kyazdani42/nvim-web-devicons" },
     opts = {
       options = {
+        disabled_filetypes = {
+          winbar = { "taboo" },
+        },
         icons_enabled = true,
         theme = "catppuccin",
         section_separators = {
