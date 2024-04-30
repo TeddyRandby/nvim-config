@@ -51,6 +51,11 @@ return {
 
         ["s"] = { "<cmd>TabooLaunch shell<cr>", "[SHELL]" },
 
+        ["o"] = { "<cmd>TabooToggle<cr>", "[TABOO]" },
+
+        ["n"] = { "<cmd>TabooLaunch new<cr>", "[TAB+]" },
+
+
         ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
 
         ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
