@@ -1,147 +1,75 @@
 return {
   {
     "folke/which-key.nvim",
-    config = function()
-      local wk = require("which-key")
-
-      wk.setup({
-        window = {
-          border = "none",
-          position = "bottom",
-          margin = { 1, 0, 1, 0 },
-          padding = { 2, 2, 2, 2 },
-          winblend = 0,
-        },
-        layout = {
-          height = { min = 4, max = 25 },
-          width = { min = 20, max = 50 },
-          spacing = 4,
-          align = "center",
-        },
-      })
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      local v_opts = {
-        mode = "v",
-        prefix = "<leader>",
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      wk.register({
-        ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment" },
-        ["d"] = {
-          name = "[DAP]",
-          ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
-        },
-      }, v_opts)
-
-      wk.register({
-        ["v"] = { "<cmd>TabooLaunch lazygit<cr>", "[LAZYGIT]" },
-
-        ["c"] = { "<cmd>TabooLaunch clide<cr>", "[CLIDE]" },
-
-        ["s"] = { "<cmd>TabooLaunch shell<cr>", "[SHELL]" },
-
-        ["o"] = { "<cmd>TabooToggle<cr>", "[TABOO]" },
-
-        ["n"] = { "<cmd>TabooLaunch new<cr>", "[TAB+]" },
-
-
-        ["y"] = { "<cmd>Mason<cr>", "[MASON]" },
-
-        ["z"] = { "<cmd>Lazy<cr>", "[LAZY]" },
-
-        ["d"] = { "<cmd>lua require('dapui').toggle() <cr>", "[DEBUG]" },
-
-        ["/"] = { "<Plug>(comment_toggle_linewise_current)", "[COMMENT] Line" },
-
-        [";"] = { "<cmd>Alpha<cr>", "[HOME]" },
-
-        ["t"] = { "<cmd>TroubleToggle<cr>", "[TROUBLE]" },
-
-        ["f"] = {
-          name = "[FILE]",
-
-          -- Finders
-          ["F"] = { "<cmd>Telescope find_files<cr>", "[FIND] File" },
-          ["O"] = { "<cmd>Telescope oldfiles<cr>", "[FIND] Recent" },
-          ["B"] = { "<cmd>Telescope buffers<cr>", "[FIND] Buffers" },
-          ["W"] = { "<cmd>Telescope live_grep<cr>", "[FIND] Word" },
-          ["M"] = { "<cmd>Telescope marks<cr>", "[FIND] Marks" },
-          ["T"] = { "<cmd>Telescope telescope-tabs list_tabs<cr>", "[FIND] Tabs" },
-        },
-
-        -- LSP
-        ["l"] = {
-          name = "[LSP]",
-
-          ["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Preview diagnostic" },
-          ["j"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
-          ["k"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
-          ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-          ["f"] = { "<cmd>lua vim.lsp.buf.format{ async = true}<cr>", "Format" },
-          ["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-          ["h"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
-          ["i"] = { "<cmd>LspInfo<cr>", "Info" },
-
-          -- Finders
-          ["R"] = { "<cmd>Telescope lsp_references<cr>", "[FIND] Reference" },
-          ["D"] = { "<cmd>Telescope lsp_definitions<cr>", "[FIND] Definition" },
-          ["I"] = { "<cmd>Telescope lsp_implementations<cr>", "[FIND] Implementation" },
-          ["S"] = { "<cmd>Telescope lsp_document_symbols<cr>", "[FIND] Symbol" },
-          ["E"] = { "<cmd>Telescope diagnostics<cr>", "[FIND] Diagnostics" },
-        },
-
-        -- Git
-        ["g"] = {
-          name = "[GIT]",
-
-          ["h"] = { "<cmd>Gitsigns preview_hunk_inline<cr>", "View hunk" },
-
-          ["j"] = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
-          ["k"] = { "<cmd>Gitsigns prev_hunk<cr>", "Previous hunk" },
-
-          ["b"] = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
-
-          ["B"] = { "<cmd>Telescope git_branches<cr>", "[FIND] Branches" },
-          ["S"] = { "<cmd>Telescope git_status<cr>", "[FIND] Status" },
-        },
-
-        -- Dap
-        ["b"] = {
-          name = "[DEBUG]",
-
-          ["c"] = {
-            "<cmd>DapLoadLaunchJSON<cr><cmd>DapContinue<cr>",
-            "Continue",
+    opts = {
+      spec = {
+        {
+          mode = { "v" },
+          {
+            "<leader>/",
+            "<Plug>(comment_toggle_linewise_visual)",
           },
-          ["j"] = { "<cmd>DapStepOver<cr>", "Step over" },
-          ["k"] = { "<cmd>DapStepOut<cr>", "Step out" },
-          ["i"] = { "<cmd>DapStepInto<cr>", "Step into" },
-
-          ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
-
-          ["h"] = { "<cmd>lua require('dapui').elements.watches.add()<cr>", "Hover" },
-
-          ["C"] = {
-            "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations initial_mode=normal<cr>",
-            "[FIND] Configurations",
+          {
+            "<leader>d",
+            group = "[DAP]",
           },
-          ["B"] = {
-            "<cmd>Telescope dap list_breakpoints initial_mode=normal<cr>",
-            "[FIND] Breakpoints",
-          },
+          {
+            "<leader>dh",
+            "<cmd>lua require('dapui').elements.watches.add()<cr>",
+          }
         },
-      }, opts)
-    end,
+        {
+          mode = { "n" },
+          { "<leader>/",  "<Plug>(comment_toggle_linewise_current)",                                             desc = "[COMMENT] Line",        nowait = true, remap = false },
+          { "<leader>;",  "<cmd>Alpha<cr>",                                                                      desc = "[HOME]",                nowait = true, remap = false },
+          { "<leader>b",  group = "[DEBUG]",                                                                     nowait = true,                  remap = false },
+          { "<leader>bB", "<cmd>Telescope dap list_breakpoints initial_mode=normal<cr>",                         desc = "[FIND] Breakpoints",    nowait = true, remap = false },
+          { "<leader>bC", "<cmd>DapLoadLaunchJSON<cr><cmd>Telescope dap configurations initial_mode=normal<cr>", desc = "[FIND] Configurations", nowait = true, remap = false },
+          { "<leader>bb", "<cmd>DapToggleBreakpoint<cr>",                                                        desc = "Toggle breakpoint",     nowait = true, remap = false },
+          { "<leader>bc", "<cmd>DapLoadLaunchJSON<cr><cmd>DapContinue<cr>",                                      desc = "Continue",              nowait = true, remap = false },
+          { "<leader>bh", "<cmd>lua require('dapui').elements.watches.add()<cr>",                                desc = "Hover",                 nowait = true, remap = false },
+          { "<leader>bi", "<cmd>DapStepInto<cr>",                                                                desc = "Step into",             nowait = true, remap = false },
+          { "<leader>bj", "<cmd>DapStepOver<cr>",                                                                desc = "Step over",             nowait = true, remap = false },
+          { "<leader>bk", "<cmd>DapStepOut<cr>",                                                                 desc = "Step out",              nowait = true, remap = false },
+          { "<leader>c",  "<cmd>TabooLaunch clide<cr>",                                                          desc = "[CLIDE]",               nowait = true, remap = false },
+          { "<leader>d",  "<cmd>lua require('dapui').toggle() <cr>",                                             desc = "[DEBUG]",               nowait = true, remap = false },
+          { "<leader>f",  group = "[FILE]",                                                                      nowait = true,                  remap = false },
+          { "<leader>fB", "<cmd>Telescope buffers<cr>",                                                          desc = "[FIND] Buffers",        nowait = true, remap = false },
+          { "<leader>fF", "<cmd>Telescope find_files<cr>",                                                       desc = "[FIND] File",           nowait = true, remap = false },
+          { "<leader>fM", "<cmd>Telescope marks<cr>",                                                            desc = "[FIND] Marks",          nowait = true, remap = false },
+          { "<leader>fO", "<cmd>Telescope oldfiles<cr>",                                                         desc = "[FIND] Recent",         nowait = true, remap = false },
+          { "<leader>fT", "<cmd>Telescope telescope-tabs list_tabs<cr>",                                         desc = "[FIND] Tabs",           nowait = true, remap = false },
+          { "<leader>fW", "<cmd>Telescope live_grep<cr>",                                                        desc = "[FIND] Word",           nowait = true, remap = false },
+          { "<leader>g",  group = "[GIT]",                                                                       nowait = true,                  remap = false },
+          { "<leader>gB", "<cmd>Telescope git_branches<cr>",                                                     desc = "[FIND] Branches",       nowait = true, remap = false },
+          { "<leader>gS", "<cmd>Telescope git_status<cr>",                                                       desc = "[FIND] Status",         nowait = true, remap = false },
+          { "<leader>gb", "<cmd>Gitsigns blame_line<cr>",                                                        desc = "Blame line",            nowait = true, remap = false },
+          { "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>",                                               desc = "View hunk",             nowait = true, remap = false },
+          { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>",                                                         desc = "Next hunk",             nowait = true, remap = false },
+          { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>",                                                         desc = "Previous hunk",         nowait = true, remap = false },
+          { "<leader>l",  group = "[LSP]",                                                                       nowait = true,                  remap = false },
+          { "<leader>lD", "<cmd>Telescope lsp_definitions<cr>",                                                  desc = "[FIND] Definition",     nowait = true, remap = false },
+          { "<leader>lE", "<cmd>Telescope diagnostics<cr>",                                                      desc = "[FIND] Diagnostics",    nowait = true, remap = false },
+          { "<leader>lI", "<cmd>Telescope lsp_implementations<cr>",                                              desc = "[FIND] Implementation", nowait = true, remap = false },
+          { "<leader>lR", "<cmd>Telescope lsp_references<cr>",                                                   desc = "[FIND] Reference",      nowait = true, remap = false },
+          { "<leader>lS", "<cmd>Telescope lsp_document_symbols<cr>",                                             desc = "[FIND] Symbol",         nowait = true, remap = false },
+          { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",                                              desc = "Code action",           nowait = true, remap = false },
+          { "<leader>le", "<cmd>lua vim.diagnostic.open_float()<cr>",                                            desc = "Preview diagnostic",    nowait = true, remap = false },
+          { "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true}<cr>",                                      desc = "Format",                nowait = true, remap = false },
+          { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>",                                                    desc = "Hover",                 nowait = true, remap = false },
+          { "<leader>li", "<cmd>LspInfo<cr>",                                                                    desc = "Info",                  nowait = true, remap = false },
+          { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>",                                             desc = "Next diagnostic",       nowait = true, remap = false },
+          { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>",                                             desc = "Prev diagnostic",       nowait = true, remap = false },
+          { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",                                                   desc = "Rename",                nowait = true, remap = false },
+          { "<leader>n",  "<cmd>TabooLaunch new<cr>",                                                            desc = "[TAB+]",                nowait = true, remap = false },
+          { "<leader>o",  "<cmd>TabooToggle<cr>",                                                                desc = "[TABOO]",               nowait = true, remap = false },
+          { "<leader>s",  "<cmd>TabooLaunch shell<cr>",                                                          desc = "[SHELL]",               nowait = true, remap = false },
+          { "<leader>t",  "<cmd>TroubleToggle<cr>",                                                              desc = "[TROUBLE]",             nowait = true, remap = false },
+          { "<leader>v",  "<cmd>TabooLaunch lazygit<cr>",                                                        desc = "[LAZYGIT]",             nowait = true, remap = false },
+          { "<leader>y",  "<cmd>Mason<cr>",                                                                      desc = "[MASON]",               nowait = true, remap = false },
+          { "<leader>z",  "<cmd>Lazy<cr>",                                                                       desc = "[LAZY]",                nowait = true, remap = false },
+        }
+      },
+    },
   },
 }
