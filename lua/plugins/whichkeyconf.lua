@@ -7,7 +7,7 @@ return {
           mode = { "v" },
           {
             "<leader>/",
-            "<Plug>(comment_toggle_linewise_visual)",
+            "gc",
           },
           {
             "<leader>d",
@@ -20,7 +20,7 @@ return {
         },
         {
           mode = { "n" },
-          { "<leader>/",  "<Plug>(comment_toggle_linewise_current)",                                             desc = "[COMMENT] Line",        nowait = true, remap = false },
+          { "<leader>/",  "gcc",                                                                                 desc = "[COMMENT] Line",        nowait = true, remap = false },
           { "<leader>;",  "<cmd>Alpha<cr>",                                                                      desc = "[HOME]",                nowait = true, remap = false },
           { "<leader>b",  group = "[DEBUG]",                                                                     nowait = true,                  remap = false },
           { "<leader>bB", "<cmd>Telescope dap list_breakpoints initial_mode=normal<cr>",                         desc = "[FIND] Breakpoints",    nowait = true, remap = false },
