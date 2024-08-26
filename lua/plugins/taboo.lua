@@ -1,6 +1,6 @@
 return {
-  -- dir = "~/repos/taboo.nvim",
-  "TeddyRandby/taboo.nvim",
+  dir = "~/repos/taboo.nvim",
+  --"TeddyRandby/taboo.nvim",
   config = function()
     local taboo = require "taboo"
 
