@@ -1,6 +1,6 @@
 return {
-  dir = "~/repos/taboo.nvim",
-  --"TeddyRandby/taboo.nvim",
+  -- dir = "~/repos/taboo.nvim",
+  "TeddyRandby/taboo.nvim",
   config = function()
     local taboo = require "taboo"
 
@@ -9,14 +9,16 @@ return {
         "new",
         "clide",
         "lazygit",
-        "dapui",
         "shell",
       },
       launchers = {
-        clide = taboo.launcher("clide", { insert = true, term = true }),
+        clide = taboo.launcher("clide", { term = true }),
       },
       icons = {
         clide = "󰅏",
+      },
+      settings = {
+        clide = { insert = true },
       },
     }
   end,
