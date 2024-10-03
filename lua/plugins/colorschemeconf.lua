@@ -1,29 +1,29 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  "ellisonleao/gruvbox.nvim",
   priority = 1000,
+  config = true,
   opts = {
-    flavour = "frappe",
-    term_colors = true,
-    styles = {
-      comments = { "italic" },
+    terminal_colors = true, -- add neovim terminal colors
+    undercurl = true,
+    underline = true,
+    bold = true,
+    italic = {
+      strings = true,
+      emphasis = true,
+      comments = true,
+      operators = false,
+      folds = true,
     },
-    default_integrations = true,
-    integrations = {
-      cmp = true,
-      notify = true,
-      gitsigns = true,
-      treesitter = true,
-      alpha = true,
-      mason = true,
-      noice = true,
-      dap = true,
-      dap_ui = true,
-      telescope = {
-        enabled = true,
-      },
-      lsp_trouble = true,
-      which_key = true,
-    },
-  },
+    strikethrough = true,
+    invert_selection = false,
+    invert_signs = false,
+    invert_tabline = false,
+    invert_intend_guides = false,
+    inverse = true, -- invert background for search, diffs, statuslines and errors
+    contrast = "", -- can be "hard", "soft" or empty string
+    palette_overrides = {},
+    overrides = {},
+    dim_inactive = false,
+    transparent_mode = false,
+  }
 }

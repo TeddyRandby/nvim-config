@@ -20,7 +20,7 @@ return {
           winbar = { "taboo" },
         },
         icons_enabled = true,
-        theme = "catppuccin",
+        theme = "gruvbox",
         section_separators = {
           left = require("utils").icons.LeftSeparatorSolid,
           right = require("utils").icons.RightSeparatorSolid
@@ -40,77 +40,43 @@ return {
       tabline = {},
       sections = {
         lualine_a = { "mode", "branch" },
-        lualine_b = {},
-        lualine_c = {},
+        lualine_b = {
+          {
+            "filetype",
+            icon_only = true,
+          },
+          {
+            "filename",
+            path = 4,
+            file_status = false,
+          },
+        },
+        lualine_c = {
+          {
+            "diff",
+            symbols = {
+              added = require("utils").icons.Added,
+              modified = require("utils").icons.Changed,
+              removed = require("utils").icons.Removed,
+            },
+          },
+          {
+            "diagnostics",
+            symbols = {
+              error = require("utils").icons.Error,
+              warn = require("utils").icons.Warning,
+              hint = require("utils").icons.Hint,
+              info = require("utils").icons.Info,
+            },
+          },
+        },
         lualine_x = {},
         lualine_y = {},
         lualine_z = { lsp_clients },
       },
       inactive_sections = {},
-      winbar = {
-        lualine_b = {
-          {
-            "filetype",
-            icon_only = true,
-          },
-          {
-            "filename",
-            path = 4,
-            file_status = false,
-          },
-        },
-        lualine_c = {
-          {
-            "diff",
-            symbols = {
-              added = require("utils").icons.Added,
-              modified = require("utils").icons.Changed,
-              removed = require("utils").icons.Removed,
-            },
-          },
-          {
-            "diagnostics",
-            symbols = {
-              error = require("utils").icons.Error,
-              warn = require("utils").icons.Warning,
-              hint = require("utils").icons.Hint,
-              info = require("utils").icons.Info,
-            },
-          },
-        },
-      },
-      inactive_winbar = {
-        lualine_b = {
-          {
-            "filetype",
-            icon_only = true,
-          },
-          {
-            "filename",
-            path = 4,
-            file_status = false,
-          },
-        },
-        lualine_c = {
-          {
-            "diff",
-            symbols = {
-              added = require("utils").icons.Added,
-              modified = require("utils").icons.Changed,
-              removed = require("utils").icons.Removed,
-            },
-          },
-          {
-            "diagnostics",
-            symbols = {
-              error = require("utils").icons.Error,
-              warn = require("utils").icons.Warning,
-              hint = require("utils").icons.Hint,
-              info = require("utils").icons.Info,
-            },
-          },
-        },
-      },
+      winbar = {},
+      inactive_winbar = {},
     },
     extensions = { "trouble", "nvim-dap-ui", "lazy", "toggleterm", "man" },
   },
