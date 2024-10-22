@@ -1,5 +1,5 @@
 local function lsp_clients()
-  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
 
   local names = {}
 
@@ -20,7 +20,7 @@ return {
           winbar = { "taboo" },
         },
         icons_enabled = true,
-        theme = "gruvbox",
+        theme = "auto",
         section_separators = {
           left = require("utils").icons.LeftSeparatorSolid,
           right = require("utils").icons.RightSeparatorSolid
