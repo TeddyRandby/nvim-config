@@ -2,12 +2,14 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
+      preset = "helix",
       spec = {
         {
           mode = { "v" },
           {
             "<leader>/",
             "gc",
+            remap = true,
           },
           {
             "<leader>d",
@@ -20,7 +22,7 @@ return {
         },
         {
           mode = { "n" },
-          { "<leader>/",  "gcc",                                                                                 desc = "[COMMENT] Line", },
+          { "<leader>/",  "gcc",                                                                                 desc = "[COMMENT] Line",        remap = true },
           { "<leader>;",  "<cmd>Alpha<cr>",                                                                      desc = "[HOME]",                nowait = true, remap = false },
           { "<leader>b",  group = "[DEBUG]",                                                                     nowait = true,                  remap = false },
           { "<leader>bB", "<cmd>Telescope dap list_breakpoints initial_mode=normal<cr>",                         desc = "[FIND] Breakpoints",    nowait = true, remap = false },
@@ -32,9 +34,9 @@ return {
           { "<leader>bj", "<cmd>DapStepOver<cr>",                                                                desc = "Step over",             nowait = true, remap = false },
           { "<leader>bk", "<cmd>DapStepOut<cr>",                                                                 desc = "Step out",              nowait = true, remap = false },
           { "<leader>n",  "<cmd>tabnew<cr>",                                                                     desc = "[TAB+]",                nowait = true, remap = false },
-          { "<leader>c",  "<cmd>tabnew term://clide<cr>",                                          desc = "[CLIDE]",               nowait = true, remap = false },
-          { "<leader>s",  "<cmd>tabnew term://" .. vim.o.shell .. "<cr>",                          desc = "[SHELL]",               nowait = true, remap = false },
-          { "<leader>v",  "<cmd>tabnew term://lazygit<cr>",                                        desc = "[LAZYGIT]",             nowait = true, remap = false },
+          { "<leader>c",  "<cmd>tabnew term://clide<cr>",                                                        desc = "[CLIDE]",               nowait = true, remap = false },
+          { "<leader>s",  "<cmd>tabnew term://" .. vim.o.shell .. "<cr>",                                        desc = "[SHELL]",               nowait = true, remap = false },
+          { "<leader>v",  "<cmd>tabnew term://lazygit<cr>",                                                      desc = "[LAZYGIT]",             nowait = true, remap = false },
           { "<leader>d",  "<cmd>lua require('dapui').toggle() <cr>",                                             desc = "[DEBUG]",               nowait = true, remap = false },
           { "<leader>f",  group = "[FILE]",                                                                      nowait = true,                  remap = false },
           { "<leader>fB", "<cmd>Telescope buffers<cr>",                                                          desc = "[FIND] Buffers",        nowait = true, remap = false },
