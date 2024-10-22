@@ -10,6 +10,11 @@ vim.filetype.add({
 
 local opts = { noremap = true, silent = true, nowait = true }
 
+vim.api.nvim_create_autocmd({"BufWinEnter", "WinEnter"}, {
+  pattern = "term://*",
+  command = "startinsert",
+})
+
 -- Move the selected range up one, and correct indentation
 vim.api.nvim_set_keymap("v", "K", ":m -2<CR>==gv", opts)
 vim.api.nvim_set_keymap("v", "J", ":m +1<CR>==gv", opts)
@@ -29,8 +34,10 @@ vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
 vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
 
 -- Shift + j/k to cycle through tabs
-vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>TabooNext skip preview<cr>", opts)
-vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>TabooPrev skip preview<cr>", opts)
+vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>tabnext<cr>", opts)
+vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>tabprev<cr>", opts)
+vim.api.nvim_set_keymap("t", "J", "<C-\\><C-N><cmd>tabnext<cr>", opts)
+vim.api.nvim_set_keymap("t", "K", "<C-\\><C-N><cmd>tabprev<cr>", opts)
 
 vim.cmd([[set fcs=eob:\ ]])
 

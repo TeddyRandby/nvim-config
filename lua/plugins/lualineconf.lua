@@ -37,7 +37,14 @@ return {
         },
         globalstatus = true,
       },
-      tabline = {},
+      tabline = {
+        lualine_z = {
+          {
+            "tabs",
+            mode = 1,
+          },
+        },
+      },
       sections = {
         lualine_a = { "mode", "branch" },
         lualine_b = {
@@ -70,7 +77,12 @@ return {
             },
           },
         },
-        lualine_x = {},
+        lualine_x = {
+          {
+            "windows",
+            mode = 0,
+          },
+        },
         lualine_y = {},
         lualine_z = { lsp_clients },
       },
