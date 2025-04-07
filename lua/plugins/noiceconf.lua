@@ -4,6 +4,7 @@ end
 
 return {
   {
+    enabled = false,
     "folke/noice.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
@@ -40,19 +41,15 @@ return {
         },
       },
       popupmenu = {
-        enabled = true,
+        enabled = false,
         backend = "nui",
         kind_icons = false,
       },
       lsp = {
+        enabled = false,
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         progress = { enabled = false },
         signature = { enabled = false },
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
       },
       -- you can enable a preset for easier configuration
       presets = {

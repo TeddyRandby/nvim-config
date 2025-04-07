@@ -69,17 +69,17 @@ M.icons = {
   Selection = " ",
   Entry = " ",
   Lua = "",
-  Telescope="",
-  SearchDown=" ",
-  SearchUp=" ",
-  Shell="",
-  Edit="󱇧",
-  Move="󰪹",
-  Filter="",
-  Help="",
-  Command="",
-  Git="󰊢",
-  Tab="󰓩",
+  Telescope = "",
+  SearchDown = " ",
+  SearchUp = " ",
+  Shell = "",
+  Edit = "󱇧",
+  Move = "󰪹",
+  Filter = "",
+  Help = "",
+  Command = "",
+  Git = "󰊢",
+  Tab = "󰓩",
   MiddleSeparator = "  ",
   LeftSeparator = "",
   RightSeparator = "",
@@ -129,9 +129,79 @@ M.signs = {
   DapBreakpointRejected = { text = M.icons.Error, texthl = "DiagnosticError" },
 }
 
+M.lsp_groups = function()
+  local lsp_groups = {
+    "@lsp.type.string",
+    "@lsp.type.method",
+    "@lsp.type.function",
+    "@lsp.type.function",
+    "@lsp.type.property",
+    "@variable",
+    "@lsp.type.class",
+    "@lsp.type.interface",
+    "@module",
+    "@lsp.type.property",
+    "@lsp.type.unit",
+    "@variable",
+    "@lsp.type.enum",
+    "@lsp.type.keyword",
+    "@lsp.type.builtin",
+    "@lsp.type.keyword",
+    "@lsp.type.keyword",
+    "@lsp.type.keyword",
+    "@lsp.type.keyword",
+    "@lsp.type.enumMember",
+    "@constant",
+    "@lsp.type.struct",
+    "@lsp.type.event",
+    "@lsp.type.operator",
+    "@lsp.type.typeParameter",
+  }
+
+  return vim.tbl_map(function(name)
+    if not name then
+      return ""
+    end
+
+    local hl = vim.api.nvim_get_hl(0, { name = name, link = false })
+    local hl_name = name .. ".icon"
+    vim.api.nvim_set_hl(0, hl_name, { bold = true, fg = "bg", bg = hl.fg })
+
+    return hl_name
+  end, lsp_groups)
+end
+
+M.lsp_icons = {
+  M.icons.Text,
+  M.icons.Method,
+  M.icons.Function,
+  M.icons.Constructor,
+  M.icons.Field,
+  M.icons.Variable,
+  M.icons.Class,
+  M.icons.Interface,
+  M.icons.Module,
+  M.icons.Property,
+  M.icons.Unit,
+  M.icons.Variable,
+  M.icons.Enum,
+  M.icons.Keyword,
+  M.icons.Snippet,
+  M.icons.Color,
+  M.icons.File,
+  M.icons.Reference,
+  M.icons.Folder,
+  M.icons.EnumMember,
+  M.icons.Constant,
+  M.icons.Struct,
+  M.icons.Event,
+  M.icons.Operator,
+  M.icons.TypeParamete
+}
+
 M.build_term = function(cmd, title)
   title = title or cmd
-  return function ()
+  return function()
     local bid = vim.api.nvim_create_buf(false, true)
     assert(bid ~= 0, "Failed to create buffer")
 
@@ -156,7 +226,7 @@ M.build_term = function(cmd, title)
       on_exit = close_window,
       on_stderr = function(_, data)
         vim.notify_once(data, vim.log.levels.ERROR)
-      end,
+      end
     })
     assert(jid ~= 0, "Failed to open job")
 

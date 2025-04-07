@@ -30,10 +30,12 @@ vim.api.nvim_set_keymap("n", "<Left>", "<C-w><", opts)
 vim.api.nvim_set_keymap("n", "<Right>", "<C-w>>", opts)
 
 -- Shift + h/l to cycle through buffers
-vim.api.nvim_set_keymap("n", "L", "<cmd>bn<cr>", opts)
-vim.api.nvim_set_keymap("n", "H", "<cmd>bp<cr>", opts)
+vim.api.nvim_set_keymap("n", "L", "<C-\\><C-N><cmd>bufnext<cr>", opts)
+vim.api.nvim_set_keymap("n", "H", "<C-\\><C-N><cmd>bufprev<cr>", opts)
+vim.api.nvim_set_keymap("t", "L", "<C-\\><C-N><cmd>bufnext<cr>", opts)
+vim.api.nvim_set_keymap("t", "H", "<C-\\><C-N><cmd>bufprev<cr>", opts)
 
--- Shift + j/k to cycle through tabs
+-- Shift + j/k to cycle through tab
 vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>tabnext<cr>", opts)
 vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>tabprev<cr>", opts)
 vim.api.nvim_set_keymap("t", "J", "<C-\\><C-N><cmd>tabnext<cr>", opts)
@@ -69,7 +71,6 @@ local options = {
   cursorline = false,
   mouse = "a",
   cmdheight = 1,
-  pumheight = 15,
   undodir = "/tmp/.nvimdid",
   undofile = true,
   laststatus = 3,
@@ -81,6 +82,9 @@ local options = {
   foldenable = false,
   indentexpr = "nvim_treesitter#indentexpr()",
   showtabline = 0,
+  completeopt = "noinsert,menuone,popup",
+  completeitemalign = "kind,abbr,menu",
+  pumheight = 0,
 }
 
 vim.opt.shortmess:append("c")

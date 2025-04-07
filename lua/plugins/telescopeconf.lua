@@ -155,7 +155,7 @@ return {
         },
       })
 
-      local extensions = { "dap", "noice", "fzf", "ui-select", "telescope-tabs" }
+      local extensions = { "dap", --[["noice",]] "fzf", "ui-select", "telescope-tabs" }
 
       for _, ext in ipairs(extensions) do
         telescope.load_extension(ext)
