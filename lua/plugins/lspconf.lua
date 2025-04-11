@@ -96,24 +96,10 @@ return {
                           kind = icon,
                           -- abbr_hlgroup = "@character",
                           kind_hlgroup = iconhl,
-                          menu = item.menu,
                         }
                       end
                     })
 
-                    -- Use enter to accept completions.
-                    keymap('<cr>', function()
-                      return pumvisible() and '<C-y>' or '<cr>'
-                    end, { expr = true }, 'i', bufnr)
-
-                    -- Use slash to dismiss the completion menu.
-                    keymap('/', function()
-                      return pumvisible() and '<C-e>' or '/'
-                    end, { expr = true }, 'i', bufnr)
-
-                    -- Use <C-n> to navigate to the next completion or:
-                    -- - Trigger LSP completion.
-                    -- - If there's no one, fallback to vanilla omnifunc.
                     keymap('<C-j>', function()
                       if pumvisible() then
                         feedkeys '<Down>'
