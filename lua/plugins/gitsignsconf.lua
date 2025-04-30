@@ -27,9 +27,6 @@ return {
       update_debounce = 150,
       status_formatter = nil,
       max_file_length = 40000,
-      yadm = {
-        enable = false,
-      },
       trouble = true,
     },
   },

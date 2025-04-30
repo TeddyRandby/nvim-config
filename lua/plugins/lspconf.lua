@@ -10,6 +10,7 @@ local function keymap(lhs, rhs, opts, mode, bufnr)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+
 ---For replacing certain <C-x>... keymaps.
 ---@param keys string
 local function feedkeys(keys)
@@ -40,10 +41,6 @@ return {
 
               local conf = vim.tbl_extend("keep", conf_ok and try_conf or {}, {
                 on_attach = function(client, bufnr)
-                  if client.supports_method("textDocument/inlayHints") then
-                    vim.lsp.inlay_hint.enable(true)
-                  end
-
                   if client.supports_method("textDocument/signatureHelp") then
                     -- Maybe there is some keymaps or something to be done here?
                   end
@@ -67,6 +64,7 @@ return {
                       update_in_insert = false,
                     })
                   end
+
 
                   -- Enable completion and configure keybindings.
                   if client.supports_method("textDocument/completion") then
@@ -115,6 +113,14 @@ return {
                         feedkeys '<C-k>'
                       end
                     end, 'Select prev completion', 'i', bufnr)
+
+                    keymap('<CR>', function()
+                      if pumvisible() then
+                        feedkeys '<C-e><CR>'
+                      else
+                        feedkeys '<CR>'
+                      end
+                    end, 'Override default enter completion', 'i', bufnr)
 
                     -- Buffer completions.
                     keymap('<C-u>', '<C-x><C-n>', { desc = 'Buffer completions' }, 'i', bufnr)
