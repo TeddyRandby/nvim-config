@@ -40,10 +40,10 @@ return {
       }
 
       dashboard.section.buttons.val = {
-        button("הּ f F", "  Find File", "<cmd>Telescope find_files<cr>"),
-        button("הּ f W", "  Find Word", "<cmd>Telescope live_grep<cr>"),
-        button("הּ f O", "󱋢  Recent", "<cmd>Telescope oldfiles<cr>"),
-        button("הּ f M", "  Bookmarks", "<cmd>Telescope marks<cr>"),
+        button("הּ f F", "  Find File", "<cmd>FzfLua files<cr>"),
+        button("הּ f W", "  Find Word", "<cmd>FzfLua grep_cword<cr>"),
+        button("הּ f O", "󱋢  Recent", "<cmd>FzfLua oldfiles<cr>"),
+        button("הּ f M", "  Bookmarks", "<cmd>FzfLua marks<cr>"),
       }
 
       dashboard.section.footer.val = ""

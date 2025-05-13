@@ -29,7 +29,7 @@ return {
       {
         "williamboman/mason-lspconfig.nvim",
         opts = {
-          ensure_installed = { "prismals", "bashls", "jsonls", "sqlls", "gopls", "lua_ls", "clangd", "eslint" },
+          ensure_installed = { "bashls", "jsonls", "sqlls", "gopls", "lua_ls", "clangd", "basedpyright" },
           handlers = {
             function(server)
               -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -57,7 +57,7 @@ return {
                       float = {
                         source = false,
                         prefix = "",
-                        border = require('utils').BorderStyle ,
+                        border = require('utils').BorderStyle,
                       },
                       signs = false,
                       underline = true,

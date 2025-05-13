@@ -6,7 +6,7 @@ return {
       {
         "jay-babu/mason-null-ls.nvim",
         opts = {
-          ensure_installed = { "prettier_d" },
+          ensure_installed = { "prettier_d", "google_java_format",  },
         },
       },
 		},
@@ -17,6 +17,7 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.formatting.google_java_format
 				},
 			})
 		end,
