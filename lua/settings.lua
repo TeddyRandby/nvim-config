@@ -30,16 +30,12 @@ vim.api.nvim_set_keymap("n", "<Left>", "<C-w><", opts)
 vim.api.nvim_set_keymap("n", "<Right>", "<C-w>>", opts)
 
 -- Shift + h/l to cycle through buffers
-vim.api.nvim_set_keymap("n", "L", "<C-\\><C-N><cmd>bufnext<cr>", opts)
-vim.api.nvim_set_keymap("n", "H", "<C-\\><C-N><cmd>bufprev<cr>", opts)
-vim.api.nvim_set_keymap("t", "L", "<C-\\><C-N><cmd>bufnext<cr>", opts)
-vim.api.nvim_set_keymap("t", "H", "<C-\\><C-N><cmd>bufprev<cr>", opts)
+vim.api.nvim_set_keymap("n", "L", "<C-\\><C-N><cmd>bnext<cr>", opts)
+vim.api.nvim_set_keymap("n", "H", "<C-\\><C-N><cmd>bprev<cr>", opts)
 
 -- Shift + j/k to cycle through tab
 vim.api.nvim_set_keymap("n", "J", "<C-\\><C-N><cmd>tabnext<cr>", opts)
 vim.api.nvim_set_keymap("n", "K", "<C-\\><C-N><cmd>tabprev<cr>", opts)
-vim.api.nvim_set_keymap("t", "J", "<C-\\><C-N><cmd>tabnext<cr>", opts)
-vim.api.nvim_set_keymap("t", "K", "<C-\\><C-N><cmd>tabprev<cr>", opts)
 
 vim.cmd([[set fcs=eob:\ ]])
 
