@@ -54,7 +54,7 @@ return {
           { "<leader>fM", "<cmd>FzfLua marks<cr>",                                                               desc = "[FIND] Marks",          nowait = true, remap = false },
           { "<leader>fO", "<cmd>FzfLua oldfiles<cr>",                                                            desc = "[FIND] Recent",         nowait = true, remap = false },
           { "<leader>fT", "<cmd>FzfLua tabs<cr>",                                                                desc = "[FIND] Tabs",           nowait = true, remap = false },
-          { "<leader>fW", "<cmd>FzfLua grep_cWORD<cr>",                                                          desc = "[FIND] Word",           nowait = true, remap = false },
+          { "<leader>fW", "<cmd>FzfLua live_grep<cr>",                                                          desc = "[FIND] Word",           nowait = true, remap = false },
           { "<leader>g",  group = "[GIT]",                                                                       nowait = true,                  remap = false },
           { "<leader>gB", "<cmd>FzfLua git_branches<cr>",                                                        desc = "[FIND] Branches",       nowait = true, remap = false },
           { "<leader>gS", "<cmd>FzfLua git_status<cr>",                                                          desc = "[FIND] Status",         nowait = true, remap = false },
