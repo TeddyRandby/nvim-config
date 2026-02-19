@@ -2,8 +2,8 @@
   (block)
 ] @scope
 
-(special_send
-  lhs: (symbol) @definition.parameter
+(special
+  lhs: (symbol) @definition.var
   (#set! "definition.var.scope" "parent"))
 
 (symbol) @reference

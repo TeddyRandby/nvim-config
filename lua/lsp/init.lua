@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Enable completion and configure keybindings.
     if client:supports_method("textDocument/completion") then
-      vim.notify("Attack completion");
       local highlights = lsp_groups()
       -- Autocmd for triggering completion on insert char.
       vim.api.nvim_create_autocmd('InsertCharPre', {
