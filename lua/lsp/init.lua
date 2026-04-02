@@ -12,7 +12,6 @@ local function keymap(lhs, rhs, opts, mode, bufnr)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-
 ---For replacing certain <C-x>... keymaps.
 ---@param keys string
 local function feedkeys(keys)
@@ -24,9 +23,46 @@ local function pumvisible()
   return tonumber(vim.fn.pumvisible()) ~= 0
 end
 
-
 local lsp_icons = require('utils').lsp_icons
+
 local lsp_groups = require('utils').lsp_groups
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    "c",
+    "make",
+    "regex",
+    "vim",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "bash",
+    "dockerfile",
+    "go",
+    "gomod",
+    "json",
+    "toml",
+    "yaml",
+    "graphql",
+    "css",
+    "html",
+    "python",
+    "javascript",
+    "typescript",
+    "hurl",
+    "prisma",
+    "gab",
+  },
+  callback = function()
+    -- syntax highlighting, provided by Neovim
+    vim.treesitter.start()
+    -- folds, provided by Neovim
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo.foldmethod = 'expr'
+    -- indentation, provided by nvim-treesitter
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp", {}),
@@ -45,7 +81,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   end, { expr = true }, 'n', bufnr)
     -- end
 
-    if client:supports_method("textDocument/diagnostics") then
+    if client:supports_method("textDocument/diagnostic") then
       vim.diagnostic.config({
         float = {
           source = false,

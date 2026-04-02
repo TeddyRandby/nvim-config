@@ -101,3 +101,9 @@ for key, value in pairs(options) do
 end
 
 vim.o.guicursor = "n-v-c-sm-i-ci-ve:block,a:Cursor/lCursor"
+
+-- folds, provided by Neovim
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldmethod = 'expr'
+-- indentation, provided by nvim-treesitter
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
